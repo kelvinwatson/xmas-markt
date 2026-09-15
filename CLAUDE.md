@@ -102,7 +102,7 @@ rounded-shadow cards, ALL-CAPS eyebrow labels). Chose instead:
   generic/category-level). `christmasmarkt.de` is registered but
   parked/unused. `christmasmarkt.berlin` was checked and confirmed
   available via the official `.berlin` RDAP registry, but priced at
-  **€64.80/year** — a `.berlin` geo-TLD premium — versus **€2.90/year**
+  **€64.80/year** — a `.berlin` geo-TLD premium — versus **€6/year**
   for `xmas-markt.de`, which settled it in favour of the `.de` domain.
 
 ## Hosting / cost plan
@@ -110,7 +110,7 @@ rounded-shadow cards, ALL-CAPS eyebrow labels). Chose instead:
 Static host (GitHub Pages was the working assumption) for the frontend
 + data files — free. Firebase Spark (free tier) for Auth + Firestore
 once sync is added — free at this scale. Only real cost is the domain:
-`xmas-markt.de` at **€2.90/year** (chosen over `christmasmarkt.berlin`
+`xmas-markt.de` at **€6/year** (chosen over `christmasmarkt.berlin`
 at €64.80/year — see naming notes above). Map tiles via OSM are free but not meant
 for heavy production traffic — worth revisiting (MapTiler/Stadia Maps)
 if the app ever gets real traffic.
