@@ -27,9 +27,34 @@ build tool instead of Claude, but decided to stick with Claude.
   account needed, works immediately. Deliberately chosen over
   account-gated favourites so the app stays fully browsable with zero
   friction.
-- **Comments: deferred**, not in v1. Nice-to-have, not required. Will
-  reuse whatever backend gets added for synced favourites (see below),
-  since both need the same piece.
+- **Reliability indicator: v1 ships the `source` signal, `crowdsource`
+  is schema'd in from day one but stays empty until comments land.**
+  `confidence` is an object, not a flat value:
+  ```
+  confidence: {
+    source: "verified" | "check-ahead",  // v1: computed at scrape time
+                                          // from source.tier + lastChecked
+                                          // freshness, no backend needed
+    crowdsource: null                    // post-v1: becomes
+                                          // { confirmedCount, deniedCount,
+                                          //   lastConfirmedAt } once user
+                                          // verification exists
+  }
+  ```
+  Structuring it as an object now (instead of a single flat badge
+  value) means the UI can start on `confidence.source` alone and later
+  combine both signals — e.g. prefer a recent crowdsource confirmation
+  over the automated one — without a schema migration when comments
+  ship. Exists specifically because scraped data can go stale or a
+  market can be cancelled (weather, etc.) between scraper runs, and the
+  app should say so honestly rather than imply certainty it doesn't
+  have.
+- **Comments / crowdsourced verification: deferred**, not in v1, but
+  do not drop this — it's the planned upgrade path for the reliability
+  indicator above (e.g. "3 people confirmed this was open yesterday"
+  alongside or instead of the automated badge). Will reuse whatever
+  backend gets added for synced favourites (see below), since both
+  need the same piece.
 - **Favourites sync across devices: planned, not built.** When added,
   it's meant to be *additive* — sign-in optional, browsing and local
   favourites still work with zero account. Plan was Firebase Auth
