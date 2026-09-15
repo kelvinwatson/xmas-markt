@@ -1,0 +1,58 @@
+{
+  "isSampleData": true,
+  "generatedAt": "2026-09-15T12:00:00Z",
+  "markets": [
+    {
+      "id": "gendarmenmarkt",
+      "name": "Weihnachtsmarkt am Gendarmenmarkt",
+      "district": "Mitte",
+      "lat": 52.5138,
+      "lng": 13.3925,
+      "dates": { "start": "2026-11-23", "end": "2026-12-26" },
+      "hours": { "monThu": "11:00–22:00", "friSat": "11:00–23:00", "sun": "11:00–22:00" },
+      "tags": ["live music", "handicrafts", "ticketed entry"],
+      "summary": "A ticketed market set between the Konzerthaus and the two cathedrals, known for handicraft stalls and a nightly stage programme.",
+      "vendorFile": "vendors/gendarmenmarkt.json",
+      "lastChecked": "2026-09-15T06:00:00Z"
+    },
+    {
+      "id": "schoeneberg",
+      "name": "Weihnachtsmarkt am Rudolph-Wilde-Park",
+      "district": "Schöneberg",
+      "lat": 52.4836,
+      "lng": 13.3419,
+      "dates": { "start": "2026-11-27", "end": "2026-12-30" },
+      "hours": { "monThu": "14:00–22:00", "friSat": "12:00–22:00", "sun": "12:00–22:00" },
+      "tags": ["free entry", "neighbourhood", "ice rink"],
+      "summary": "A local, free-entry market by the Rathaus Schöneberg with a small ice rink and neighbourhood food stalls.",
+      "vendorFile": "vendors/schoeneberg.json",
+      "lastChecked": "2026-09-15T06:00:00Z"
+    },
+    {
+      "id": "alexanderplatz",
+      "name": "WeihnachtsZauber Alexanderplatz",
+      "district": "Mitte",
+      "lat": 52.5219,
+      "lng": 13.4132,
+      "dates": { "start": "2026-11-20", "end": "2026-12-30" },
+      "hours": { "monThu": "11:00–22:00", "friSat": "11:00–23:00", "sun": "11:00–22:00" },
+      "tags": ["free entry", "large", "rides"],
+      "summary": "One of the city's largest markets, with a big wheel, log-flume ride, and a long row of food stalls beside the TV tower.",
+      "vendorFile": "vendors/alexanderplatz.json",
+      "lastChecked": "2026-09-15T06:00:00Z"
+    },
+    {
+      "id": "spandau",
+      "name": "Spandauer Weihnachtsmarkt",
+      "district": "Spandau",
+      "lat": 52.5359,
+      "lng": 13.1988,
+      "dates": { "start": "2026-11-25", "end": "2026-12-22" },
+      "hours": { "monThu": "11:00–20:00", "friSat": "11:00–21:00", "sun": "11:00–20:00" },
+      "tags": ["free entry", "historic old town"],
+      "summary": "A smaller, quieter market through Spandau's old town lanes, close to the citadel.",
+      "vendorFile": "vendors/spandau.json",
+      "lastChecked": "2026-09-15T06:00:00Z"
+    }
+  ]
+}

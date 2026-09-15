@@ -1,0 +1,10 @@
+{
+  "marketId": "spandau",
+  "isSampleData": true,
+  "lastChecked": "2026-09-15T06:00:00Z",
+  "vendors": [
+    { "id": "sp-1", "name": "Old Town Glühwein Stand", "category": "food", "description": "Mulled wine served in a keepsake mug with the citadel's crest.", "hours": "11:00–20:00" },
+    { "id": "sp-2", "name": "Crêpe Stall", "category": "food", "description": "Sweet crêpes with a range of fillings.", "hours": "11:00–19:30" },
+    { "id": "sp-3", "name": "Pottery Booth", "category": "crafts", "description": "Hand-thrown mugs, bowls, and ornaments.", "hours": "12:00–19:00" }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "marketId": "gendarmenmarkt",
+  "isSampleData": true,
+  "lastChecked": "2026-09-15T06:00:00Z",
+  "vendors": [
+    { "id": "gm-1", "name": "Mulled Wine Stall", "category": "food", "description": "Classic red and white Glühwein, served in the market's own collectible mug.", "hours": "11:00–22:00" },
+    { "id": "gm-2", "name": "Bratwurst Grill", "category": "food", "description": "Grilled sausages with fresh bread and mustard.", "hours": "11:00–22:00" },
+    { "id": "gm-3", "name": "Kartoffelpuffer Stand", "category": "food", "description": "Potato pancakes with apple sauce or herb quark.", "hours": "11:00–21:30" },
+    { "id": "gm-4", "name": "Glassblower's Booth", "category": "crafts", "description": "Hand-blown glass ornaments made on site.", "hours": "12:00–21:00" },
+    { "id": "gm-5", "name": "Woodcarving Stall", "category": "crafts", "description": "Carved wooden nutcrackers, smokers, and pyramids.", "hours": "12:00–21:00" },
+    { "id": "gm-6", "name": "Candle Maker", "category": "crafts", "description": "Hand-dipped beeswax candles.", "hours": "12:00–21:00" }
+  ]
+}

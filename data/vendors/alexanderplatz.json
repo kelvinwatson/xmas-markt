@@ -1,0 +1,13 @@
+{
+  "marketId": "alexanderplatz",
+  "isSampleData": true,
+  "lastChecked": "2026-09-15T06:00:00Z",
+  "vendors": [
+    { "id": "ax-1", "name": "Glühwein Bar", "category": "food", "description": "Mulled wine, hot chocolate, and eggnog.", "hours": "11:00–22:00" },
+    { "id": "ax-2", "name": "Flammkuchen Stand", "category": "food", "description": "Alsatian-style flatbread with bacon and onion.", "hours": "11:00–22:00" },
+    { "id": "ax-3", "name": "Roasted Almonds Stall", "category": "food", "description": "Cinnamon-sugar roasted almonds and chestnuts.", "hours": "11:00–22:30" },
+    { "id": "ax-4", "name": "Big Wheel", "category": "activity", "description": "Large observation wheel overlooking the market.", "hours": "11:00–22:00" },
+    { "id": "ax-5", "name": "Log Flume Ride", "category": "activity", "description": "Water flume ride, popular with families.", "hours": "11:00–21:30" },
+    { "id": "ax-6", "name": "Ornament Booth", "category": "crafts", "description": "Painted glass baubles and tree decorations.", "hours": "11:00–21:30" }
+  ]
+}

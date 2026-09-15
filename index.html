@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ChristmasMarkt</title>
+<meta name="description" content="Find Christmas markets in Berlin — locations, vendors, hours, and your saved favourites.">
+<meta name="theme-color" content="#17301F">
+
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="app-header">
+  <h1 class="app-header__title">🏮 Berlin <span class="accent">Christmas Markets</span></h1>
+  <div class="app-header__controls">
+    <div class="view-switch" role="tablist">
+      <button class="view-switch__btn" data-view="map" role="tab" aria-pressed="true">Map</button>
+      <button class="view-switch__btn" data-view="list" role="tab" aria-pressed="false">List</button>
+    </div>
+    <button class="saved-toggle" id="saved-toggle" aria-pressed="false">
+      <span class="heart">♥</span> Saved
+    </button>
+  </div>
+</header>
+
+<main>
+  <section id="map-view" class="view">
+    <div id="map"></div>
+  </section>
+
+  <section id="list-view" class="view" hidden></section>
+</main>
+
+<div class="sheet-overlay" id="sheet-overlay" hidden>
+  <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
+    <div class="sheet__handle"></div>
+    <div class="sheet__header">
+      <div>
+        <h2 class="sheet__title" id="sheet-title"></h2>
+        <p class="sheet__meta" id="sheet-meta"></p>
+      </div>
+      <div style="display:flex; gap:2px; align-items:flex-start;">
+        <button class="fav-btn" id="sheet-fav-btn" aria-pressed="false" aria-label="Save market">♥</button>
+        <button class="sheet__close" id="sheet-close" aria-label="Close">✕</button>
+      </div>
+    </div>
+    <div class="sheet__body" id="sheet-body"></div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="js/app.js" defer></script>
+</body>
+</html>

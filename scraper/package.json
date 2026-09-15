@@ -1,0 +1,12 @@
+{
+  "name": "christmas-market-scraper",
+  "version": "0.1.0",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "scrape": "node scrape.js"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0"
+  }
+}
