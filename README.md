@@ -1,4 +1,4 @@
-# ChristmasMarkt
+# XmasMarkt
 
 A static PWA for finding Christmas markets in Berlin: map + list of
 markets, vendor details, and favourites that work without an account
@@ -19,7 +19,7 @@ local server — pick whichever you have:
 
 ```bash
 # Option A: Python (usually already installed)
-cd ChristmasMarkt
+cd xmas-markt
 python3 -m http.server 8080
 
 # Option B: Node

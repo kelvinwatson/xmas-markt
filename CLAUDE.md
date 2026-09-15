@@ -1,4 +1,4 @@
-# ChristmasMarkt — project brief
+# XmasMarkt — project brief
 
 Handoff notes from planning done in Claude chat, before moving to Claude
 Code for the git/scraper/CI work. Read this first so you're not starting
@@ -7,10 +7,9 @@ from zero.
 ## What this is
 
 A PWA for finding Christmas markets in Berlin — map + list of markets,
-vendor details per market, and favourites. **Name: ChristmasMarkt**
-(short name / icon label: **XmasMarkt**) — see naming notes below.
-Domain: **christmasmarkt.berlin** (confirmed available via the official
-`.berlin` RDAP registry; not yet registered).
+vendor details per market, and favourites. **Name: XmasMarkt** — see
+naming notes below. Domain: **xmas-markt.de** (matches the GitHub repo
+name `xmas-markt`; not yet registered).
 
 ## Why it exists
 
@@ -89,27 +88,30 @@ rounded-shadow cards, ALL-CAPS eyebrow labels). Chose instead:
   confuse rather than brand. "Marktlicht" ("market light") was the
   working name after that, tied to the lantern-glow palette — but was
   ultimately felt to be too abstract; it names a mood, not what the app
-  does. Landed on **ChristmasMarkt** instead: concrete (literally says
-  "market"), unmistakably Christmas, no umlauts (easier to spell/type/
-  domain), and reads as an intentional English/German bilingual pair
-  rather than a shortcut — fitting for an app serving both German
-  locals and English-speaking tourists. "XmasMarkt" is used as the
-  short name / home-screen icon label (shorter, but weaker for search
-  since people rarely say "Xmas" aloud) — the full "ChristmasMarkt" is
-  kept as the primary name specifically to preserve findability.
-  `weihnachtsmarkt.de` was ruled out as a domain — it's an established,
-  actively monetized German Christmas content site, not available and
-  not a name worth competing with anyway (too generic/category-level).
-  `christmasmarkt.de` is registered but parked/unused. `.berlin` was
-  chosen over `.de` since the app is Berlin-scoped, not national —
-  **christmasmarkt.berlin** confirmed available, not yet registered.
+  does. Considered "ChristmasMarkt" next — concrete, unmistakably
+  Christmas, no umlauts — with "XmasMarkt" as a short name/icon label
+  alongside it, split specifically to balance findability (full
+  "Christmas" matches more search queries) against brevity. Landed on
+  **XmasMarkt** alone in the end, dropping the split: the GitHub repo
+  was already created as `xmas-markt`, and the much cheaper `.de`
+  pricing sealed it (see cost plan below) — matching name, repo, and
+  domain was simpler than maintaining two names for a marginal
+  findability gain. `weihnachtsmarkt.de` was ruled out as a domain —
+  it's an established, actively monetized German Christmas content
+  site, not available and not a name worth competing with anyway (too
+  generic/category-level). `christmasmarkt.de` is registered but
+  parked/unused. `christmasmarkt.berlin` was checked and confirmed
+  available via the official `.berlin` RDAP registry, but priced at
+  **€64.80/year** — a `.berlin` geo-TLD premium — versus **€2.90/year**
+  for `xmas-markt.de`, which settled it in favour of the `.de` domain.
 
 ## Hosting / cost plan
 
 Static host (GitHub Pages was the working assumption) for the frontend
 + data files — free. Firebase Spark (free tier) for Auth + Firestore
-once sync is added — free at this scale. Only real cost is the domain,
-roughly €10–20/year if bought. Map tiles via OSM are free but not meant
+once sync is added — free at this scale. Only real cost is the domain:
+`xmas-markt.de` at **€2.90/year** (chosen over `christmasmarkt.berlin`
+at €64.80/year — see naming notes above). Map tiles via OSM are free but not meant
 for heavy production traffic — worth revisiting (MapTiler/Stadia Maps)
 if the app ever gets real traffic.
 
@@ -130,8 +132,7 @@ Plan is to potentially monetize later. Two things were checked:
 
 - Pick real scraper sources per market, fill in `scraper/scrape.js`
 - Real app icons (placeholders currently in `icons/`)
-- Register `christmasmarkt.berlin` (availability confirmed via RDAP,
-  not yet purchased)
+- Register `xmas-markt.de` (not yet purchased)
 - Firebase Auth + Firestore integration for synced favourites
 - Comments (post-v1)
 - Approval check before turning on any monetization
