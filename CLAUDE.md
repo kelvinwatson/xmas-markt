@@ -71,6 +71,34 @@ build tool instead of Claude, but decided to stick with Claude.
   `vendors/{id}.json` files (fetched on demand). This was a deliberate
   choice so browsing stays fast regardless of how much vendor detail
   gets added later.
+- **Market record schema** (revised before real data population — the
+  original 4 sample markets only had `id, name, district, lat, lng,
+  dates, hours, tags, summary, vendorFile, lastChecked`):
+  ```
+  {
+    id, name, district, lat, lng,
+    dates: { start, end },
+    hours: { monThu, friSat, sun },
+    tags, summary,
+    vendorFile, lastChecked,
+
+    source: {
+      officialUrl,                       // visitberlin.de / Bezirk page
+      organizerUrl,                      // market's own site, if any
+      tier: "official" | "organizer" | "aggregator"
+    },
+    status: "confirmed" | "tentative" | "unavailable",
+    entry: "free" | "ticketed",
+    confidence: {                        // see reliability indicator,
+      source: "verified" | "check-ahead", // above, for the full rationale
+      crowdsource: null
+    }
+  }
+  ```
+  `source`, `status`, and `entry` exist because real scraped data needs
+  provenance (traceable back to which page it came from) and honesty
+  about dates that aren't finalized yet — the 4 hand-typed sample
+  markets didn't need any of this since they were fictional.
 - `data/overrides.json` — manual corrections that take precedence over
   scraped data, specifically so a same-day closure or scraper breakage
   can be patched instantly without waiting on a source or redeploying.
