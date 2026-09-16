@@ -76,7 +76,7 @@ build tool instead of Claude, but decided to stick with Claude.
   dates, hours, tags, summary, vendorFile, lastChecked`):
   ```
   {
-    id, name, district, lat, lng,
+    id, name, district, address, lat, lng,
     dates: { start, end },
     hours: { monThu, friSat, sun },
     tags, summary,

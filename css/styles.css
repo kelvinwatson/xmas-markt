@@ -464,12 +464,37 @@ main {
   touch-action: none;
 }
 
+.sheet__actions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.sheet__actions button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.sheet__icon-btn {
+  background: none;
+  border: none;
+  color: var(--mist);
+}
+
+.sheet__icon-btn svg { width: 18px; height: 18px; }
+
+.sheet__icon-btn.copied { color: var(--evergreen); }
+
 .sheet__close {
   background: none;
   border: none;
   font-size: 1.1rem;
   color: var(--mist);
-  padding: 4px;
 }
 
 .sheet__title {
@@ -506,6 +531,19 @@ main {
   margin: 0 0 16px;
   color: var(--ink-muted);
 }
+
+.sheet__address {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--gold-muted);
+  text-decoration: none;
+  margin: -8px 0 16px;
+}
+
+.sheet__address:hover { text-decoration: underline; }
+.sheet__address svg { flex-shrink: 0; }
 
 .vendor-group__title {
   font-family: var(--font-display);

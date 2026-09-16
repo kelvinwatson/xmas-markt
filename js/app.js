@@ -5,6 +5,7 @@
   const THEME_KEY = "cmapp_theme";
   const BERLIN_CENTER = [52.517, 13.389];
   const PINE_ICON = `<svg width="13" height="13" viewBox="0 0 16 16"><path d="M8 15 V2 M8 4.5 L4.3 7 M8 4.5 L11.7 7 M8 8 L4.3 10.5 M8 8 L11.7 10.5 M8 2 L6.2 0.5 M8 2 L9.8 0.5" stroke="var(--pine)" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>`;
+  const PIN_ICON = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--gold-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.1 7-12a7 7 0 10-14 0c0 5.9 7 12 7 12z"/><circle cx="12" cy="9" r="2.3"/></svg>`;
 
   let markets = [];
   let currentView = "map";
@@ -208,7 +209,7 @@
   // ---------------------------------------------------------
   // Detail sheet
   // ---------------------------------------------------------
-  async function openSheet(market) {
+  async function openSheet(market, { updateHistory = true } = {}) {
     const overlay = document.getElementById("sheet-overlay");
     const status = marketStatus(market);
     const favs = getFavorites();
@@ -229,9 +230,19 @@
       if (currentView === "list") renderList();
     };
 
+    const shareBtn = document.getElementById("sheet-share-btn");
+    shareBtn.onclick = () => shareMarket(market, shareBtn);
+
+    if (updateHistory) history.pushState(null, "", `#${market.id}`);
+
+    const addressHtml = market.address
+      ? `<a class="sheet__address" href="https://www.google.com/maps/search/?api=1&query=${market.lat},${market.lng}" target="_blank" rel="noopener">${PIN_ICON}${market.address}</a>`
+      : "";
+
     const body = document.getElementById("sheet-body");
     body.innerHTML = `
       <p class="sheet__summary">${market.summary}</p>
+      ${addressHtml}
       <div class="sheet__loading">Loading vendors…</div>
     `;
 
@@ -266,19 +277,34 @@
 
       body.innerHTML = `
         <p class="sheet__summary">${market.summary}</p>
+        ${addressHtml}
         ${vendorsHtml}
         <p class="sheet__last-checked">Vendor list last checked ${relativeTime(vendorData.lastChecked)}</p>
       `;
     } catch {
       body.innerHTML = `
         <p class="sheet__summary">${market.summary}</p>
+        ${addressHtml}
         <p class="sheet__error">Couldn't load vendor details right now.</p>
       `;
     }
   }
 
+  function shareMarket(market, btn) {
+    const url = `${location.origin}${location.pathname}#${market.id}`;
+    if (navigator.share) {
+      navigator.share({ title: market.name, text: market.summary, url }).catch(() => {});
+      return;
+    }
+    navigator.clipboard.writeText(url).then(() => {
+      btn.classList.add("copied");
+      setTimeout(() => btn.classList.remove("copied"), 1500);
+    });
+  }
+
   function closeSheet() {
     document.getElementById("sheet-overlay").hidden = true;
+    if (location.hash) history.pushState(null, "", location.pathname + location.search);
   }
 
   // ---------------------------------------------------------
@@ -389,6 +415,15 @@
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker.register("sw.js").catch(() => {});
     }
+
+    window.addEventListener("popstate", () => {
+      const market = markets.find((m) => m.id === location.hash.slice(1));
+      if (market) openSheet(market, { updateHistory: false });
+      else document.getElementById("sheet-overlay").hidden = true;
+    });
+
+    const deepLinked = markets.find((m) => m.id === location.hash.slice(1));
+    if (deepLinked) openSheet(deepLinked, { updateHistory: false });
   }
 
   document.addEventListener("DOMContentLoaded", init);

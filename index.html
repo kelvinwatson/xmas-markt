@@ -67,7 +67,10 @@
         <h2 class="sheet__title" id="sheet-title"></h2>
         <p class="sheet__meta" id="sheet-meta"></p>
       </div>
-      <div style="display:flex; gap:2px; align-items:flex-start;">
+      <div class="sheet__actions">
+        <button class="sheet__icon-btn" id="sheet-share-btn" aria-label="Share market">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M12 4l-4 4M12 4l4 4"></path><path d="M5 12v7a1 1 0 001 1h12a1 1 0 001-1v-7"></path></svg>
+        </button>
         <button class="fav-btn" id="sheet-fav-btn" aria-pressed="false" aria-label="Save market">♥</button>
         <button class="sheet__close" id="sheet-close" aria-label="Close">✕</button>
       </div>
