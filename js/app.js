@@ -286,35 +286,46 @@
   // modal's overlay click / close button instead)
   // ---------------------------------------------------------
   function initSheetDragToDismiss() {
-    const handle = document.querySelector(".sheet__handle");
+    // Draggable from the handle or anywhere in the header bar — but not
+    // from the fav/close buttons inside it, so those stay tappable.
+    const dragSources = [
+      document.querySelector(".sheet__handle"),
+      document.querySelector(".sheet__header"),
+    ];
     const sheetEl = document.getElementById("sheet");
     const DISMISS_THRESHOLD = 90;
     let startY = null;
+    let activeSource = null;
 
-    handle.addEventListener("pointerdown", (e) => {
-      if (matchMedia("(min-width: 720px)").matches) return;
-      startY = e.clientY;
-      sheetEl.style.transition = "none";
-      handle.setPointerCapture(e.pointerId);
+    dragSources.forEach((source) => {
+      source.addEventListener("pointerdown", (e) => {
+        if (matchMedia("(min-width: 720px)").matches) return;
+        if (e.target.closest("button")) return;
+        startY = e.clientY;
+        activeSource = source;
+        sheetEl.style.transition = "none";
+        source.setPointerCapture(e.pointerId);
+      });
+
+      source.addEventListener("pointermove", (e) => {
+        if (startY === null || activeSource !== source) return;
+        const delta = Math.max(0, e.clientY - startY);
+        sheetEl.style.transform = `translateY(${delta}px)`;
+      });
+
+      function endDrag(e) {
+        if (startY === null || activeSource !== source) return;
+        const delta = Math.max(0, e.clientY - startY);
+        startY = null;
+        activeSource = null;
+        sheetEl.style.transition = "";
+        sheetEl.style.transform = "";
+        if (delta > DISMISS_THRESHOLD) closeSheet();
+      }
+
+      source.addEventListener("pointerup", endDrag);
+      source.addEventListener("pointercancel", endDrag);
     });
-
-    handle.addEventListener("pointermove", (e) => {
-      if (startY === null) return;
-      const delta = Math.max(0, e.clientY - startY);
-      sheetEl.style.transform = `translateY(${delta}px)`;
-    });
-
-    function endDrag(e) {
-      if (startY === null) return;
-      const delta = Math.max(0, e.clientY - startY);
-      startY = null;
-      sheetEl.style.transition = "";
-      sheetEl.style.transform = "";
-      if (delta > DISMISS_THRESHOLD) closeSheet();
-    }
-
-    handle.addEventListener("pointerup", endDrag);
-    handle.addEventListener("pointercancel", endDrag);
   }
 
   // ---------------------------------------------------------
