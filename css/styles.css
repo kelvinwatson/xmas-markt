@@ -99,9 +99,9 @@ button {
   inset: 0;
   z-index: 0;
   background-image:
-    radial-gradient(circle at 12% 18%, rgba(var(--gold-rgb), 0.30) 0%, rgba(var(--gold-rgb), 0.12) 35%, transparent 70%),
-    radial-gradient(circle at 78% 8%, rgba(var(--gold-rgb), 0.26) 0%, rgba(var(--gold-rgb), 0.1) 35%, transparent 75%),
-    radial-gradient(circle at 92% 55%, rgba(var(--gold-rgb), 0.28) 0%, rgba(var(--gold-rgb), 0.11) 35%, transparent 70%);
+    radial-gradient(circle at 12% 18%, rgba(var(--gold-rgb), 0.16) 0%, rgba(var(--gold-rgb), 0.05) 18%, transparent 38%),
+    radial-gradient(circle at 80% 10%, rgba(var(--gold-rgb), 0.14) 0%, rgba(var(--gold-rgb), 0.04) 18%, transparent 40%),
+    radial-gradient(circle at 94% 60%, rgba(var(--gold-rgb), 0.15) 0%, rgba(var(--gold-rgb), 0.05) 18%, transparent 38%);
 }
 
 .app-header__inner {
