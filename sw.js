@@ -2,7 +2,7 @@
 // Upgrade path: swap this for Workbox (https://developer.chrome.com/docs/workbox/)
 // once the app grows — it gives you more caching strategies out of the box.
 
-const STATIC_CACHE = "cmapp-static-v1";
+const STATIC_CACHE = "cmapp-static-v2";
 const DATA_CACHE = "cmapp-data-v1";
 
 const STATIC_ASSETS = [
@@ -16,8 +16,17 @@ const STATIC_ASSETS = [
 ];
 
 self.addEventListener("install", (event) => {
+  // cache.addAll() can be satisfied by the browser's regular HTTP cache,
+  // which would silently repopulate this cache with stale files on every
+  // redeploy. Fetch with {cache: "reload"} to force a real network hit.
   event.waitUntil(
-    caches.open(STATIC_CACHE).then((cache) => cache.addAll(STATIC_ASSETS))
+    caches.open(STATIC_CACHE).then((cache) =>
+      Promise.all(
+        STATIC_ASSETS.map((url) =>
+          fetch(url, { cache: "reload" }).then((response) => cache.put(url, response))
+        )
+      )
+    )
   );
   self.skipWaiting();
 });

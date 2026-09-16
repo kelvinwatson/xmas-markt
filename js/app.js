@@ -117,9 +117,13 @@
   // ---------------------------------------------------------
   function initMap() {
     map = L.map("map", { zoomControl: true }).setView(BERLIN_CENTER, 11);
+    // CartoDB's free dark-tile endpoint now requires an API key (renders a
+    // watermark without one) — stick with plain OSM tiles, which stay free
+    // and unauthenticated, and darken them with a CSS filter instead.
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution: "&copy; OpenStreetMap contributors",
       maxZoom: 19,
+      className: "map-tiles-dark",
     }).addTo(map);
     markerLayer = L.layerGroup().addTo(map);
     renderMarkers();
