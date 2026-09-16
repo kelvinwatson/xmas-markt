@@ -355,10 +355,10 @@ main {
   background: linear-gradient(135deg, var(--surface) 0%, var(--bg) 100%);
 }
 
-.market-card__thumb__placeholder svg {
-  width: 20px;
-  height: 20px;
-  color: var(--border-strong);
+.market-card__thumb__placeholder img {
+  width: 28px;
+  height: 28px;
+  opacity: 0.6;
 }
 
 .market-card:hover,
@@ -402,9 +402,8 @@ main {
 .market-card__district svg { flex-shrink: 0; }
 
 .market-card__status {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 0.85rem;
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
   font-weight: 600;
   margin: 12px 0 8px;
 }
@@ -531,7 +530,8 @@ main {
   gap: 2px;
 }
 
-.sheet__actions button {
+.sheet__actions button,
+.sheet__actions a {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -539,6 +539,8 @@ main {
   height: 32px;
   padding: 0;
   flex-shrink: 0;
+  color: var(--mist);
+  text-decoration: none;
 }
 
 .sheet__icon-btn {
@@ -577,7 +579,7 @@ main {
 
 .sheet__meta svg { flex-shrink: 0; }
 
-.sheet__status { font-family: var(--font-display); font-style: italic; font-weight: 600; }
+.sheet__status { font-family: var(--font-ui); font-weight: 600; }
 .sheet__status--open { color: var(--evergreen); }
 .sheet__status--closed { color: var(--gold-muted); }
 
@@ -643,10 +645,10 @@ main {
   background: linear-gradient(135deg, var(--surface) 0%, var(--bg) 100%);
 }
 
-.sheet__banner__placeholder svg {
-  width: 36px;
-  height: 36px;
-  color: var(--border-strong);
+.sheet__banner__placeholder img {
+  width: 56px;
+  height: 56px;
+  opacity: 0.6;
 }
 
 .sheet__body {

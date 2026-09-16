@@ -19,6 +19,7 @@
       saved: "Saved",
       toggleTheme: "Toggle dark mode",
       switchLang: "Switch language",
+      addToCalendar: "Add to calendar",
       shareMarket: "Share market",
       saveMarket: "Save market",
       close: "Close",
@@ -45,6 +46,7 @@
       saved: "Gemerkt",
       toggleTheme: "Dunkelmodus umschalten",
       switchLang: "Sprache wechseln",
+      addToCalendar: "Zum Kalender hinzufügen",
       shareMarket: "Markt teilen",
       saveMarket: "Markt merken",
       close: "Schließen",
@@ -86,20 +88,20 @@
   }
   const PINE_ICON = `<svg width="13" height="13" viewBox="0 0 16 16"><path d="M8 15 V2 M8 4.5 L4.3 7 M8 4.5 L11.7 7 M8 8 L4.3 10.5 M8 8 L11.7 10.5 M8 2 L6.2 0.5 M8 2 L9.8 0.5" stroke="var(--pine)" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>`;
   const PIN_ICON = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--gold-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.1 7-12a7 7 0 10-14 0c0 5.9 7 12 7 12z"/><circle cx="12" cy="9" r="2.3"/></svg>`;
-  const STAR_PATH = `<path d="M7 6 L7 14 L5 15 L5 20 L19 20 L19 17 L14 15 L11 15 L11 6 M11 8 Q15 8 15 10 Q15 12 11 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 4.5 Q9 3 8 1.5 M10 4.5 Q11 3 10 1.5" fill="none" stroke="var(--ink)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>`;
+  const PLACEHOLDER_ICON = `<img src="icons/icon-192.png" alt="">`;
 
   function mediaHtml(market, blockClass) {
     const src = market.images && market.images[0];
     if (src) {
       return `<img class="${blockClass}__img" src="${src}" alt="">`;
     }
-    return `<div class="${blockClass}__placeholder"><svg viewBox="0 0 24 24" fill="currentColor">${STAR_PATH}</svg></div>`;
+    return `<div class="${blockClass}__placeholder">${PLACEHOLDER_ICON}</div>`;
   }
 
   function bannerCarouselHtml(market) {
     const images = market.images && market.images.length ? market.images : null;
     if (!images) {
-      return `<div class="sheet__banner__placeholder"><svg viewBox="0 0 24 24" fill="currentColor">${STAR_PATH}</svg></div>`;
+      return `<div class="sheet__banner__placeholder">${PLACEHOLDER_ICON}</div>`;
     }
     const slides = images
       .map((src) => `<div class="sheet__banner__slide"><img class="sheet__banner__img" src="${src}" alt=""></div>`)
@@ -364,6 +366,8 @@
       if (currentView === "list") renderList();
     };
 
+    document.getElementById("sheet-calendar-btn").href = calendarUrl(market);
+
     const shareBtn = document.getElementById("sheet-share-btn");
     shareBtn.onclick = () => shareMarket(market, shareBtn);
 
@@ -415,6 +419,38 @@
         <p class="sheet__error">${t("vendorError")}</p>
       `;
     }
+  }
+
+  function isoToYyyymmdd(iso) {
+    return iso.replace(/-/g, "");
+  }
+
+  function isoPlusOneDay(iso) {
+    // Build the result from local date parts, not toISOString() (which
+    // converts to UTC and rolls the date back a day in any positive
+    // UTC-offset timezone, e.g. Berlin).
+    const d = new Date(iso + "T00:00:00");
+    d.setDate(d.getDate() + 1);
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, "0");
+    const day = String(d.getDate()).padStart(2, "0");
+    return `${y}-${m}-${day}`;
+  }
+
+  function calendarUrl(market) {
+    // Google Calendar all-day events use an EXCLUSIVE end date, so the
+    // event has to end the day after the market's actual last day to
+    // display through it correctly.
+    const start = isoToYyyymmdd(market.dates.start);
+    const end = isoToYyyymmdd(isoPlusOneDay(market.dates.end));
+    const params = new URLSearchParams({
+      action: "TEMPLATE",
+      text: market.name,
+      dates: `${start}/${end}`,
+      details: market.summary,
+      location: market.address || `${market.district}, Berlin`,
+    });
+    return `https://calendar.google.com/calendar/render?${params.toString()}`;
   }
 
   function shareMarket(market, btn) {
