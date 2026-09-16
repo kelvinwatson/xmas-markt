@@ -25,6 +25,20 @@
       close: "Close",
       noSaved: "No saved markets yet. Tap the heart on a market to save it.",
       noMarkets: "No markets found.",
+      allDistricts: "All districts",
+      filterDistrict: "Filter by district",
+      filterEntry: "Filter by entry",
+      entryAll: "All entry",
+      entryFree: "Free",
+      entryTicketed: "Ticketed",
+      sortBy: "Sort",
+      sortRecommended: "Recommended",
+      sortEnding: "Ending soonest",
+      sortName: "Name (A–Z)",
+      sortNearest: "Nearest to me",
+      locateMe: "Show my location",
+      locateDenied: "Couldn't get your location — check your browser's location permission.",
+      distanceAway: (km) => `${km} km away`,
       loadingVendors: "Loading vendors…",
       vendorError: "Couldn't load vendor details right now.",
       lastChecked: (t) => `Vendor list last checked ${t}`,
@@ -52,6 +66,20 @@
       close: "Schließen",
       noSaved: "Noch keine gemerkten Märkte. Tippe auf das Herz, um einen Markt zu merken.",
       noMarkets: "Keine Märkte gefunden.",
+      allDistricts: "Alle Bezirke",
+      filterDistrict: "Nach Bezirk filtern",
+      filterEntry: "Nach Eintritt filtern",
+      entryAll: "Jeder Eintritt",
+      entryFree: "Kostenlos",
+      entryTicketed: "Kostenpflichtig",
+      sortBy: "Sortieren",
+      sortRecommended: "Empfohlen",
+      sortEnding: "Endet bald",
+      sortName: "Name (A–Z)",
+      sortNearest: "In meiner Nähe",
+      locateMe: "Meinen Standort anzeigen",
+      locateDenied: "Standort konnte nicht ermittelt werden — bitte Standortberechtigung im Browser prüfen.",
+      distanceAway: (km) => `${km} km entfernt`,
       loadingVendors: "Stände werden geladen…",
       vendorError: "Standdetails konnten nicht geladen werden.",
       lastChecked: (t) => `Standliste zuletzt geprüft ${t}`,
@@ -128,7 +156,11 @@
   let markets = [];
   let currentView = "map";
   let savedOnly = false;
-  let map, markerLayer;
+  let filterDistrict = "all";
+  let filterEntry = "all";
+  let sortBy = "recommended";
+  let userLocation = null; // { lat, lng } once geolocation succeeds
+  let map, markerLayer, userMarker;
   const markerById = new Map();
   const vendorCache = new Map();
 
@@ -228,9 +260,73 @@
     return data;
   }
 
+  function haversineKm(lat1, lng1, lat2, lng2) {
+    const R = 6371;
+    const dLat = ((lat2 - lat1) * Math.PI) / 180;
+    const dLng = ((lng2 - lng1) * Math.PI) / 180;
+    const a =
+      Math.sin(dLat / 2) ** 2 +
+      Math.cos((lat1 * Math.PI) / 180) * Math.cos((lat2 * Math.PI) / 180) * Math.sin(dLng / 2) ** 2;
+    return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  }
+
+  function distanceToMarket(market) {
+    if (!userLocation) return null;
+    return haversineKm(userLocation.lat, userLocation.lng, market.lat, market.lng);
+  }
+
+  function sortMarkets(list) {
+    const sorted = list.slice();
+    if (sortBy === "name") {
+      sorted.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (sortBy === "ending") {
+      sorted.sort((a, b) => a.dates.end.localeCompare(b.dates.end));
+    } else if (sortBy === "nearest" && userLocation) {
+      sorted.sort((a, b) => distanceToMarket(a) - distanceToMarket(b));
+    } else {
+      // Recommended: open-now markets first, then soonest start date.
+      sorted.sort((a, b) => {
+        const aOpen = marketStatus(a).open;
+        const bOpen = marketStatus(b).open;
+        if (aOpen !== bOpen) return aOpen ? -1 : 1;
+        return a.dates.start.localeCompare(b.dates.start);
+      });
+    }
+    return sorted;
+  }
+
   function visibleMarkets() {
     const favs = getFavorites();
-    return savedOnly ? markets.filter((m) => favs.has(m.id)) : markets;
+    let list = savedOnly ? markets.filter((m) => favs.has(m.id)) : markets;
+    if (filterDistrict !== "all") list = list.filter((m) => m.district === filterDistrict);
+    if (filterEntry !== "all") list = list.filter((m) => m.entry === filterEntry);
+    return sortMarkets(list);
+  }
+
+  function populateDistrictFilter() {
+    const container = document.getElementById("filter-district");
+    const districts = [...new Set(markets.map((m) => m.district))].sort();
+    const options = ["all", ...districts];
+    container.innerHTML = options
+      .map(
+        (d) =>
+          `<button class="filter-pill" data-value="${d}" aria-pressed="${String(d === filterDistrict)}">${
+            d === "all" ? t("allDistricts") : d
+          }</button>`
+      )
+      .join("");
+    container.querySelectorAll(".filter-pill").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        filterDistrict = btn.dataset.value;
+        container.querySelectorAll(".filter-pill").forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+        refreshCurrentView();
+      });
+    });
+  }
+
+  function locateUser() {
+    if (!map) return;
+    map.locate({ setView: true, maxZoom: 15, enableHighAccuracy: true });
   }
 
   // ---------------------------------------------------------
@@ -248,6 +344,21 @@
     }).addTo(map);
     markerLayer = L.layerGroup().addTo(map);
     renderMarkers();
+    map.addControl(new LocateControl());
+
+    map.on("locationfound", (e) => {
+      userLocation = { lat: e.latlng.lat, lng: e.latlng.lng };
+      renderUserMarker(e.latlng);
+      if (sortBy === "nearest") refreshCurrentView();
+    });
+
+    map.on("locationerror", () => {
+      const btn = document.querySelector(".map-locate-btn");
+      if (!btn) return;
+      btn.classList.add("map-locate-btn--error");
+      btn.title = t("locateDenied");
+      setTimeout(() => btn.classList.remove("map-locate-btn--error"), 2000);
+    });
   }
 
   function markerIcon(isFav) {
@@ -256,6 +367,38 @@
       html: `<div class="market-marker${isFav ? " market-marker--fav" : ""}"></div>`,
       iconSize: [16, 16],
     });
+  }
+
+  const LOCATE_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v3M12 19v3M2 12h3M19 12h3"></path></svg>`;
+
+  const LocateControl = L.Control.extend({
+    options: { position: "topleft" },
+    onAdd() {
+      const btn = L.DomUtil.create("button", "leaflet-bar map-locate-btn");
+      btn.type = "button";
+      btn.innerHTML = LOCATE_ICON;
+      btn.setAttribute("aria-label", t("locateMe"));
+      btn.title = t("locateMe");
+      L.DomEvent.disableClickPropagation(btn);
+      L.DomEvent.on(btn, "click", locateUser);
+      return btn;
+    },
+  });
+
+  function userLocationIcon() {
+    return L.divIcon({
+      className: "",
+      html: `<div class="user-location-marker"><div class="user-location-marker__dot"></div></div>`,
+      iconSize: [18, 18],
+    });
+  }
+
+  function renderUserMarker(latlng) {
+    if (userMarker) {
+      userMarker.setLatLng(latlng);
+    } else {
+      userMarker = L.marker(latlng, { icon: userLocationIcon(), zIndexOffset: 1000 }).addTo(map);
+    }
   }
 
   function renderMarkers() {
@@ -525,6 +668,11 @@
     currentView = view;
     document.getElementById("map-view").hidden = view !== "map";
     document.getElementById("list-view").hidden = view !== "list";
+    // Sort order has no visual meaning on the map (pins don't reorder), so
+    // hide it there on mobile's tab-switched views — but desktop's split
+    // layout always shows the list alongside the map, so a CSS override
+    // (below) keeps it visible there regardless of this class.
+    document.getElementById("sort-by").classList.toggle("is-hidden", view !== "list");
     document.querySelectorAll(".view-switch__btn").forEach((btn) => {
       btn.setAttribute("aria-pressed", String(btn.dataset.view === view));
     });
@@ -548,6 +696,24 @@
     await loadMarkets();
     initMap();
     renderList();
+    populateDistrictFilter();
+    document.getElementById("sort-by").classList.toggle("is-hidden", currentView !== "list");
+
+    document.querySelectorAll("#filter-entry .filter-pill").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        filterEntry = btn.dataset.value;
+        document
+          .querySelectorAll("#filter-entry .filter-pill")
+          .forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+        refreshCurrentView();
+      });
+    });
+
+    document.getElementById("sort-by").addEventListener("change", (e) => {
+      sortBy = e.target.value;
+      if (sortBy === "nearest" && !userLocation) locateUser();
+      refreshCurrentView();
+    });
 
     document.querySelectorAll(".view-switch__btn").forEach((btn) => {
       btn.addEventListener("click", () => setView(btn.dataset.view));
@@ -581,6 +747,7 @@
       lang = lang === "de" ? "en" : "de";
       localStorage.setItem(LANG_KEY, lang);
       applyStaticStrings();
+      populateDistrictFilter();
       refreshCurrentView();
       if (currentSheetMarket) openSheet(currentSheetMarket, { updateHistory: false });
     });
