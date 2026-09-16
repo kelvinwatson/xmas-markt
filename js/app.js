@@ -45,6 +45,8 @@
       runs: (start, end) => `Runs ${start} – ${end}`,
       openNow: (end) => `Open now · closes ${end}`,
       closedOpens: (start) => `Closed · opens ${start}`,
+      datesUnknown: "Check dates on the official site",
+      hoursUnknown: "Hours not listed — check ahead",
       groupFood: "Food & drink",
       groupCrafts: "Gifts & crafts",
       groupActivity: "Things to do",
@@ -86,6 +88,8 @@
       runs: (start, end) => `${start} – ${end}`,
       openNow: (end) => `Jetzt geöffnet · schließt ${end}`,
       closedOpens: (start) => `Geschlossen · öffnet ${start}`,
+      datesUnknown: "Termine auf der offiziellen Seite prüfen",
+      hoursUnknown: "Öffnungszeiten nicht gelistet — bitte vorher prüfen",
       groupFood: "Essen & Trinken",
       groupCrafts: "Geschenke & Kunsthandwerk",
       groupActivity: "Unternehmungen",
@@ -214,10 +218,16 @@
   }
 
   function marketStatus(market) {
+    if (!market.dates.start || !market.dates.end) {
+      return { open: false, label: t("datesUnknown") };
+    }
     if (!isWithinDateRange(market)) {
       return { open: false, label: t("runs", formatDateShort(market.dates.start), formatDateShort(market.dates.end)) };
     }
     const todayHours = hoursForToday(market);
+    if (!todayHours) {
+      return { open: false, label: t("hoursUnknown") };
+    }
     const { start, end } = parseRange(todayHours);
     const now = new Date();
     const nowMin = now.getHours() * 60 + now.getMinutes();
@@ -275,12 +285,22 @@
     return haversineKm(userLocation.lat, userLocation.lng, market.lat, market.lng);
   }
 
+  // Markets with an unparseable date (recurring/weekend-only events that
+  // don't fit the "DD Month to DD Month YYYY" pattern) have null start/end
+  // — sort those last rather than crashing or lexically ahead of real dates.
+  function compareDates(a, b) {
+    if (!a && !b) return 0;
+    if (!a) return 1;
+    if (!b) return -1;
+    return a.localeCompare(b);
+  }
+
   function sortMarkets(list) {
     const sorted = list.slice();
     if (sortBy === "name") {
       sorted.sort((a, b) => a.name.localeCompare(b.name));
     } else if (sortBy === "ending") {
-      sorted.sort((a, b) => a.dates.end.localeCompare(b.dates.end));
+      sorted.sort((a, b) => compareDates(a.dates.end, b.dates.end));
     } else if (sortBy === "nearest" && userLocation) {
       sorted.sort((a, b) => distanceToMarket(a) - distanceToMarket(b));
     } else {
@@ -289,7 +309,7 @@
         const aOpen = marketStatus(a).open;
         const bOpen = marketStatus(b).open;
         if (aOpen !== bOpen) return aOpen ? -1 : 1;
-        return a.dates.start.localeCompare(b.dates.start);
+        return compareDates(a.dates.start, b.dates.start);
       });
     }
     return sorted;
@@ -445,7 +465,7 @@
                 <span class="fav-btn" data-fav-id="${market.id}" aria-pressed="${isFav}">${isFav ? "♥" : "♡"}</span>
               </div>
               <p class="market-card__status ${status.open ? "market-card__status--open" : "market-card__status--closed"}">${status.label}</p>
-              <p class="market-card__summary">${market.summary}</p>
+              <p class="market-card__summary">${market.summary || ""}</p>
             </div>
           </div>
         </button>`;
@@ -509,7 +529,13 @@
       if (currentView === "list") renderList();
     };
 
-    document.getElementById("sheet-calendar-btn").href = calendarUrl(market);
+    const calendarBtn = document.getElementById("sheet-calendar-btn");
+    if (market.dates.start && market.dates.end) {
+      calendarBtn.href = calendarUrl(market);
+      calendarBtn.hidden = false;
+    } else {
+      calendarBtn.hidden = true;
+    }
 
     const shareBtn = document.getElementById("sheet-share-btn");
     shareBtn.onclick = () => shareMarket(market, shareBtn);
@@ -517,12 +543,18 @@
     if (updateHistory) history.pushState(null, "", `#${market.id}`);
 
     const body = document.getElementById("sheet-body");
-    body.innerHTML = `
-      <p class="sheet__summary">${market.summary}</p>
-      <div class="sheet__loading">${t("loadingVendors")}</div>
-    `;
+    const summaryHtml = `<p class="sheet__summary">${market.summary || ""}</p>`;
+    body.innerHTML = summaryHtml;
 
     overlay.hidden = false;
+
+    // Markets without a vendorFile (everything auto-discovered beyond the
+    // hand-curated few) simply have no vendor data yet — skip the
+    // loading/error UI entirely rather than showing an error for data that
+    // was never expected to exist.
+    if (!market.vendorFile) return;
+
+    body.innerHTML = `${summaryHtml}<div class="sheet__loading">${t("loadingVendors")}</div>`;
 
     try {
       const vendorData = await loadVendors(market);
@@ -552,13 +584,13 @@
         .join("");
 
       body.innerHTML = `
-        <p class="sheet__summary">${market.summary}</p>
+        ${summaryHtml}
         ${vendorsHtml}
         <p class="sheet__last-checked">${t("lastChecked", relativeTime(vendorData.lastChecked))}</p>
       `;
     } catch {
       body.innerHTML = `
-        <p class="sheet__summary">${market.summary}</p>
+        ${summaryHtml}
         <p class="sheet__error">${t("vendorError")}</p>
       `;
     }
@@ -590,7 +622,7 @@
       action: "TEMPLATE",
       text: market.name,
       dates: `${start}/${end}`,
-      details: market.summary,
+      details: market.summary || "",
       location: market.address || `${market.district}, Berlin`,
     });
     return `https://calendar.google.com/calendar/render?${params.toString()}`;
@@ -599,7 +631,7 @@
   function shareMarket(market, btn) {
     const url = `${location.origin}${location.pathname}#${market.id}`;
     if (navigator.share) {
-      navigator.share({ title: market.name, text: market.summary, url }).catch(() => {});
+      navigator.share({ title: market.name, text: market.summary || "", url }).catch(() => {});
       return;
     }
     navigator.clipboard.writeText(url).then(() => {

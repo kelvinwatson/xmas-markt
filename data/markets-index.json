@@ -1,6 +1,6 @@
 {
   "isSampleData": false,
-  "generatedAt": "2026-09-16T04:19:47.897Z",
+  "generatedAt": "2026-09-16T05:11:45.876Z",
   "markets": [
     {
       "id": "gendarmenmarkt",
@@ -37,7 +37,7 @@
         "crowdsource": null
       },
       "vendorFile": "vendors/gendarmenmarkt.json",
-      "lastChecked": "2026-09-16T04:19:47.392Z"
+      "lastChecked": "2026-09-16T05:11:16.238Z"
     },
     {
       "id": "alexanderplatz",
@@ -74,7 +74,7 @@
         "crowdsource": null
       },
       "vendorFile": "vendors/alexanderplatz.json",
-      "lastChecked": "2026-09-16T04:19:47.597Z"
+      "lastChecked": "2026-09-16T05:11:16.560Z"
     },
     {
       "id": "spandau",
@@ -110,7 +110,7 @@
         "crowdsource": null
       },
       "vendorFile": "vendors/spandau.json",
-      "lastChecked": "2026-09-16T04:19:47.654Z"
+      "lastChecked": "2026-09-16T05:11:16.815Z"
     },
     {
       "id": "breitscheidplatz",
@@ -147,7 +147,2911 @@
         "crowdsource": null
       },
       "vendorFile": "vendors/breitscheidplatz.json",
-      "lastChecked": "2026-09-16T04:19:47.897Z"
+      "lastChecked": "2026-09-16T05:11:17.160Z"
+    },
+    {
+      "id": "advent-market-domaene-dahlem-berlin",
+      "name": "Advent market at the Domäne Dahlem",
+      "district": "Steglitz-Zehlendorf",
+      "address": "Königin-Luise Straße 49, 14195 Berlin",
+      "lat": 52.4583679,
+      "lng": 13.2888292,
+      "dates": {
+        "start": null,
+        "end": null
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "On all Advent weekends in 2026: Carriage rides, bonfires, hands-on activities for children and homemade products: the Advent market at the Domäne Dahlem invites you to a rural Christmas experience!",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/advent-market-domaene-dahlem-berlin",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "unavailable",
+      "entry": "ticketed",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:17.510Z"
+    },
+    {
+      "id": "christmas-market-christmas-garden-berlin",
+      "name": "Christmas Garden Berlin",
+      "district": "Steglitz-Zehlendorf",
+      "address": "Königin-Luise-Straße 68, 14195 Berlin",
+      "lat": 52.45884,
+      "lng": 13.30535,
+      "dates": {
+        "start": "2026-11-18",
+        "end": "2027-01-10"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "The Botanic Garden is transformed into a sparkling winter wonderland full of light art, sound installations and romantic highlights - ideal for a contemplative evening stroll through a magical sea of lights.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/christmas-market-christmas-garden-berlin",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "confirmed",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:17.826Z"
+    },
+    {
+      "id": "christmas-market-mexikoplatz-berlin",
+      "name": "Artisan Christmas market at Mexikoplatz",
+      "district": "Steglitz-Zehlendorf",
+      "address": "Mexikoplatz, 14163 Berlin",
+      "lat": 52.4376072,
+      "lng": 13.2325456,
+      "dates": {
+        "start": "2025-12-14",
+        "end": "2025-12-21"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "On 30 November, 7 December and 14 and 21 December 2025: For more than 30 years, the Mexikoplatz S-Bahn station has been the venue for the artisan Christmas market. Meanwhile, the “Artist Station” organised by KUNSTHAND-BERLIN has thus become a real Berlin institution.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/christmas-market-mexikoplatz-berlin",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:18.136Z"
+    },
+    {
+      "id": "weinachtsmarkt-ludwig-beck-platz",
+      "name": "WEINachtsmarkt on Ludwig-Beck-Platz",
+      "district": "Steglitz-Zehlendorf",
+      "address": "Ludwig-Beck-Platz, 12203 Berlin",
+      "lat": 52.44312,
+      "lng": 13.31547,
+      "dates": {
+        "start": "2025-12-13",
+        "end": "2025-12-14"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "The WEINachtsmarkt offers cold and hot wine enjoyment, arts and crafts, design, lots of homemade products from Berlin artists and, of course, gourmet crafts and treats. Christmas jazz and jingles round off the pre-Christmas programme and ensure atmospheric encounters in the neighbourhood.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/weinachtsmarkt-ludwig-beck-platz",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:18.401Z"
+    },
+    {
+      "id": "winterleben-duppel-historic-village",
+      "name": "Winterleben in the Düppel Historic Village",
+      "district": "Steglitz-Zehlendorf",
+      "address": "Clauertstraße 11, 14163 Berlin",
+      "lat": 52.42483,
+      "lng": 13.23499,
+      "dates": {
+        "start": null,
+        "end": null
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "The family festival with fire magic and craftsmanship takes place in a medieval Berlin village.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/winterleben-duppel-historic-village",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "unavailable",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:18.672Z"
+    },
+    {
+      "id": "wintermarkt-prideart-former-prison",
+      "name": "Wintermarkt by prideART in a former prison",
+      "district": "Steglitz-Zehlendorf",
+      "address": "Söhtstraße 7, 12203 Berlin",
+      "lat": 52.437437120649,
+      "lng": 13.308515,
+      "dates": {
+        "start": "2025-11-27",
+        "end": "2025-12-14"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "27.29/30 November, 6/7 December, 13/14 December: The Pride Winter Market in Lichterfelde features art by queer artists. The former women's prison will become a backdrop for tolerance and diversity from 27 November to 14 December. Here you can purchase art and talk to the artists on site.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/wintermarkt-prideart-former-prison",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:18.940Z"
+    },
+    {
+      "id": "christmas-market-zehlendorf-berlin",
+      "name": "Zehlendorf Christmas market",
+      "district": "Steglitz-Zehlendorf",
+      "address": "Dorfanger Zehlendorf, 14169 Berlin",
+      "lat": 52.433722,
+      "lng": 13.2594004,
+      "dates": {
+        "start": "2025-11-24",
+        "end": "2025-12-30"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "A large artificial ice rink, traditional delicacies and an extensive children’s programme await you at the Zehlendorf Christmas market.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/christmas-market-zehlendorf-berlin",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:19.298Z"
+    },
+    {
+      "id": "christmas-market-alt-rixdorf-berlin",
+      "name": "Alt-Rixdorf Christmas Market",
+      "district": "Neukölln",
+      "address": "Richardplatz 1, 12055 Berlin",
+      "lat": 52.47471,
+      "lng": 13.4468,
+      "dates": {
+        "start": "2025-12-05",
+        "end": "2025-12-07"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "Nostalgic ambience, traditional delicacies, charitable activities. The Alt-Rixdorf Christmas Market has a great deal of special features in store for you.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/christmas-market-alt-rixdorf-berlin",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:19.645Z"
+    },
+    {
+      "id": "dicke-linda-christmas-market",
+      "name": "Dicke Linda Christmas Market",
+      "district": "Neukölln",
+      "address": "Kranoldplatz, 12051 Berlin",
+      "lat": 52.466371,
+      "lng": 13.437079,
+      "dates": {
+        "start": "2025-12-13",
+        "end": "2025-12-13"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "The Christmas edition of Neukölln’s Dicke Linda regional market makes Kranoldplatz sparkle. You can look forward to regional organic products and artisan rarities.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/dicke-linda-christmas-market",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:19.967Z"
+    },
+    {
+      "id": "nordische-maerchenweihnacht-schloss-britz-berlin",
+      "name": "Nordische Märchenweihnacht at Schloss Britz",
+      "district": "Neukölln",
+      "address": "Alt-Britz 73, 12359 Berlin",
+      "lat": 52.44694,
+      "lng": 13.43787,
+      "dates": {
+        "start": null,
+        "end": null
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "on the first three Advent weekends in 2025 (29/30 November, 6/7 December, 13/14 December): This year the Nordische Märchenweihnacht (Nordic Fairy Tale Christmas) will once again be taking place at Schloss Britz on all four Advent weekend. The historical Christmas market has a Nordic flair and takes you on a Christmas journey back in time to the knights and Vikings of the past.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/nordische-maerchenweihnacht-schloss-britz-berlin",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "unavailable",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:20.311Z"
+    },
+    {
+      "id": "christmas-market-alt-buckow-berlin",
+      "name": "Alt-Buckow Christmas Market",
+      "district": "Neukölln",
+      "address": "Alt-Buckow 16-18, 12349 Berlin",
+      "lat": 52.423158154617,
+      "lng": 13.433531331943,
+      "dates": {
+        "start": "2025-11-29",
+        "end": "2025-11-30"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "The Alt-Buckow Christmas Market offers a contemplative Christmas market experience for the whole family in a cosy neighbourhood atmosphere.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/christmas-market-alt-buckow-berlin",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:20.587Z"
+    },
+    {
+      "id": "christmas-market-holyshitshopping-berlin",
+      "name": "Holy Shit Shopping",
+      "district": "Neukölln",
+      "address": "Karl-Marx-Straße 95, 12043 Berlin",
+      "lat": 52.48030945625,
+      "lng": 13.436441857935,
+      "dates": {
+        "start": "2025-11-29",
+        "end": "2025-11-30"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "Unconventional, hip and modern: hand-picked designers present their lifestyle products at Holy Shit Shopping in the CANK. A Christmas market of a special kind!",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/christmas-market-holyshitshopping-berlin",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "ticketed",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:20.903Z"
+    },
+    {
+      "id": "christmas-market-kreuzboerg-berlin",
+      "name": "Nowkoelln Xmas Flow",
+      "district": "Neukölln",
+      "address": "Maybachufer 32-32, 12047 Berlin",
+      "lat": 52.49224982069,
+      "lng": 13.43128095,
+      "dates": {
+        "start": "2025-11-30",
+        "end": "2025-11-30"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "Christmas magic on Maybachufer in Neukölln: Here local designers offer pretty and homemade things.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/christmas-market-kreuzboerg-berlin",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:21.217Z"
+    },
+    {
+      "id": "christmas-market-rudower-weihnachtsmeile-berlin",
+      "name": "Rudower Weihnachtsmeile",
+      "district": "Neukölln",
+      "address": "Alt-Rudow / Krokusstraße, 12357 Berlin",
+      "lat": 52.420194830857,
+      "lng": 13.492442751337,
+      "dates": {
+        "start": "2025-12-20",
+        "end": "2025-12-21"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "Arts & crafts, delicacies and famous live acts in the very south of Berlin. The Rudower Weihnachtsmeile is an insider tip.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/christmas-market-rudower-weihnachtsmeile-berlin",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:21.593Z"
+    },
+    {
+      "id": "christmas-market-st-michaels-heim",
+      "name": "Christmas market at St.-Michaels-Heim",
+      "district": "Charlottenburg-Wilmersdorf",
+      "address": "Bismarckallee 23, 14193 Berlin",
+      "lat": 52.48892,
+      "lng": 13.278106,
+      "dates": {
+        "start": "2025-11-29",
+        "end": "2025-11-30"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "Discover the nostalgic Christmas market at St.-Michaels-Heim and look forward to handicrafts and concerts.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/christmas-market-st-michaels-heim",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:21.935Z"
+    },
+    {
+      "id": "christmas-market-at-charlottenburg-palace-berlin",
+      "name": "Christmas market at Charlottenburg Palace",
+      "district": "Charlottenburg-Wilmersdorf",
+      "address": "Spandauer Damm 22, 14059 Berlin",
+      "lat": 52.5199,
+      "lng": 13.29303,
+      "dates": {
+        "start": "2026-11-23",
+        "end": "2026-12-27"
+      },
+      "hours": {
+        "monThu": "13:00–22:00",
+        "friSat": "12:00–22:00",
+        "sun": "12:00–22:00"
+      },
+      "tags": [],
+      "summary": "From 23 November to 27 December 2026: Magnificently illuminated palace, Christmas market orchestra and heated food tents. Feel like royalty at the Christmas market at Charlottenburg Palace.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/christmas-market-at-charlottenburg-palace-berlin",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "confirmed",
+      "entry": "free",
+      "confidence": {
+        "source": "verified",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:22.248Z"
+    },
+    {
+      "id": "very-british-christmas-weihnachtsmarkt-der-st-georges-church",
+      "name": "A very British Christmas - Weihnachtsmarkt an der St. George's Church",
+      "district": "Charlottenburg-Wilmersdorf",
+      "address": "Preußenallee 17-19, 14052 Berlin",
+      "lat": 52.51243,
+      "lng": 13.25837,
+      "dates": {
+        "start": "2025-12-06",
+        "end": "2025-12-06"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "Christmas like in Charles Dickens’ England: At the contemplative bazaar of St. George’s Episcopal Church, the Anglican Church in Berlin Westend, you can celebrate a typically English Christmas.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/very-british-christmas-weihnachtsmarkt-der-st-georges-church",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:22.617Z"
+    },
+    {
+      "id": "artisan-advent-karl-august-platz",
+      "name": "Artisan Advent on Karl-August-Platz",
+      "district": "Charlottenburg-Wilmersdorf",
+      "address": "Karl-August-Platz, 10625 Berlin",
+      "lat": 52.5053243207,
+      "lng": 13.29730055,
+      "dates": {
+        "start": null,
+        "end": null
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "Potters, painters, fashion and jewellery designers show their craftsmanship here. Here you can look over the exhibitors' shoulders and browse for original gifts.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/artisan-advent-karl-august-platz",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "unavailable",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:22.925Z"
+    },
+    {
+      "id": "berlin-christmas-bike-tour",
+      "name": "Berlin Christmas bike tour",
+      "district": "Charlottenburg-Wilmersdorf",
+      "address": "Spandauer Damm 20 - 24, 14059 Berlin",
+      "lat": 52.524528,
+      "lng": 13.247463,
+      "dates": {
+        "start": "2025-12-13",
+        "end": "2025-12-13"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "13. December 2025: Hundreds of bikers in imaginative Christmas costumes ride through Berlin - for a good cause. The Berlin Christmas Bike Tour collects donations for those in need and brings Christmas cheer to social organisations in the city.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/berlin-christmas-bike-tour",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:23.275Z"
+    },
+    {
+      "id": "hundeweihnachtsmarkt-berlin",
+      "name": "Berliner Hundeweihnachtsmarkt „Sirius“",
+      "district": "Charlottenburg-Wilmersdorf",
+      "address": "Hüttenweg 90, 14193 Berlin",
+      "lat": 52.4663838,
+      "lng": 13.2561567,
+      "dates": {
+        "start": null,
+        "end": null
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "29. & 30 November 2025: At Sirius, Berlin’s Christmas market for dogs owners, everything revolves around man’s best friend.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/hundeweihnachtsmarkt-berlin",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "unavailable",
+      "entry": "ticketed",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:23.597Z"
+    },
+    {
+      "id": "christmas-westend",
+      "name": "Christmas in Westend",
+      "district": "Charlottenburg-Wilmersdorf",
+      "address": "Preußenallee, 14052 Berlin",
+      "lat": 52.5125109,
+      "lng": 13.2594333,
+      "dates": {
+        "start": "2024-12-20",
+        "end": "2024-12-21"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "The highlight of this friendly neighborhood Christmas market is a couple of very special guests, namely a Christmas trunk animal and a group of jazzy Santa Clauses.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/christmas-westend",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:23.942Z"
+    },
+    {
+      "id": "christmas-market-around-grunewald-church",
+      "name": "Christmas Market around the Grunewald Church",
+      "district": "Charlottenburg-Wilmersdorf",
+      "address": "Bismarckallee 28B, 14193 Berlin",
+      "lat": 52.48502,
+      "lng": 13.27386,
+      "dates": {
+        "start": "2024-12-01",
+        "end": "2024-12-01"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "Since 1976, families from the villa district in Grunewald have been coming to the Grunewald Church on the first Sunday of Advent. Around the church, 60 stands of non-profit organisations invite you to browse and purchase items at the idyllic Christmas market, providing you with a great opportunity to buy that special Christmas present or souvenir.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/christmas-market-around-grunewald-church",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:24.287Z"
+    },
+    {
+      "id": "danish-christmas-market-berlin",
+      "name": "Danish Advent Bazaar Berlin",
+      "district": "Charlottenburg-Wilmersdorf",
+      "address": "Brienner Straße 12, 10713 Berlin",
+      "lat": 52.48803,
+      "lng": 13.31232,
+      "dates": {
+        "start": "2025-11-30",
+        "end": "2025-11-30"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "29. and 30 November 2025: During the first Advent weekend, the time has come again: the Danish community of the Christianskirk is creating a Scandinavian Christmas atmosphere in the capital. At the Christianskirkens julemarked you can take a journey to the neighbouring Christmas land.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/danish-christmas-market-berlin",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:24.550Z"
+    },
+    {
+      "id": "forest-christmas-market-grunewald-forestry-office",
+      "name": "Forest Christmas market at the Grunewald forestry office",
+      "district": "Charlottenburg-Wilmersdorf",
+      "address": "Königsallee 80, 14193 Berlin",
+      "lat": 52.477146,
+      "lng": 13.263136,
+      "dates": {
+        "start": "2025-12-14",
+        "end": "2025-12-14"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "14. December 2025: The traditional Christmas market at Grunewald Forestry Office invites you to take an atmospheric Advent stroll with wild sausages, handicrafts and back horses.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/forest-christmas-market-grunewald-forestry-office",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:24.816Z"
+    },
+    {
+      "id": "stranger-things-hawkins-christmas-market",
+      "name": "Stranger Things - Hawkins Christmas Market",
+      "district": "Charlottenburg-Wilmersdorf",
+      "address": "Kurfürstendamm 229, 10719 Berlin",
+      "lat": 52.503711,
+      "lng": 13.332218,
+      "dates": {
+        "start": "2025-12-04",
+        "end": "2025-12-30"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "4. until 30 December 2025: Experience the Christmas market in the Stranger Things universe - with iconic locations, Demogorgon waffles and a nostalgic 80s atmosphere on Kurfürstendamm.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/stranger-things-hawkins-christmas-market",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:25.148Z"
+    },
+    {
+      "id": "swedish-christmas-bazaar",
+      "name": "Swedish Christmas bazaar",
+      "district": "Charlottenburg-Wilmersdorf",
+      "address": "Landhausstraße 26-28, 10717 Berlin",
+      "lat": 52.4874,
+      "lng": 13.3287,
+      "dates": {
+        "start": "2025-11-28",
+        "end": "2025-11-30"
+      },
+      "hours": {
+        "monThu": "11:00–20:00",
+        "sun": "11:00–20:00",
+        "friSat": "12:00–22:00"
+      },
+      "tags": [],
+      "summary": "Small, but stylish. - The Swedish Christmas bazaar welcomes you with traditional delicacies and Scandinavian arts and crafts.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/swedish-christmas-bazaar",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:25.452Z"
+    },
+    {
+      "id": "christmas-market-wilmersdorfer-strasse-berlin",
+      "name": "Weihnachtsmarkt in der Wilmersdorfer Straße (Christmas market on Wilmersdorfer Straße)",
+      "district": "Charlottenburg-Wilmersdorf",
+      "address": "Wilmersdorfer Straße, 10629 Berlin",
+      "lat": 52.5094081,
+      "lng": 13.3058592,
+      "dates": {
+        "start": "2025-11-24",
+        "end": "2025-12-28"
+      },
+      "hours": {
+        "monThu": "13:00–22:00",
+        "friSat": "12:00–22:00",
+        "sun": "12:00–22:00"
+      },
+      "tags": [],
+      "summary": "Even Father Christmas comes by when Wilmersdorfer Strasse is transformed into a Christmas strolling mile during Advent.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/christmas-market-wilmersdorfer-strasse-berlin",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:25.724Z"
+    },
+    {
+      "id": "christmas-market-berliner-weihnachtszeit-berlin",
+      "name": "Berliner Weihnachtszeit at the Rotes Rathaus",
+      "district": "Mitte",
+      "address": "Spandauer Straße, 10178 Berlin",
+      "lat": 52.51903,
+      "lng": 13.40597,
+      "dates": {
+        "start": "2025-11-24",
+        "end": "2025-12-30"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "The Berlin Christmas market with carnival, ice rink and Old Berlin market alley. Look forward to festive hustle and bustle between the Red City Hall and St. Mary's Church.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/christmas-market-berliner-weihnachtszeit-berlin",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:26.046Z"
+    },
+    {
+      "id": "winter-market-schlossplatz-humboldt-forum",
+      "name": "Winter Market Schlossplatz at Humboldt Forum",
+      "district": "Mitte",
+      "address": "Schloßplatz, 10178 Berlin",
+      "lat": 52.516733,
+      "lng": 13.403177,
+      "dates": {
+        "start": "2026-11-18",
+        "end": "2027-01-03"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "Arts and crafts, historic fairground rides, all set against the backdrop of the Humboldt Forum and Schlüterhof. With its festively decorated stalls, game stalls and various treats, the new winter market brings the atmosphere of Christmas to Berlin's historic centre.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/winter-market-schlossplatz-humboldt-forum",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "confirmed",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:26.316Z"
+    },
+    {
+      "id": "christmas-bazaar-atrium-federal-foreign-office",
+      "name": "Christmas bazaar in the atrium of the Federal Foreign Office",
+      "district": "Mitte",
+      "address": "Werderscher Markt 1, 10117 Berlin",
+      "lat": 52.515539,
+      "lng": 13.398522,
+      "dates": {
+        "start": "2025-12-05",
+        "end": "2025-12-06"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "On 5 and 6 December 2025: Discover fancy, creative, exotic and unusual things from all over the world at the Christmas bazaar in the atrium of the Federal Foreign Office",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/christmas-bazaar-atrium-federal-foreign-office",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:26.584Z"
+    },
+    {
+      "id": "christmas-market-sophienstrasse",
+      "name": "Christmas Market on Sophienstraße",
+      "district": "Mitte",
+      "address": "Sophienstraße, 10178 Berlin",
+      "lat": 52.5256474,
+      "lng": 13.4008612,
+      "dates": {
+        "start": null,
+        "end": null
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "Over the four Advent weekends in 2026, Sophienstraße, right next to the Hackesche Höfe, will once again be transformed into an atmospheric Christmas village where you can purchase unique designer and artisan goods. The nostalgic and cosy atmosphere invites you to linger in the historic city centre.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/christmas-market-sophienstrasse",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "unavailable",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:26.875Z"
+    },
+    {
+      "id": "christmas-markets-manifesto-market",
+      "name": "Christmas markets at Manifesto Market",
+      "district": "Mitte",
+      "address": "Alte Potsdamer Straße 7, 10785 Berlin",
+      "lat": 52.506742,
+      "lng": 13.373512,
+      "dates": {
+        "start": null,
+        "end": null
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "6., 7, 13 and 20 December 2025: The Manifesto Market at Potsdamer Platz will be transformed into a festive market hall with changing themed markets on four days during Advent - from design and crafts to Latin American Christmas rituals.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/christmas-markets-manifesto-market",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "unavailable",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:27.186Z"
+    },
+    {
+      "id": "design-art-christmas-market-wedding",
+      "name": "Design & Art Christmas Market in Wedding",
+      "district": "Mitte",
+      "address": "Gerichtstraße 35, 13347 Berlin",
+      "lat": 52.547917,
+      "lng": 13.349388,
+      "dates": {
+        "start": null,
+        "end": null
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "30 November, 6 to 7 December and 14 December 2025: Discover over 35 Berlin artists, enjoy live jazz, mulled wine, street food and the best beer in town – in the historic boiler house of the Osram-Höfe and at the winter festival in silent green.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/design-art-christmas-market-wedding",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "unavailable",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:27.470Z"
+    },
+    {
+      "id": "europa-city-vibes-christmas-market",
+      "name": "Europa City Vibes Christmas Market",
+      "district": "Mitte",
+      "address": "Europaplatz 1, 10557 Berlin",
+      "lat": 52.525883,
+      "lng": 13.368227,
+      "dates": {
+        "start": "2025-11-30",
+        "end": "2025-12-21"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "In the festively decorated Europacity, a small Christmas market with a cosy atmosphere, creative workshops and a free curling rink invites you to linger.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/europa-city-vibes-christmas-market",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:27.787Z"
+    },
+    {
+      "id": "historic-christmas-train-berlin-s-bahn",
+      "name": "Historic Christmas train of the Berlin S-Bahn",
+      "district": "Mitte",
+      "address": "Straße der Pariser Kommune, 10243 Berlin",
+      "lat": 52.509204,
+      "lng": 13.375937,
+      "dates": {
+        "start": null,
+        "end": null
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "On all Advent weekends in 2025: travel through Berlin on the festively decorated museum train from the 1920s and 30s and enjoy mulled wine, stollen and children's punch. Father Christmas might even drop by.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/historic-christmas-train-berlin-s-bahn",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "unavailable",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:28.063Z"
+    },
+    {
+      "id": "kogei-x-mas-market-manufactures",
+      "name": "Kogei X-Mas Market of Manufactures",
+      "district": "Mitte",
+      "address": "Potsdamer Straße 93, 10785 Berlin",
+      "lat": 52.501368,
+      "lng": 13.364523,
+      "dates": {
+        "start": null,
+        "end": null
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "12. until 14 December 2025: Japanese and German craftsmanship come together in an atmospheric, aesthetic setting in the Kōgei showroom on Potsdamer Straße - a special Christmas market that combines art, craftsmanship and indulgence.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/kogei-x-mas-market-manufactures",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "unavailable",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:28.332Z"
+    },
+    {
+      "id": "open-house-winter-festival-silent-green",
+      "name": "Open house with winter festival at Silent Green",
+      "district": "Mitte",
+      "address": "Gerichtstraße 35, 13347 Berlin",
+      "lat": 52.54501,
+      "lng": 13.36653,
+      "dates": {
+        "start": "2025-12-06",
+        "end": "2025-12-07"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "The silent green Kulturquartier invites you to the Open House with Winter Festival - a weekend full of art, culture and culinary delights in a festive atmosphere.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/open-house-winter-festival-silent-green",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:28.814Z"
+    },
+    {
+      "id": "christmas-market-nikolaiviertel-berlin",
+      "name": "Winter Film Festival in the Nikolaiviertel",
+      "district": "Mitte",
+      "address": "Nikolaikirchplatz, 10178 Berlin",
+      "lat": 52.516652,
+      "lng": 13.407757,
+      "dates": {
+        "start": "2025-11-20",
+        "end": "2025-12-28"
+      },
+      "hours": {
+        "monThu": "12:00–21:00",
+        "friSat": "12:00–22:00",
+        "sun": "12:00–22:00"
+      },
+      "tags": [],
+      "summary": "With a cup of Feuerzangenbowle (red wine punch) in your hand, enjoy the film of the same name for free in Berlin’s historic heart, the Nikolaiviertel.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/christmas-market-nikolaiviertel-berlin",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:29.078Z"
+    },
+    {
+      "id": "christmas-market-potsdamer-platz-berlin",
+      "name": "Winter World and Christmas market at Potsdamer Platz",
+      "district": "Mitte",
+      "address": "Potsdamer Platz, 10785 Berlin",
+      "lat": 52.5096488,
+      "lng": 13.3759441,
+      "dates": {
+        "start": "2026-10-20",
+        "end": "2026-10-20"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "End of October to 31 December 2026 (tbd): Potsdamer Platz is one of Berlin's most famous squares. In the middle of the capital, visitors to the Christmas market can whiz down a 12-metre-high toboggan run here.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/christmas-market-potsdamer-platz-berlin",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "confirmed",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:29.467Z"
+    },
+    {
+      "id": "heissa-holzmarkt-berlin",
+      "name": "Heissa Holzmarkt winter festival",
+      "district": "Friedrichshain-Kreuzberg",
+      "address": "Holzmarktstraße 25, 10243 Berlin",
+      "lat": 52.511903,
+      "lng": 13.425365,
+      "dates": {
+        "start": "2025-11-14",
+        "end": "2025-12-21"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "Alternative Christmas market with a varied programme and a large selection of culinary delights in the creative village directly by the Spree.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/heissa-holzmarkt-berlin",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:29.823Z"
+    },
+    {
+      "id": "historischer-weihnachtsmarkt-raw-berlin",
+      "name": "Historischer Weihnachtsmarkt on the grounds of the RAW cultural centre",
+      "district": "Friedrichshain-Kreuzberg",
+      "address": "Revaler Straße 99, 10245 Berlin",
+      "lat": 52.50814,
+      "lng": 13.45182,
+      "dates": {
+        "start": "2026-11-12",
+        "end": "2026-12-22"
+      },
+      "hours": {
+        "monThu": "03:00–22:00",
+        "friSat": "12:00–23:00",
+        "sun": "12:00–22:00"
+      },
+      "tags": [],
+      "summary": "With medieval hustle and bustle, this Christmas market on the RAW grounds in Friedrichshain opens the Christmas season in Berlin.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/historischer-weihnachtsmarkt-RAW-berlin",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "confirmed",
+      "entry": "ticketed",
+      "confidence": {
+        "source": "verified",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:30.110Z"
+    },
+    {
+      "id": "japanese-christmas-market",
+      "name": "The Japanese Christmas market",
+      "district": "Friedrichshain-Kreuzberg",
+      "address": "Am Flutgraben 2, 12435 Berlin",
+      "lat": 52.496496620693,
+      "lng": 13.45281255,
+      "dates": {
+        "start": "2025-11-30",
+        "end": "2025-11-30"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "On 30 November 2025: With kimonos, sake and sushi at the market stalls, an atmospheric Christmas market of a special kind awaits you at Festsaal Kreuzberg. Immerse yourself in Japanese culture and tradition in Berlin during the Christmas season.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/japanese-christmas-market",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:30.392Z"
+    },
+    {
+      "id": "berliner-gluhwald",
+      "name": "Berliner Glühwald",
+      "district": "Friedrichshain-Kreuzberg",
+      "address": "Uber Platz 1, 10243 Berlin",
+      "lat": 52.5054491707,
+      "lng": 13.4436405,
+      "dates": {
+        "start": null,
+        "end": null
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "Christmas market on Uber Platz offers a cosy atmosphere and a contemplative mood. Look forward to a Christmas decoration and lighting concept with matching music.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/berliner-gluhwald",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "unavailable",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:30.672Z"
+    },
+    {
+      "id": "christmas-spree",
+      "name": "Christmas at the Spree",
+      "district": "Friedrichshain-Kreuzberg",
+      "address": "Stralauer Allee 2b, 10245 Berlin",
+      "lat": 52.501697420697,
+      "lng": 13.4486805,
+      "dates": {
+        "start": "2026-11-16",
+        "end": "2026-12-30"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "From 16 November to 30 December 2026: An all inclusive Christmas market with lots of delicacies to try, curling, bonfire and views of the Spree and Oberbaumbrücke.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/christmas-spree",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "confirmed",
+      "entry": "ticketed",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:31.011Z"
+    },
+    {
+      "id": "christmas-market-winterquartier-berlin",
+      "name": "Christmas market at Winterquartier Berlin",
+      "district": "Friedrichshain-Kreuzberg",
+      "address": "Modersohnstraße 35-45, 10245 Berlin",
+      "lat": 52.503575,
+      "lng": 13.458529,
+      "dates": {
+        "start": "2025-11-29",
+        "end": "2026-02-28"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "29. November 2025 to 28 February 2026: Urban Christmas market with indoor ice rink, ice disco, street food, cultural programme and curling - Winterquartier Berlin in the Napoleon complex combines Christmas romance with Berlin's industrial culture.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/christmas-market-winterquartier-berlin",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "confirmed",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:31.329Z"
+    },
+    {
+      "id": "machmit-market-mampe",
+      "name": "MachMit market at Mampe",
+      "district": "Friedrichshain-Kreuzberg",
+      "address": "Am Tempelhofer Berg 6, 10965 Berlin",
+      "lat": 52.488892,
+      "lng": 13.387549,
+      "dates": {
+        "start": null,
+        "end": null
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "22. and 23 December 2025: Handmade, warm and creative - Mampe invites you to a Christmas neighbourhood market with DIY gifts, music and mulled wine at the Spirituosenmanufaktur in Kreuzberg.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/machmit-market-mampe",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "unavailable",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:31.734Z"
+    },
+    {
+      "id": "merry-markthalle",
+      "name": "Merry Markthalle",
+      "district": "Friedrichshain-Kreuzberg",
+      "address": "Eisenbahnstraße 42-43, 10997 Berlin",
+      "lat": 52.5022,
+      "lng": 13.43166,
+      "dates": {
+        "start": "2025-12-11",
+        "end": "2025-12-21"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "The Christmas bakery offers a wide range of delicacies ... and particularly fine delicacies can be found in the Merry Markthalle in the Markthalle IX.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/merry-markthalle",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:32.066Z"
+    },
+    {
+      "id": "norwegian-christmas-market-berlin",
+      "name": "Norwegian Christmas Market",
+      "district": "Friedrichshain-Kreuzberg",
+      "address": "Wartenburgstraße 7, 10963 Berlin",
+      "lat": 52.4965401,
+      "lng": 13.3808901,
+      "dates": {
+        "start": "2025-12-06",
+        "end": "2025-12-06"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "The Christmas market with many traditional Norwegian specialties and atmospheric music will take place this year only in small form, but still: A must for all Scandinavia fans!",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/norwegian-christmas-market-berlin",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:32.344Z"
+    },
+    {
+      "id": "roda-de-feijoada-christmas-market",
+      "name": "Roda de Feijoada Christmas market",
+      "district": "Friedrichshain-Kreuzberg",
+      "address": "Am Flutgraben 2, 12435 Berlin",
+      "lat": 52.496496620693,
+      "lng": 13.45281255,
+      "dates": {
+        "start": "2025-12-07",
+        "end": "2025-12-07"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "Brazilian Christmas flair in Berlin with live samba, culinary highlights and a colourful mix of entertainment for young and old at Festsaal Kreuzberg.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/roda-de-feijoada-christmas-market",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "ticketed",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:32.621Z"
+    },
+    {
+      "id": "smallest-christmas-market-kreuzberg",
+      "name": "The smallest Christmas market in Kreuzberg",
+      "district": "Friedrichshain-Kreuzberg",
+      "address": "Paul-Lincke-Ufer 42/43, 10999 Berlin",
+      "lat": 52.493963,
+      "lng": 13.429848,
+      "dates": {
+        "start": "2025-11-28",
+        "end": "2025-11-28"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "28. November 2025: the \"smallest Christmas market in the district\" invites you into the beautifully decorated inner courtyard of the Kreuzberg company site - with artisan produce, chaud wine, delicious barbecues and a friendly atmosphere right on the Paul-Lincke river.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/smallest-christmas-market-kreuzberg",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:32.991Z"
+    },
+    {
+      "id": "christmas-bazaar-finnland-center-berlin",
+      "name": "Traditional Christmas Bazaar in the Finland Center",
+      "district": "Friedrichshain-Kreuzberg",
+      "address": "Marheinekeplatz 2, 10961 Berlin",
+      "lat": 52.489447,
+      "lng": 13.394266,
+      "dates": {
+        "start": "2025-11-15",
+        "end": "2025-11-16"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "Finnish delicacies and handmade gift ideas in a friendly atmosphere: In the Finland Center you can get to know the Christmas traditions of the northern Europeans at the Traditional Christmas Bazaar.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/christmas-bazaar-finnland-center-berlin",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:33.306Z"
+    },
+    {
+      "id": "christmas-market-schoneberg",
+      "name": "Christmas Market Schöneberg",
+      "district": "Tempelhof-Schöneberg",
+      "address": "Kolonnenstraße 62, 10827 Berlin",
+      "lat": 52.486646353954,
+      "lng": 13.359218392031,
+      "dates": {
+        "start": "2026-11-24",
+        "end": "2026-12-30"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "Wine is the focus of the small but exquisite Christmas market in the courtyard of the Schöneberg wine bar \"der Weinlobbyist\". The selected mulled wines are of course accompanied by culinary delicacies.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/christmas-market-schoneberg",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "confirmed",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:33.722Z"
+    },
+    {
+      "id": "lgbtqia-winterdays-und-christmas-avenue",
+      "name": "LGBTQIA Winterdays und Christmas Avenue",
+      "district": "Tempelhof-Schöneberg",
+      "address": "Nollendorfplatz, 10777 Berlin",
+      "lat": 52.499333,
+      "lng": 13.3533905,
+      "dates": {
+        "start": null,
+        "end": null
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "Christmas in a different way: LGBTQIA Winterdays focuses on open exchange and joyful coexistence.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/lgbtqia-winterdays-und-christmas-avenue",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "unavailable",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:34.088Z"
+    },
+    {
+      "id": "advent-lichter-genuss-natur-park-schoneberger-sudgelande",
+      "name": "Advent Lichter Genuss at Natur Park Schöneberger Südgelände",
+      "district": "Tempelhof-Schöneberg",
+      "address": "Rückwärtiger Ausgang S-Bahnhof Priesterweg, 10829 Berlin",
+      "lat": 52.459095,
+      "lng": 13.357401,
+      "dates": {
+        "start": "2026-11-30",
+        "end": "2026-11-30"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "On the first two Advent weekends (29/30 November, 6/7 December 2025): At the Advent Lichter Genuss you will experience a magically illuminated park and an atmospheric Advent market with arts and crafts.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/advent-lichter-genuss-natur-park-schoneberger-sudgelande",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "confirmed",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:34.450Z"
+    },
+    {
+      "id": "christmas-market-lehmanns-farm",
+      "name": "Christmas market on Lehmann's Farm",
+      "district": "Tempelhof-Schöneberg",
+      "address": "Alt-Marienfelde 35-37, 12277 Berlin",
+      "lat": 52.411976695795,
+      "lng": 13.366994050629,
+      "dates": {
+        "start": null,
+        "end": null
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "5 to 7 and 12 to 14 December 2025: In the south of Berlin, Lehmanns Bauernhof opens its doors to get into the Christmas spirit and invites you to linger and enjoy a cosy Christmas market.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/christmas-market-lehmanns-farm",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "unavailable",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:34.710Z"
+    },
+    {
+      "id": "christmas-market-lichtenrade-berlin",
+      "name": "Lichtenrade Christmas market (Lichtenrader Lichtermarkt)",
+      "district": "Tempelhof-Schöneberg",
+      "address": "Alt-Lichtenrade 109, 12309 Berlin",
+      "lat": 52.391557,
+      "lng": 13.410471,
+      "dates": {
+        "start": "2026-11-20",
+        "end": "2026-11-20"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "30. November 2025: Take a trip to the outskirts and get to know Berlin from a completely different perspective. For 40 years now, the Christmas market in Lichtenrade has been held on the first weekend of Advent. Around 90 artists and other exhibitors offer their goods for sale.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/christmas-market-lichtenrade-berlin",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "confirmed",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:35.053Z"
+    },
+    {
+      "id": "weihnachtsmarkt-am-kadewe",
+      "name": "Weihnachtsmarkt am KaDeWe",
+      "district": "Tempelhof-Schöneberg",
+      "address": "Wittenbergplatz, 10789 Berlin",
+      "lat": 52.50169,
+      "lng": 13.34293,
+      "dates": {
+        "start": null,
+        "end": null
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "24. November 2025 to 1 January 2026: Directly in front of the famous KaDeWe department store, the stylishly decorated Christmas market on Wittenbergplatz invites you to stroll, enjoy and browse for presents - a festive experience in the heart of City West.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/weihnachtsmarkt-am-kadewe",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "unavailable",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:35.429Z"
+    },
+    {
+      "id": "winter-market-tempelhof-airport",
+      "name": "Winter market at Tempelhof Airport",
+      "district": "Tempelhof-Schöneberg",
+      "address": "Tempelhofer Damm 45, 12101 Tempelhof",
+      "lat": 52.478088,
+      "lng": 13.386164,
+      "dates": {
+        "start": null,
+        "end": null
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "5–7 December & 12–14 December 2025: An atmospheric indoor winter market awaits you at the Alte Feuerwache am THF Tower, offering unique gift ideas, arts and crafts, and culinary delights – all in a unique historical location in the heart of Berlin.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/winter-market-tempelhof-airport",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "unavailable",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:35.758Z"
+    },
+    {
+      "id": "winterzauber-unterm-zelt",
+      "name": "Winterzauber unterm Zelt",
+      "district": "Tempelhof-Schöneberg",
+      "address": "Viktoriastraße 10-18, 12105 Berlin",
+      "lat": 52.454084,
+      "lng": 13.381717,
+      "dates": {
+        "start": null,
+        "end": null
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "13. December 2025: An atmospheric neighbourhood Christmas market with lots of heart, arts and crafts, storytelling and singing together under a protective canvas roof - for visitors of all ages.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/winterzauber-unterm-zelt",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "unavailable",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:36.073Z"
+    },
+    {
+      "id": "spandauer-winterland",
+      "name": "Spandauer Winterland",
+      "district": "Spandau",
+      "address": "Klosterstraße 38, 13581 Spandau",
+      "lat": 52.533484,
+      "lng": 13.199614,
+      "dates": {
+        "start": "2025-11-14",
+        "end": "2025-12-23"
+      },
+      "hours": {
+        "monThu": "14:00–21:00",
+        "friSat": "14:00–22:00",
+        "sun": "12:00–20:00"
+      },
+      "tags": [],
+      "summary": "14. November to 23 December 2025: The new Spandauer Winterland combines amusement park fun, twinkling lights and Christmas flair - with spectacular rides, fairytale characters, culinary delights and a cosy mulled wine village. An experience for young and old - and admission is free!",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/spandauer-winterland",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:36.383Z"
+    },
+    {
+      "id": "christmas-market-evangelischer-johannesstift-berlin",
+      "name": "Advent Market at the Evangelische Johannesstift",
+      "district": "Spandau",
+      "address": "Schönwalder Allee 26, 13587 Berlin",
+      "lat": 52.5698396,
+      "lng": 13.1969701,
+      "dates": {
+        "start": "2025-11-30",
+        "end": "2025-11-30"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "the Advent market at the Evangelisches Johannesstift is a great experience for the whole family.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/christmas-market-evangelischer-johannesstift-berlin",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:36.662Z"
+    },
+    {
+      "id": "arts-crafts-christmas-market-gatow",
+      "name": "Arts & crafts Christmas market in Gatow",
+      "district": "Spandau",
+      "address": "Alt-Gatow 32-38, 14089 Berlin",
+      "lat": 52.48656110405,
+      "lng": 13.181972956746,
+      "dates": {
+        "start": null,
+        "end": null
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "Small but cute- the Gatow Christmas market offers a mix of creative handicrafts, Advent carol singing and charitable commitment. Get into the Christmas spirit right next to the church in Gatow.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/arts-crafts-christmas-market-gatow",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "unavailable",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:37.165Z"
+    },
+    {
+      "id": "kladower-christkindlmarkt",
+      "name": "Kladower Christkindlmarkt",
+      "district": "Spandau",
+      "address": "Imchenplatz, 14089 Berlin",
+      "lat": 52.4525516,
+      "lng": 13.1497658,
+      "dates": {
+        "start": "2025-12-06",
+        "end": "2025-12-07"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "The Kladower Christkindlmarkt is taking place this year too. On Imchenplatz on the banks of the Havel river, volunteers from Kladow invite you to browse, feast and have fun in a festive atmosphere.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/kladower-christkindlmarkt",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:37.465Z"
+    },
+    {
+      "id": "lucia-christmas-market-kulturbrauerei",
+      "name": "Lucia Christmas market at the Kulturbrauerei",
+      "district": "Pankow",
+      "address": "Schönhauser Allee 36, 10435 Berlin",
+      "lat": 52.53818,
+      "lng": 13.41261,
+      "dates": {
+        "start": "2026-11-23",
+        "end": "2026-12-22"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "The Lucia Christmas market at the Kulturbrauerei. - Experience a piece of Scandinavia in the heart of Berlin with Finnish mulled wine and Swedish Christmas carols.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/lucia-christmas-market-kulturbrauerei",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "confirmed",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:37.789Z"
+    },
+    {
+      "id": "adven-bazaar-kaspar-hauser-foundation-berlin",
+      "name": "Advent Bazaar at the Kaspar Hauser Foundation Pankow",
+      "district": "Pankow",
+      "address": "Rolandstraße 18-19, 13156 Berlin",
+      "lat": 52.5805841,
+      "lng": 13.4110408,
+      "dates": {
+        "start": "2025-11-29",
+        "end": "2025-11-29"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "On 29 November 2025: Original gift ideas, hands-on activities and home-baked goods. The Advent bazaar of the Kaspar Hauser Foundation Pankow is a nice place to get in the mood for Christmas.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/adven-bazaar-kaspar-hauser-foundation-berlin",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:38.056Z"
+    },
+    {
+      "id": "advent-eco-market-kollwitzplatz-berlin",
+      "name": "Advent Market at Kollwitzplatz",
+      "district": "Pankow",
+      "address": "Kollwitzstraße 1, 10405 Berlin",
+      "lat": 52.5364,
+      "lng": 13.41708,
+      "dates": {
+        "start": null,
+        "end": null
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "On all Sundays in Advent 2026 (29 November, 6, 13 and 20 December): For more than 10 years the Grüne Liga Berlin e.V. has been organising the Advent Eco Market at Kollwitzplatz. The market is a great alternative to Berlin’s conventional Christmas markets.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/advent-eco-market-kollwitzplatz-berlin",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "unavailable",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:38.399Z"
+    },
+    {
+      "id": "pankow-advent-market-heynhofe",
+      "name": "Pankow Advent Market at the Heynhöfe",
+      "district": "Pankow",
+      "address": "Heynstraße 15, 13187 Berlin",
+      "lat": 52.562987,
+      "lng": 13.402608,
+      "dates": {
+        "start": "2026-12-05",
+        "end": "2026-12-06"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "5–6 December 2026: Right in the heart of Pankow’s Florakiez neighbourhood, the Heynhöfe invite you to a cosy Advent weekend. A variety of stalls, a children’s programme, Father Christmas and live music create a festive atmosphere, as do mulled wine and winter delicacies.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/pankow-advent-market-heynhofe",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "confirmed",
+      "entry": "ticketed",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:38.675Z"
+    },
+    {
+      "id": "weihnachtsrodeo-designweihnachtsmarkt",
+      "name": "Weihnachtsrodeo Designweihnachtsmarkt",
+      "district": "Pankow",
+      "address": "Schönhauser Allee 123, 10437 Berlin",
+      "lat": 52.548013520732,
+      "lng": 13.41305775,
+      "dates": {
+        "start": "2025-12-13",
+        "end": "2025-12-14"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "The Weihnachtsrodeo Designweihnachtsmarkt takes it to the next level. This year, the Colosseum Berlin will be transformed into a modern alternative to conventional Christmas markets on the first three Advent weekends.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/weihnachtsrodeo-designweihnachtsmarkt",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "ticketed",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:38.963Z"
+    },
+    {
+      "id": "christmas-market-koepenick-christmas-island-berlin",
+      "name": "The Köpenick Christmas Island",
+      "district": "Treptow-Köpenick",
+      "address": "Alt-Köpenick 1, 12557 Berlin",
+      "lat": 52.44371,
+      "lng": 13.57338,
+      "dates": {
+        "start": "2025-12-12",
+        "end": "2025-12-14"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "The atmospheric Christmas market in the south-east of Berlin will take place this year again on the third weekend of Advent. The Christmas Köpenick Christmas Island offers a unique ambience.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/christmas-market-koepenick-christmas-island-berlin",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:39.285Z"
+    },
+    {
+      "id": "gluhweingarten",
+      "name": "://GLÜHWEINGARTEN",
+      "district": "Treptow-Köpenick",
+      "address": "Markgrafendamm 24c, 10245 Berlin",
+      "lat": 52.502454,
+      "lng": 13.466443,
+      "dates": {
+        "start": "2025-12-14",
+        "end": "2025-12-21"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "30 November, 14 and 21 December 2025: The alternative Christmas market at ://about blank is the perfect pre-Christmas meeting place for relaxed and creative people.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/gluhweingarten",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:39.594Z"
+    },
+    {
+      "id": "altglienicke-advent-market",
+      "name": "Altglienicke Advent market",
+      "district": "Treptow-Köpenick",
+      "address": "Rosestraße 42, 12524 Berlin",
+      "lat": 52.410343370629,
+      "lng": 13.5593274,
+      "dates": {
+        "start": "2025-12-07",
+        "end": "2025-12-07"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "After the service at 2pm, the Altglienicke Protestant church community and the Bürgerverein Altglienicke e.V. (Altglienicke citizens' association) invite you from 3pm to the contemplative Altglienicke Advent market around the parish church built in 1895.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/altglienicke-advent-market",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:39.904Z"
+    },
+    {
+      "id": "berliner-wintertraum",
+      "name": "Berliner Wintertraum",
+      "district": "Treptow-Köpenick",
+      "address": "Schnellerstraße 145, 12439 Berlin",
+      "lat": 52.465180319949,
+      "lng": 13.498061518106,
+      "dates": {
+        "start": "2026-11-07",
+        "end": "2026-11-07"
+      },
+      "hours": {
+        "monThu": "02:00–22:00",
+        "friSat": "02:00–23:00",
+        "sun": "12:00–21:00"
+      },
+      "tags": [],
+      "summary": "November 7 to December 28, 2025: It's all happening at this Christmas market: and the wait for Christmas Eve will certainly not be quite so long with a ride on the glittering carousels.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/berliner-wintertraum",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "confirmed",
+      "entry": "free",
+      "confidence": {
+        "source": "verified",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:40.207Z"
+    },
+    {
+      "id": "christmas-20market-spaethschen-baumschulen-berlin",
+      "name": "Christmas market in the Späth'schen Baumschulen",
+      "district": "Treptow-Köpenick",
+      "address": "Späthstraße 80/81, 12437 Berlin",
+      "lat": 52.4543363,
+      "lng": 13.4737248,
+      "dates": {
+        "start": null,
+        "end": null
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "On the first three Advent weekends 2025: The Späth’schen Baumschulen are transformed into a Christmas wonderland in a blaze of lights during the pre-Christmas season. A bonfire and fireplace stoves invite you to linger with Christmas music.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/Christmas%20market-spaethschen-baumschulen-berlin",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "unavailable",
+      "entry": "ticketed",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:40.619Z"
+    },
+    {
+      "id": "oberschoner-weihnachtsmarkt-beautiful-christmas-market",
+      "name": "Oberschöner Weihnachtsmarkt (Beautiful Christmas market)",
+      "district": "Treptow-Köpenick",
+      "address": "Wilhelminenhofstraße 76 Tor 1A, 12459 Berlin",
+      "lat": 52.459892670666,
+      "lng": 13.52072755,
+      "dates": {
+        "start": null,
+        "end": null
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "Discover unique handmade items and a diverse cultural programme in the impressive MaHalla in Oberschöneweide.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/oberschoner-weihnachtsmarkt-beautiful-christmas-market",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "unavailable",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:40.954Z"
+    },
+    {
+      "id": "christmas-market-adventiamo-berlin",
+      "name": "Sensory magic – FEZ family time during Advent",
+      "district": "Treptow-Köpenick",
+      "address": "An der Wuhlheide 197, 12459 Berlin",
+      "lat": 52.46102,
+      "lng": 13.54962,
+      "dates": {
+        "start": "2025-11-29",
+        "end": "2025-12-21"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "Europe's largest non-profit children's, youth and family centre is once again inviting children to enjoy a creative and varied Christmas season on the Advent weekends in November and December.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/christmas-market-adventiamo-berlin",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "ticketed",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:41.287Z"
+    },
+    {
+      "id": "advent-market-hanffs-ruh",
+      "name": "The Advent Market at Hanff's Ruh",
+      "district": "Treptow-Köpenick",
+      "address": "Rabindranath-Tagore-Straße 25, 12527 Berlin",
+      "lat": 52.407898430462,
+      "lng": 13.59931465575,
+      "dates": {
+        "start": "2025-11-29",
+        "end": "2025-11-30"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "Homemade items, delicious food and the Christmas scent of mulled wine, Christmas trees and candied apples will delight young and old alike.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/advent-market-hanffs-ruh",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:41.601Z"
+    },
+    {
+      "id": "winterwelt-grunau",
+      "name": "Winterwelt Grünau",
+      "district": "Treptow-Köpenick",
+      "address": "Sportpromenade 9, 12527 Berlin",
+      "lat": 52.406777,
+      "lng": 13.612423,
+      "dates": {
+        "start": null,
+        "end": null
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "Winterwelt Grünau invites you to a cozy winter getaway right in the heart of the Strandbad – featuring a 1,000 m² ice rink, winter cabins, après-ski parties, ice skating discos, and plenty of attractions for children and families.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/winterwelt-grunau",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "unavailable",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:41.940Z"
+    },
+    {
+      "id": "wolfelse-fairytale-christmas-market",
+      "name": "Wolf&Else fairytale Christmas market",
+      "district": "Treptow-Köpenick",
+      "address": "Essenplatz im Märchenviertel, 12555 Berlin",
+      "lat": 52.460244303515,
+      "lng": 13.591130891105,
+      "dates": {
+        "start": "2025-12-06",
+        "end": "2025-12-06"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "The fairytale quarter at Köpenick S-Bahn station is magical at Christmas time: culture, craftsmanship, culinary delights and live performances of well-known fairytales create a magical atmosphere.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/wolfelse-fairytale-christmas-market",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:42.268Z"
+    },
+    {
+      "id": "christmas-tierpark",
+      "name": "Christmas in the Tierpark",
+      "district": "Lichtenberg",
+      "address": "Am Tierpark 125, 10319 Berlin",
+      "lat": 52.5023038,
+      "lng": 13.5313559,
+      "dates": {
+        "start": null,
+        "end": null
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "With thousands of lights, the Tierpark Berlin is transformed into a sparkling winter wonderland at Christmas time.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/christmas-tierpark",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "unavailable",
+      "entry": "ticketed",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:42.571Z"
+    },
+    {
+      "id": "christmas-party-berlin-animal-shelter",
+      "name": "Christmas party at the Berlin animal shelter",
+      "district": "Lichtenberg",
+      "address": "Hausvaterweg 39, 13057 Berlin",
+      "lat": 52.57559,
+      "lng": 13.54506,
+      "dates": {
+        "start": null,
+        "end": null
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "7. December 2025: Berlin's most animal-friendly festival awaits you with a lovingly illuminated Christmas market, gift ideas for people and animals, vegan street food, guided tours of animal shelters and an animal-themed supporting programme",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/christmas-party-berlin-animal-shelter",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "unavailable",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:42.881Z"
+    },
+    {
+      "id": "forest-winterlights-dark-matter",
+      "name": "Forest - Winterlights by Dark Matter",
+      "district": "Lichtenberg",
+      "address": "Köpenicker Chaussee 46, 10317 Berlin",
+      "lat": 52.49234,
+      "lng": 13.49211,
+      "dates": {
+        "start": "2025-11-07",
+        "end": "2026-03-15"
+      },
+      "hours": {
+        "monThu": "14:00–22:00",
+        "friSat": "11:00–23:00",
+        "sun": "11:00–22:00"
+      },
+      "tags": [],
+      "summary": "7. November 2025 to 15 March 2026: At Dark Matter in Lichtenberg, you can experience a magically illuminated winter forest with 600 floating trees, over 250,000 lights and a 400 square metre ice rink. This is where art meets winter magic.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/forest-winterlights-dark-matter",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "confirmed",
+      "entry": "ticketed",
+      "confidence": {
+        "source": "verified",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:43.149Z"
+    },
+    {
+      "id": "lichtenberger-winterzeit",
+      "name": "Lichtenberger Winterzeit",
+      "district": "Lichtenberg",
+      "address": "Landsberger Allee 300, 13055 Berlin",
+      "lat": 52.534094270721,
+      "lng": 13.5025926,
+      "dates": {
+        "start": "2026-10-31",
+        "end": "2026-12-26"
+      },
+      "hours": {
+        "monThu": "02:00–21:30",
+        "friSat": "02:00–23:00",
+        "sun": "12:00–21:00"
+      },
+      "tags": [],
+      "summary": "From 31 October to 26 December 2026 : The Christmas carnival at Landsberger Allee is the successor of the popular Wintertraum at Alexa. It is the oldest Christmas market with carnival in Berlin's east. Rides and action of all kinds are part of the Christmas entertainment.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/lichtenberger-winterzeit",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "confirmed",
+      "entry": "free",
+      "confidence": {
+        "source": "verified",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:43.580Z"
+    },
+    {
+      "id": "advent-bazaar-kirchengemeinde-luebars-berlin",
+      "name": "Adventsbasar Kirchengemeinde Lübars",
+      "district": "Reinickendorf",
+      "address": "Alt-Lübars, 13469 Berlin",
+      "lat": 52.61948,
+      "lng": 13.35621,
+      "dates": {
+        "start": "2025-11-30",
+        "end": "2025-11-30"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "Spend a cosy afternoon in a festive atmosphere, perfect for getting in the mood for Christmas, and enjoy the contemplative atmosphere in the village of Lübars.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/advent-bazaar-kirchengemeinde-luebars-berlin",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:43.896Z"
+    },
+    {
+      "id": "kunsthandwerklicher-weihnachtsmarkt-frohnau-berlin",
+      "name": "Kunsthandwerklicher Weihnachtsmarkt Frohnau",
+      "district": "Reinickendorf",
+      "address": "Zeltinger Platz 10, 13465 Berlin",
+      "lat": 52.63272,
+      "lng": 13.29126,
+      "dates": {
+        "start": "2025-12-06",
+        "end": "2025-12-07"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "On 6 and 7 December 2025: Art enthusiasts looking for unusual Christmas gifts will get their money's worth at the Arts and Crafts Christmas Market on Zeltinger Platz in Frohnau.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/kunsthandwerklicher-weihnachtsmarkt-frohnau-berlin",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:44.216Z"
+    },
+    {
+      "id": "winter-market-alte-frachtkantine-txl",
+      "name": "Winter market at the Alte Frachtkantine (TXL)",
+      "district": "Reinickendorf",
+      "address": "Flughafen Tegel 1, Zugang ZKS-I (Bushaltestelle „Urban Tech Republic“),, 13405 Berlin",
+      "lat": 52.55133,
+      "lng": 13.28586,
+      "dates": {
+        "start": "2025-11-29",
+        "end": "2025-11-30"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "The winter market on the TXL model area invites you to kick off the Advent season with mulled wine, music, gift stands and hearty culinary delights - completely open, inclusive and on a donation basis.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/winter-market-alte-frachtkantine-txl",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "ticketed",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:44.704Z"
+    },
+    {
+      "id": "alt-kaulsdorf-christmas-market",
+      "name": "Alt-Kaulsdorf Christmas market",
+      "district": "Marzahn-Hellersdorf",
+      "address": "Alt-Kaulsdorf 1, 12621 Berlin",
+      "lat": 52.5059213,
+      "lng": 13.5799937,
+      "dates": {
+        "start": "2025-12-06",
+        "end": "2025-12-06"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "Neighbourly Christmas market in the historic village centre of Alt-Marzahn: The Alt-Kaulsdorf Christmas market is definitely worth a visit.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/alt-kaulsdorf-christmas-market",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:45.059Z"
+    },
+    {
+      "id": "advent-markt-alt-marzahn-berlin",
+      "name": "Alt-Marzahn Advent market",
+      "district": "Marzahn-Hellersdorf",
+      "address": "Alt Marzahn 63, 12685 Berlin",
+      "lat": 52.544068719489,
+      "lng": 13.562871561377,
+      "dates": {
+        "start": "2025-11-28",
+        "end": "2025-11-30"
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "Not far from the Bockwindmühle the small but fine Advent market is taking place on the Alt-Marzahn village green like every year. Around the church, a market has been held here for over 20 years to get people in the mood for the contemplative Christmas season.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/advent-markt-alt-marzahn-berlin",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "tentative",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:45.362Z"
+    },
+    {
+      "id": "christmas-market-alice-salomon-platz",
+      "name": "The Christmas market on Alice-Salomon-Platz",
+      "district": "Marzahn-Hellersdorf",
+      "address": "Alice-Salomon-Platz, 12627 Berlin",
+      "lat": 52.536949320723,
+      "lng": 13.6040485,
+      "dates": {
+        "start": null,
+        "end": null
+      },
+      "hours": {
+        "monThu": null,
+        "friSat": null,
+        "sun": null
+      },
+      "tags": [],
+      "summary": "A fun affair for the whole family! The colourful mix of carousels, games of skill, good food and mulled wine lures many visitors to Hellersdorf every year.",
+      "images": [],
+      "source": {
+        "officialUrl": "https://www.visitberlin.de/en/christmas-market-alice-salomon-platz",
+        "organizerUrl": null,
+        "tier": "official"
+      },
+      "status": "unavailable",
+      "entry": "free",
+      "confidence": {
+        "source": "check-ahead",
+        "crowdsource": null
+      },
+      "vendorFile": null,
+      "lastChecked": "2026-09-16T05:11:45.675Z"
     }
   ]
 }
