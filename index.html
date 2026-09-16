@@ -33,19 +33,22 @@
         <svg class="app-header__star" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.5l2.4 7.1 7.6.1-6 4.7 2.2 7.4L12 16.5l-6.2 4.3 2.2-7.4-6-4.7 7.6-.1z"></path></svg>
         <span class="accent">Xmas</span>Markt
       </span>
-      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"></path></svg>
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"></path></svg>
-      </button>
+      <div class="app-header__icon-btns">
+        <button class="lang-toggle" id="lang-toggle" aria-label="Switch language">DE</button>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" data-i18n-aria="toggleTheme">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"></path></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"></path></svg>
+        </button>
+      </div>
     </h1>
-    <p class="app-header__tagline">Every Christmas market in Berlin, mapped.</p>
+    <p class="app-header__tagline" data-i18n="tagline">Every Christmas market in Berlin, mapped.</p>
     <div class="app-header__controls">
       <div class="view-switch" role="tablist">
-        <button class="view-switch__btn" data-view="map" role="tab" aria-pressed="true">Map</button>
-        <button class="view-switch__btn" data-view="list" role="tab" aria-pressed="false">List</button>
+        <button class="view-switch__btn" data-view="map" role="tab" aria-pressed="true" data-i18n="map">Map</button>
+        <button class="view-switch__btn" data-view="list" role="tab" aria-pressed="false" data-i18n="list">List</button>
       </div>
       <button class="saved-toggle" id="saved-toggle" aria-pressed="false">
-        <span class="heart">♥</span> Saved
+        <span class="heart">♥</span> <span data-i18n="saved">Saved</span>
       </button>
     </div>
   </div>
@@ -69,11 +72,11 @@
         <a class="sheet__address" id="sheet-address" target="_blank" rel="noopener" hidden></a>
       </div>
       <div class="sheet__actions">
-        <button class="sheet__icon-btn" id="sheet-share-btn" aria-label="Share market">
+        <button class="sheet__icon-btn" id="sheet-share-btn" aria-label="Share market" data-i18n-aria="shareMarket">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M12 4l-4 4M12 4l4 4"></path><path d="M5 12v7a1 1 0 001 1h12a1 1 0 001-1v-7"></path></svg>
         </button>
-        <button class="fav-btn" id="sheet-fav-btn" aria-pressed="false" aria-label="Save market">♥</button>
-        <button class="sheet__close" id="sheet-close" aria-label="Close">✕</button>
+        <button class="fav-btn" id="sheet-fav-btn" aria-pressed="false" aria-label="Save market" data-i18n-aria="saveMarket">♥</button>
+        <button class="sheet__close" id="sheet-close" aria-label="Close" data-i18n-aria="close">✕</button>
       </div>
     </div>
     <div class="sheet__banner" id="sheet-banner"></div>

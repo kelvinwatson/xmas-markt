@@ -3,7 +3,87 @@
 
   const FAVORITES_KEY = "cmapp_favorites";
   const THEME_KEY = "cmapp_theme";
+  const LANG_KEY = "cmapp_lang";
   const BERLIN_CENTER = [52.517, 13.389];
+
+  // ---------------------------------------------------------
+  // Language (UI chrome only — market names/summaries/vendor data
+  // stay as scraped, since translating that is scraper work, not a
+  // toggle; see CLAUDE.md)
+  // ---------------------------------------------------------
+  const STRINGS = {
+    en: {
+      tagline: "Every Christmas market in Berlin, mapped.",
+      map: "Map",
+      list: "List",
+      saved: "Saved",
+      toggleTheme: "Toggle dark mode",
+      switchLang: "Switch language",
+      shareMarket: "Share market",
+      saveMarket: "Save market",
+      close: "Close",
+      noSaved: "No saved markets yet. Tap the heart on a market to save it.",
+      noMarkets: "No markets found.",
+      loadingVendors: "Loading vendors…",
+      vendorError: "Couldn't load vendor details right now.",
+      lastChecked: (t) => `Vendor list last checked ${t}`,
+      runs: (start, end) => `Runs ${start} – ${end}`,
+      openNow: (end) => `Open now · closes ${end}`,
+      closedOpens: (start) => `Closed · opens ${start}`,
+      groupFood: "Food & drink",
+      groupCrafts: "Gifts & crafts",
+      groupActivity: "Things to do",
+      minAgo: (n) => `${n} min ago`,
+      hAgo: (n) => `${n}h ago`,
+      dAgo: (n) => `${n}d ago`,
+      dateLocale: "en-GB",
+    },
+    de: {
+      tagline: "Jeder Weihnachtsmarkt in Berlin, verzeichnet.",
+      map: "Karte",
+      list: "Liste",
+      saved: "Gemerkt",
+      toggleTheme: "Dunkelmodus umschalten",
+      switchLang: "Sprache wechseln",
+      shareMarket: "Markt teilen",
+      saveMarket: "Markt merken",
+      close: "Schließen",
+      noSaved: "Noch keine gemerkten Märkte. Tippe auf das Herz, um einen Markt zu merken.",
+      noMarkets: "Keine Märkte gefunden.",
+      loadingVendors: "Stände werden geladen…",
+      vendorError: "Standdetails konnten nicht geladen werden.",
+      lastChecked: (t) => `Standliste zuletzt geprüft ${t}`,
+      runs: (start, end) => `${start} – ${end}`,
+      openNow: (end) => `Jetzt geöffnet · schließt ${end}`,
+      closedOpens: (start) => `Geschlossen · öffnet ${start}`,
+      groupFood: "Essen & Trinken",
+      groupCrafts: "Geschenke & Kunsthandwerk",
+      groupActivity: "Unternehmungen",
+      minAgo: (n) => `vor ${n} Min.`,
+      hAgo: (n) => `vor ${n} Std.`,
+      dAgo: (n) => `vor ${n} Tag(en)`,
+      dateLocale: "de-DE",
+    },
+  };
+
+  let lang = localStorage.getItem(LANG_KEY) || (navigator.language.toLowerCase().startsWith("de") ? "de" : "en");
+
+  function t(key, ...args) {
+    const val = STRINGS[lang][key];
+    return typeof val === "function" ? val(...args) : val;
+  }
+
+  function applyStaticStrings() {
+    document.documentElement.lang = lang;
+    document.querySelectorAll("[data-i18n]").forEach((el) => {
+      el.textContent = t(el.dataset.i18n);
+    });
+    document.querySelectorAll("[data-i18n-aria]").forEach((el) => {
+      el.setAttribute("aria-label", t(el.dataset.i18nAria));
+    });
+    const langBtn = document.getElementById("lang-toggle");
+    if (langBtn) langBtn.textContent = lang === "de" ? "EN" : "DE";
+  }
   const PINE_ICON = `<svg width="13" height="13" viewBox="0 0 16 16"><path d="M8 15 V2 M8 4.5 L4.3 7 M8 4.5 L11.7 7 M8 8 L4.3 10.5 M8 8 L11.7 10.5 M8 2 L6.2 0.5 M8 2 L9.8 0.5" stroke="var(--pine)" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>`;
   const PIN_ICON = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--gold-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.1 7-12a7 7 0 10-14 0c0 5.9 7 12 7 12z"/><circle cx="12" cy="9" r="2.3"/></svg>`;
   const STAR_PATH = `<path d="M12 1.5l2.4 7.1 7.6.1-6 4.7 2.2 7.4L12 16.5l-6.2 4.3 2.2-7.4-6-4.7 7.6-.1z"/>`;
@@ -101,7 +181,7 @@
 
   function marketStatus(market) {
     if (!isWithinDateRange(market)) {
-      return { open: false, label: `Runs ${formatDateShort(market.dates.start)} – ${formatDateShort(market.dates.end)}` };
+      return { open: false, label: t("runs", formatDateShort(market.dates.start), formatDateShort(market.dates.end)) };
     }
     const todayHours = hoursForToday(market);
     const { start, end } = parseRange(todayHours);
@@ -110,23 +190,23 @@
     const startMin = timeToMinutes(start);
     const endMin = timeToMinutes(end);
     if (nowMin >= startMin && nowMin < endMin) {
-      return { open: true, label: `Open now · closes ${end}` };
+      return { open: true, label: t("openNow", end) };
     }
-    return { open: false, label: `Closed · opens ${start}` };
+    return { open: false, label: t("closedOpens", start) };
   }
 
   function formatDateShort(iso) {
     const d = new Date(iso + "T00:00:00");
-    return d.toLocaleDateString(undefined, { day: "numeric", month: "short" });
+    return d.toLocaleDateString(t("dateLocale"), { day: "numeric", month: "short" });
   }
 
   function relativeTime(iso) {
     const diffMs = Date.now() - new Date(iso).getTime();
     const mins = Math.round(diffMs / 60000);
-    if (mins < 60) return `${mins} min ago`;
+    if (mins < 60) return t("minAgo", mins);
     const hours = Math.round(mins / 60);
-    if (hours < 24) return `${hours}h ago`;
-    return `${Math.round(hours / 24)}d ago`;
+    if (hours < 24) return t("hAgo", hours);
+    return t("dAgo", Math.round(hours / 24));
   }
 
   // ---------------------------------------------------------
@@ -199,9 +279,7 @@
     const favs = getFavorites();
 
     if (items.length === 0) {
-      container.innerHTML = `<p class="empty-state">${
-        savedOnly ? "No saved markets yet. Tap the heart on a market to save it." : "No markets found."
-      }</p>`;
+      container.innerHTML = `<p class="empty-state">${savedOnly ? t("noSaved") : t("noMarkets")}</p>`;
       return;
     }
 
@@ -250,7 +328,10 @@
   // ---------------------------------------------------------
   // Detail sheet
   // ---------------------------------------------------------
+  let currentSheetMarket = null;
+
   async function openSheet(market, { updateHistory = true } = {}) {
+    currentSheetMarket = market;
     const overlay = document.getElementById("sheet-overlay");
     const status = marketStatus(market);
     const favs = getFavorites();
@@ -291,7 +372,7 @@
     const body = document.getElementById("sheet-body");
     body.innerHTML = `
       <p class="sheet__summary">${market.summary}</p>
-      <div class="sheet__loading">Loading vendors…</div>
+      <div class="sheet__loading">${t("loadingVendors")}</div>
     `;
 
     overlay.hidden = false;
@@ -303,7 +384,7 @@
         (groups[v.category] ||= []).push(v);
       });
 
-      const groupLabels = { food: "Food & drink", crafts: "Gifts & crafts", activity: "Things to do" };
+      const groupLabels = { food: t("groupFood"), crafts: t("groupCrafts"), activity: t("groupActivity") };
 
       const vendorsHtml = Object.entries(groups)
         .map(
@@ -326,12 +407,12 @@
       body.innerHTML = `
         <p class="sheet__summary">${market.summary}</p>
         ${vendorsHtml}
-        <p class="sheet__last-checked">Vendor list last checked ${relativeTime(vendorData.lastChecked)}</p>
+        <p class="sheet__last-checked">${t("lastChecked", relativeTime(vendorData.lastChecked))}</p>
       `;
     } catch {
       body.innerHTML = `
         <p class="sheet__summary">${market.summary}</p>
-        <p class="sheet__error">Couldn't load vendor details right now.</p>
+        <p class="sheet__error">${t("vendorError")}</p>
       `;
     }
   }
@@ -349,6 +430,7 @@
   }
 
   function closeSheet() {
+    currentSheetMarket = null;
     document.getElementById("sheet-overlay").hidden = true;
     if (location.hash) history.pushState(null, "", location.pathname + location.search);
   }
@@ -426,6 +508,7 @@
   // Init
   // ---------------------------------------------------------
   async function init() {
+    applyStaticStrings();
     await loadMarkets();
     initMap();
     renderList();
@@ -456,6 +539,14 @@
         "content",
         next === "dark" ? "#10182D" : "#FBF8F1"
       );
+    });
+
+    document.getElementById("lang-toggle").addEventListener("click", () => {
+      lang = lang === "de" ? "en" : "de";
+      localStorage.setItem(LANG_KEY, lang);
+      applyStaticStrings();
+      refreshCurrentView();
+      if (currentSheetMarket) openSheet(currentSheetMarket, { updateHistory: false });
     });
 
     if ("serviceWorker" in navigator) {

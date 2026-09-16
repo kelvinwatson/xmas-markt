@@ -146,7 +146,15 @@ button {
   letter-spacing: 0.01em;
 }
 
-.theme-toggle {
+.app-header__icon-btns {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.theme-toggle,
+.lang-toggle {
   background: transparent;
   border: 1px solid var(--border-strong);
   border-radius: 50%;
@@ -157,6 +165,13 @@ button {
   justify-content: center;
   color: var(--gold-muted);
   flex-shrink: 0;
+}
+
+.lang-toggle {
+  font-family: var(--font-ui);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
 .theme-toggle svg { width: 15px; height: 15px; }
