@@ -80,6 +80,10 @@ build tool instead of Claude, but decided to stick with Claude.
     dates: { start, end },
     hours: { monThu, friSat, sun },
     tags, summary,
+    images: [],                          // photo URLs — empty until a real
+                                          // scraper/source exists; renders as
+                                          // a swipeable carousel in the sheet,
+                                          // first image as the list-card thumb
     vendorFile, lastChecked,
 
     source: {

@@ -13,6 +13,7 @@
       "hours": { "monThu": "11:00–22:00", "friSat": "11:00–23:00", "sun": "11:00–22:00" },
       "tags": ["live music", "handicrafts", "ticketed entry"],
       "summary": "A ticketed market set between the Konzerthaus and the two cathedrals, known for handicraft stalls and a nightly stage programme.",
+      "images": [],
       "vendorFile": "vendors/gendarmenmarkt.json",
       "lastChecked": "2026-09-15T06:00:00Z"
     },
@@ -27,6 +28,7 @@
       "hours": { "monThu": "14:00–22:00", "friSat": "12:00–22:00", "sun": "12:00–22:00" },
       "tags": ["free entry", "neighbourhood", "ice rink"],
       "summary": "A local, free-entry market by the Rathaus Schöneberg with a small ice rink and neighbourhood food stalls.",
+      "images": [],
       "vendorFile": "vendors/schoeneberg.json",
       "lastChecked": "2026-09-15T06:00:00Z"
     },
@@ -41,6 +43,7 @@
       "hours": { "monThu": "11:00–22:00", "friSat": "11:00–23:00", "sun": "11:00–22:00" },
       "tags": ["free entry", "large", "rides"],
       "summary": "One of the city's largest markets, with a big wheel, log-flume ride, and a long row of food stalls beside the TV tower.",
+      "images": [],
       "vendorFile": "vendors/alexanderplatz.json",
       "lastChecked": "2026-09-15T06:00:00Z"
     },
@@ -55,6 +58,7 @@
       "hours": { "monThu": "11:00–20:00", "friSat": "11:00–21:00", "sun": "11:00–20:00" },
       "tags": ["free entry", "historic old town"],
       "summary": "A smaller, quieter market through Spandau's old town lanes, close to the citadel.",
+      "images": [],
       "vendorFile": "vendors/spandau.json",
       "lastChecked": "2026-09-15T06:00:00Z"
     }

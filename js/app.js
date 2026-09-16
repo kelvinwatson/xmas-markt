@@ -6,6 +6,42 @@
   const BERLIN_CENTER = [52.517, 13.389];
   const PINE_ICON = `<svg width="13" height="13" viewBox="0 0 16 16"><path d="M8 15 V2 M8 4.5 L4.3 7 M8 4.5 L11.7 7 M8 8 L4.3 10.5 M8 8 L11.7 10.5 M8 2 L6.2 0.5 M8 2 L9.8 0.5" stroke="var(--pine)" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>`;
   const PIN_ICON = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--gold-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.1 7-12a7 7 0 10-14 0c0 5.9 7 12 7 12z"/><circle cx="12" cy="9" r="2.3"/></svg>`;
+  const STAR_PATH = `<path d="M12 1.5l2.4 7.1 7.6.1-6 4.7 2.2 7.4L12 16.5l-6.2 4.3 2.2-7.4-6-4.7 7.6-.1z"/>`;
+
+  function mediaHtml(market, blockClass) {
+    const src = market.images && market.images[0];
+    if (src) {
+      return `<img class="${blockClass}__img" src="${src}" alt="">`;
+    }
+    return `<div class="${blockClass}__placeholder"><svg viewBox="0 0 24 24" fill="currentColor">${STAR_PATH}</svg></div>`;
+  }
+
+  function bannerCarouselHtml(market) {
+    const images = market.images && market.images.length ? market.images : null;
+    if (!images) {
+      return `<div class="sheet__banner__placeholder"><svg viewBox="0 0 24 24" fill="currentColor">${STAR_PATH}</svg></div>`;
+    }
+    const slides = images
+      .map((src) => `<div class="sheet__banner__slide"><img class="sheet__banner__img" src="${src}" alt=""></div>`)
+      .join("");
+    const dots =
+      images.length > 1
+        ? `<div class="sheet__banner__dots">${images
+            .map((_, i) => `<span class="sheet__banner__dot${i === 0 ? " active" : ""}"></span>`)
+            .join("")}</div>`
+        : "";
+    return `<div class="sheet__banner__track">${slides}</div>${dots}`;
+  }
+
+  function initBannerCarousel() {
+    const track = document.querySelector("#sheet-banner .sheet__banner__track");
+    const dots = document.querySelectorAll("#sheet-banner .sheet__banner__dot");
+    if (!track || !dots.length) return;
+    track.addEventListener("scroll", () => {
+      const index = Math.round(track.scrollLeft / track.clientWidth);
+      dots.forEach((dot, i) => dot.classList.toggle("active", i === index));
+    });
+  }
 
   let markets = [];
   let currentView = "map";
@@ -175,15 +211,20 @@
         const isFav = favs.has(market.id);
         return `
         <button class="market-card ${status.open ? "" : "market-card--closed"}" data-id="${market.id}">
-          <div class="market-card__top">
-            <div>
-              <p class="market-card__name">${market.name}</p>
-              <p class="market-card__district">${PINE_ICON}${market.district}</p>
+          <div class="market-card__row">
+            <div class="market-card__thumb">${mediaHtml(market, "market-card__thumb")}</div>
+            <div class="market-card__content">
+              <div class="market-card__top">
+                <div>
+                  <p class="market-card__name">${market.name}</p>
+                  <p class="market-card__district">${PINE_ICON}${market.district}</p>
+                </div>
+                <span class="fav-btn" data-fav-id="${market.id}" aria-pressed="${isFav}">${isFav ? "♥" : "♡"}</span>
+              </div>
+              <p class="market-card__status ${status.open ? "market-card__status--open" : "market-card__status--closed"}">${status.label}</p>
+              <p class="market-card__summary">${market.summary}</p>
             </div>
-            <span class="fav-btn" data-fav-id="${market.id}" aria-pressed="${isFav}">${isFav ? "♥" : "♡"}</span>
           </div>
-          <p class="market-card__status ${status.open ? "market-card__status--open" : "market-card__status--closed"}">${status.label}</p>
-          <p class="market-card__summary">${market.summary}</p>
         </button>`;
       })
       .join("");
@@ -219,6 +260,18 @@
     document.getElementById("sheet-meta").innerHTML =
       `${PINE_ICON}${market.district} · <span class="sheet__status ${status.open ? "sheet__status--open" : "sheet__status--closed"}">${status.label}</span>`;
 
+    document.getElementById("sheet-banner").innerHTML = bannerCarouselHtml(market);
+    initBannerCarousel();
+
+    const addressEl = document.getElementById("sheet-address");
+    if (market.address) {
+      addressEl.href = `https://www.google.com/maps/search/?api=1&query=${market.lat},${market.lng}`;
+      addressEl.innerHTML = `${PIN_ICON}${market.address}`;
+      addressEl.hidden = false;
+    } else {
+      addressEl.hidden = true;
+    }
+
     const favBtn = document.getElementById("sheet-fav-btn");
     favBtn.textContent = isFav ? "♥" : "♡";
     favBtn.setAttribute("aria-pressed", String(isFav));
@@ -235,14 +288,9 @@
 
     if (updateHistory) history.pushState(null, "", `#${market.id}`);
 
-    const addressHtml = market.address
-      ? `<a class="sheet__address" href="https://www.google.com/maps/search/?api=1&query=${market.lat},${market.lng}" target="_blank" rel="noopener">${PIN_ICON}${market.address}</a>`
-      : "";
-
     const body = document.getElementById("sheet-body");
     body.innerHTML = `
       <p class="sheet__summary">${market.summary}</p>
-      ${addressHtml}
       <div class="sheet__loading">Loading vendors…</div>
     `;
 
@@ -277,14 +325,12 @@
 
       body.innerHTML = `
         <p class="sheet__summary">${market.summary}</p>
-        ${addressHtml}
         ${vendorsHtml}
         <p class="sheet__last-checked">Vendor list last checked ${relativeTime(vendorData.lastChecked)}</p>
       `;
     } catch {
       body.innerHTML = `
         <p class="sheet__summary">${market.summary}</p>
-        ${addressHtml}
         <p class="sheet__error">Couldn't load vendor details right now.</p>
       `;
     }
