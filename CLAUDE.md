@@ -174,16 +174,11 @@ if the app ever gets real traffic.
 
 ## Monetization — status: not cleared yet
 
-Plan is to potentially monetize later. Two things were checked:
-
-[redacted — personal detail removed]
-[redacted — personal detail removed]
-[redacted — personal detail removed]
-[redacted — personal detail removed]
-[redacted — personal detail removed]
-[redacted — personal detail removed]
-[redacted — personal detail removed]
-[redacted — personal detail removed]
+Plan is to potentially monetize later. **Don't enable any
+monetization yet** — there's an outstanding personal/legal check that
+needs to close out first. Details intentionally kept out of this
+file — personal/legal specifics don't belong in a checked-in file
+regardless of repo visibility; ask if you need the context.
 
 ## Open items / not yet built
 
