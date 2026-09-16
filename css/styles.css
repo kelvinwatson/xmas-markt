@@ -22,7 +22,7 @@
   --evergreen: #3E7A46;
   --rose: #C2445A;
 
-  --bokeh: rgba(201, 162, 39, 0.30), rgba(201, 162, 39, 0.24), rgba(201, 162, 39, 0.18);
+  --gold-rgb: 201, 162, 39;
 
   --font-display: "Cormorant Garamond", Georgia, serif;
   --font-ui: "Jost", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -52,7 +52,7 @@
   --evergreen: #6FBF7B;
   --rose: #E2708C;
 
-  --bokeh: rgba(212, 176, 78, 0.32), rgba(212, 176, 78, 0.26), rgba(212, 176, 78, 0.2);
+  --gold-rgb: 212, 176, 78;
 
   --shadow-card: none;
   --shadow-sheet: 0 -8px 32px rgba(0, 0, 0, 0.6);
@@ -91,15 +91,17 @@ button {
 }
 
 .app-header::before {
+  /* Softness comes from the gradient's own multi-stop falloff, not a
+     blur() filter — filters are expensive to repaint, and this layer
+     repaints on every theme toggle since it reads --gold-rgb. */
   content: "";
   position: absolute;
-  inset: -40px;
+  inset: 0;
   z-index: 0;
   background-image:
-    radial-gradient(circle at 12% 18%, var(--bokeh) 0%, transparent 55px),
-    radial-gradient(circle at 78% 8%, var(--bokeh) 0%, transparent 70px),
-    radial-gradient(circle at 92% 55%, var(--bokeh) 0%, transparent 60px);
-  filter: blur(6px);
+    radial-gradient(circle at 12% 18%, rgba(var(--gold-rgb), 0.30) 0%, rgba(var(--gold-rgb), 0.12) 35%, transparent 70%),
+    radial-gradient(circle at 78% 8%, rgba(var(--gold-rgb), 0.26) 0%, rgba(var(--gold-rgb), 0.1) 35%, transparent 75%),
+    radial-gradient(circle at 92% 55%, rgba(var(--gold-rgb), 0.28) 0%, rgba(var(--gold-rgb), 0.11) 35%, transparent 70%);
 }
 
 .app-header__inner {
@@ -112,7 +114,7 @@ button {
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 1.6rem;
-  margin: 0 0 12px;
+  margin: 0;
   letter-spacing: 0.01em;
   color: var(--ink);
   display: flex;
@@ -121,9 +123,27 @@ button {
   gap: 8px;
 }
 
+.app-header__wordmark {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.app-header__star {
+  color: var(--gold-500);
+  flex-shrink: 0;
+}
+
 .app-header__title .accent {
   color: var(--gold-muted);
   font-style: italic;
+}
+
+.app-header__tagline {
+  font-size: 0.78rem;
+  color: var(--mist);
+  margin: 3px 0 12px;
+  letter-spacing: 0.01em;
 }
 
 .theme-toggle {
@@ -229,22 +249,33 @@ main {
 }
 
 @media (min-width: 720px) {
-  /* :not([hidden]) keeps this below .view[hidden]{display:none} in
-     specificity — a bare #list-view rule would outrank it (ID beats
-     class+attribute) and show the list even while "hidden". */
-  #list-view:not([hidden]) {
+  /* Desktop: map pinned left, list scrolls right — both always
+     visible, no more Map/List tab-switching. The view-switch tabs
+     become redundant, so hide them; Saved still filters both panes.
+     ".view[hidden]" is overridden here (rather than relying on
+     :not([hidden])) specifically so both stay shown regardless of
+     which tab the (hidden) JS state thinks is "active". */
+  main { flex-direction: row; }
+  .view[hidden] { display: block; }
+  #map-view { flex: 0 0 42%; border-right: 1px solid var(--border); }
+
+  #list-view {
+    flex: 1;
+    padding: 16px 20px 24px;
+  }
+  .app-header__controls .view-switch { display: none; }
+  .saved-toggle { margin-left: auto; }
+}
+
+@media (min-width: 1400px) {
+  #list-view {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
     align-content: start;
-    padding: 16px 24px 24px;
   }
   .market-card { margin-bottom: 0; }
   .empty-state { grid-column: 1 / -1; }
-}
-
-@media (min-width: 1100px) {
-  #list-view:not([hidden]) { grid-template-columns: repeat(3, 1fr); }
 }
 
 .empty-state {
@@ -349,7 +380,7 @@ main {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.4);
-  z-index: 10;
+  z-index: 2000;
 }
 
 :root[data-theme="dark"] .sheet-overlay { background: rgba(0, 0, 0, 0.65); }
@@ -406,11 +437,21 @@ main {
 }
 
 .sheet__handle {
+  width: 100%;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: none;
+  cursor: grab;
+}
+
+.sheet__handle::after {
+  content: "";
   width: 36px;
   height: 4px;
   background: var(--border-strong);
   border-radius: 2px;
-  margin: 10px auto 4px;
 }
 
 .sheet__header {

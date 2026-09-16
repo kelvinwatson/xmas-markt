@@ -282,6 +282,42 @@
   }
 
   // ---------------------------------------------------------
+  // Sheet drag-to-dismiss (mobile only — desktop uses the centered
+  // modal's overlay click / close button instead)
+  // ---------------------------------------------------------
+  function initSheetDragToDismiss() {
+    const handle = document.querySelector(".sheet__handle");
+    const sheetEl = document.getElementById("sheet");
+    const DISMISS_THRESHOLD = 90;
+    let startY = null;
+
+    handle.addEventListener("pointerdown", (e) => {
+      if (matchMedia("(min-width: 720px)").matches) return;
+      startY = e.clientY;
+      sheetEl.style.transition = "none";
+      handle.setPointerCapture(e.pointerId);
+    });
+
+    handle.addEventListener("pointermove", (e) => {
+      if (startY === null) return;
+      const delta = Math.max(0, e.clientY - startY);
+      sheetEl.style.transform = `translateY(${delta}px)`;
+    });
+
+    function endDrag(e) {
+      if (startY === null) return;
+      const delta = Math.max(0, e.clientY - startY);
+      startY = null;
+      sheetEl.style.transition = "";
+      sheetEl.style.transform = "";
+      if (delta > DISMISS_THRESHOLD) closeSheet();
+    }
+
+    handle.addEventListener("pointerup", endDrag);
+    handle.addEventListener("pointercancel", endDrag);
+  }
+
+  // ---------------------------------------------------------
   // View switching
   // ---------------------------------------------------------
   function setView(view) {
@@ -326,6 +362,8 @@
     document.getElementById("sheet-overlay").addEventListener("click", (e) => {
       if (e.target.id === "sheet-overlay") closeSheet();
     });
+
+    initSheetDragToDismiss();
 
     document.getElementById("theme-toggle").addEventListener("click", () => {
       const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
