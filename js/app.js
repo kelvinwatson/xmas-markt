@@ -2,7 +2,9 @@
   "use strict";
 
   const FAVORITES_KEY = "cmapp_favorites";
+  const THEME_KEY = "cmapp_theme";
   const BERLIN_CENTER = [52.517, 13.389];
+  const PINE_ICON = `<svg width="13" height="13" viewBox="0 0 16 16"><path d="M8 15 V2 M8 4.5 L4.3 7 M8 4.5 L11.7 7 M8 8 L4.3 10.5 M8 8 L11.7 10.5 M8 2 L6.2 0.5 M8 2 L9.8 0.5" stroke="var(--pine)" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>`;
 
   let markets = [];
   let currentView = "map";
@@ -123,7 +125,7 @@
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution: "&copy; OpenStreetMap contributors",
       maxZoom: 19,
-      className: "map-tiles-dark",
+      className: "map-tiles-theme",
     }).addTo(map);
     markerLayer = L.layerGroup().addTo(map);
     renderMarkers();
@@ -175,7 +177,7 @@
           <div class="market-card__top">
             <div>
               <p class="market-card__name">${market.name}</p>
-              <p class="market-card__district">${market.district}</p>
+              <p class="market-card__district">${PINE_ICON}${market.district}</p>
             </div>
             <span class="fav-btn" data-fav-id="${market.id}" aria-pressed="${isFav}">${isFav ? "♥" : "♡"}</span>
           </div>
@@ -214,7 +216,7 @@
 
     document.getElementById("sheet-title").textContent = market.name;
     document.getElementById("sheet-meta").innerHTML =
-      `${market.district} · <span class="sheet__status ${status.open ? "sheet__status--open" : "sheet__status--closed"}">${status.label}</span>`;
+      `${PINE_ICON}${market.district} · <span class="sheet__status ${status.open ? "sheet__status--open" : "sheet__status--closed"}">${status.label}</span>`;
 
     const favBtn = document.getElementById("sheet-fav-btn");
     favBtn.textContent = isFav ? "♥" : "♡";
@@ -323,6 +325,16 @@
     document.getElementById("sheet-close").addEventListener("click", closeSheet);
     document.getElementById("sheet-overlay").addEventListener("click", (e) => {
       if (e.target.id === "sheet-overlay") closeSheet();
+    });
+
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+      const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+      document.documentElement.dataset.theme = next;
+      localStorage.setItem(THEME_KEY, next);
+      document.querySelector('meta[name="theme-color"]').setAttribute(
+        "content",
+        next === "dark" ? "#10182D" : "#FBF8F1"
+      );
     });
 
     if ("serviceWorker" in navigator) {

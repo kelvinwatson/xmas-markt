@@ -1,29 +1,56 @@
 /* ============================================================
-   Design tokens
+   Design tokens — light (white + gold) is the base; dark (navy +
+   gold) overrides via [data-theme="dark"]. Both share the same type
+   system and card layout, differing only in surface/ink colors, so
+   they read as one design's light/dark modes, not two different apps.
    ============================================================ */
 :root {
-  --ink-950: #0C0B09;
-  --surface-900: #17140F;
-  --surface-800: #211C15;
-  --surface-700: #2B241A;
-  --paper-50: #F4EDE1;
-  --mist-400: #A89C8A;
-  --mist-600: #6E6455;
-  --border-800: #2E2A22;
+  --bg: #FBF8F1;
+  --surface: #FFFFFF;
+  --ink: #2B2620;
+  --ink-muted: #59503F;
+  --mist: #A8988A;
+  --border: #E9E2D2;
+  --border-strong: #D8CDB4;
 
-  --gold-300: #F4CC7C;
-  --gold-500: #E3A83B;
-  --gold-muted: #A6883E;
-  --gold-glow: 0 0 14px rgba(227, 168, 59, 0.45);
+  --gold-300: #E6C877;
+  --gold-500: #C9A227;
+  --gold-muted: #A8842E;
+  --gold-glow: 0 0 14px rgba(201, 162, 39, 0.45);
 
-  --evergreen-400: #6FBF7B;
-  --evergreen-700: #2E4A34;
-  --rose-400: #E2708C;
+  --pine: #5C7A5E;
+  --evergreen: #3E7A46;
+  --rose: #C2445A;
 
-  --font-display: "Fraunces", Georgia, serif;
-  --font-ui: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --bokeh: rgba(201, 162, 39, 0.30), rgba(201, 162, 39, 0.24), rgba(201, 162, 39, 0.18);
+
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-ui: "Jost", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
   --radius-sm: 3px;
+  --shadow-sheet: 0 -8px 32px rgba(0, 0, 0, 0.18);
+}
+
+:root[data-theme="dark"] {
+  --bg: #10182D;
+  --surface: #141E38;
+  --ink: #F2EFE6;
+  --ink-muted: #AEB6D2;
+  --mist: #7C87AE;
+  --border: #263153;
+  --border-strong: #35406A;
+
+  --gold-300: #E6C877;
+  --gold-500: #D4B04E;
+  --gold-muted: #D4B04E;
+  --gold-glow: 0 0 14px rgba(212, 176, 78, 0.55);
+
+  --pine: #7FAF82;
+  --evergreen: #6FBF7B;
+  --rose: #E2708C;
+
+  --bokeh: rgba(212, 176, 78, 0.32), rgba(212, 176, 78, 0.26), rgba(212, 176, 78, 0.2);
+
   --shadow-sheet: 0 -8px 32px rgba(0, 0, 0, 0.6);
 }
 
@@ -33,8 +60,8 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  background: var(--ink-950);
-  color: var(--paper-50);
+  background: var(--bg);
+  color: var(--ink);
   font-family: var(--font-ui);
   -webkit-font-smoothing: antialiased;
 }
@@ -54,25 +81,64 @@ button {
    Header
    ============================================================ */
 .app-header {
-  background: var(--surface-900);
-  color: var(--paper-50);
-  padding: 14px 16px 12px;
+  position: relative;
+  overflow: hidden;
   flex-shrink: 0;
-  border-bottom: 2px solid var(--evergreen-700);
+}
+
+.app-header::before {
+  content: "";
+  position: absolute;
+  inset: -40px;
+  z-index: 0;
+  background-image:
+    radial-gradient(circle at 12% 18%, var(--bokeh) 0%, transparent 55px),
+    radial-gradient(circle at 78% 8%, var(--bokeh) 0%, transparent 70px),
+    radial-gradient(circle at 92% 55%, var(--bokeh) 0%, transparent 60px);
+  filter: blur(6px);
+}
+
+.app-header__inner {
+  position: relative;
+  z-index: 1;
+  padding: 18px 16px 14px;
 }
 
 .app-header__title {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 1.5rem;
-  margin: 0 0 10px;
+  font-size: 1.6rem;
+  margin: 0 0 12px;
   letter-spacing: 0.01em;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
 }
 
 .app-header__title .accent {
-  color: var(--gold-300);
-  text-shadow: var(--gold-glow);
+  color: var(--gold-muted);
+  font-style: italic;
 }
+
+.theme-toggle {
+  background: transparent;
+  border: 1px solid var(--border-strong);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold-muted);
+  flex-shrink: 0;
+}
+
+.theme-toggle svg { width: 15px; height: 15px; }
+.theme-toggle .icon-sun { display: none; }
+:root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+:root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
 
 .app-header__controls {
   display: flex;
@@ -82,37 +148,35 @@ button {
 
 .view-switch {
   display: flex;
-  background: var(--surface-800);
-  border: 1px solid var(--border-800);
-  border-radius: var(--radius-sm);
-  padding: 3px;
+  gap: 6px;
   flex: 1;
 }
 
 .view-switch__btn {
   flex: 1;
-  border: none;
+  border: 1px solid var(--border-strong);
   background: transparent;
-  color: var(--mist-400);
-  padding: 7px 10px;
-  font-size: 0.85rem;
-  border-radius: 2px;
+  color: var(--mist);
+  padding: 8px 0;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
   transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 .view-switch__btn[aria-pressed="true"] {
   background: var(--gold-500);
-  color: var(--ink-950);
+  border-color: var(--gold-500);
+  color: var(--bg);
   font-weight: 600;
 }
 
 .saved-toggle {
-  border: 1px solid var(--border-800);
-  background: var(--surface-800);
-  color: var(--mist-400);
-  border-radius: var(--radius-sm);
-  padding: 7px 12px;
-  font-size: 0.85rem;
+  border: 1px solid var(--border-strong);
+  background: transparent;
+  color: var(--mist);
+  padding: 8px 12px;
+  font-size: 0.8rem;
   display: flex;
   align-items: center;
   gap: 5px;
@@ -122,9 +186,8 @@ button {
 .saved-toggle[aria-pressed="true"] {
   background: var(--gold-500);
   border-color: var(--gold-500);
-  color: var(--ink-950);
+  color: var(--bg);
   font-weight: 600;
-  box-shadow: var(--gold-glow);
 }
 
 .saved-toggle .heart { font-size: 0.9rem; }
@@ -147,21 +210,23 @@ main {
 
 .view[hidden] { display: none; }
 
-#map { width: 100%; height: 100%; background: var(--ink-950); }
+#map { width: 100%; height: 100%; background: var(--bg); }
 
-.map-tiles-dark {
+/* Light theme: plain default OSM tiles, no filter. Dark theme: the
+   grayscale+invert treatment so the map matches the dark surface. */
+:root[data-theme="dark"] .map-tiles-theme {
   filter: grayscale(1) invert(1) brightness(0.92) contrast(0.95);
 }
 
 /* ---- List view ---- */
 #list-view {
   overflow-y: auto;
-  padding: 12px 14px 24px;
+  padding: 4px 20px 24px;
 }
 
 .empty-state {
   text-align: center;
-  color: var(--mist-400);
+  color: var(--mist);
   padding: 48px 20px;
   font-size: 0.95rem;
   line-height: 1.5;
@@ -171,17 +236,12 @@ main {
   display: block;
   width: 100%;
   text-align: left;
-  background: var(--surface-900);
+  background: transparent;
   border: none;
-  border-top: 1px solid var(--border-800);
-  border-left: 3px solid var(--gold-500);
-  padding: 12px 14px;
-  margin-bottom: 8px;
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  border-bottom: 1px solid var(--border);
+  padding: 18px 0 20px;
   position: relative;
 }
-
-.market-card--closed { border-left-color: var(--mist-600); }
 
 .market-card__top {
   display: flex;
@@ -193,29 +253,39 @@ main {
 .market-card__name {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 1.05rem;
-  margin: 0 0 2px;
-  color: var(--paper-50);
+  font-size: 1.1rem;
+  line-height: 1.3;
+  margin: 0;
+  color: var(--ink);
 }
 
 .market-card__district {
-  font-size: 0.8rem;
-  color: var(--mist-400);
-  margin: 0 0 8px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.75rem;
+  color: var(--mist);
+  margin: 5px 0 0;
+  letter-spacing: 0.03em;
 }
+
+.market-card__district svg { flex-shrink: 0; }
 
 .market-card__status {
-  font-size: 0.82rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.85rem;
   font-weight: 600;
+  margin: 12px 0 8px;
 }
 
-.market-card__status--open { color: var(--evergreen-400); }
-.market-card__status--closed { color: var(--rose-400); }
+.market-card__status--open { color: var(--evergreen); }
+.market-card__status--closed { color: var(--gold-muted); }
 
 .market-card__summary {
-  font-size: 0.88rem;
-  line-height: 1.45;
-  color: var(--mist-400);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--ink-muted);
   margin: 0;
 }
 
@@ -225,12 +295,12 @@ main {
   font-size: 1.3rem;
   line-height: 1;
   padding: 2px 4px;
-  color: var(--mist-400);
+  color: var(--border-strong);
   flex-shrink: 0;
 }
 
 .fav-btn[aria-pressed="true"] {
-  color: var(--gold-300);
+  color: var(--gold-500);
   text-shadow: var(--gold-glow);
 }
 
@@ -240,9 +310,11 @@ main {
 .sheet-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.65);
+  background: rgba(0, 0, 0, 0.4);
   z-index: 10;
 }
+
+:root[data-theme="dark"] .sheet-overlay { background: rgba(0, 0, 0, 0.65); }
 
 .sheet-overlay[hidden] { display: none; }
 
@@ -250,8 +322,8 @@ main {
   position: absolute;
   left: 0; right: 0; bottom: 0;
   max-height: 78%;
-  background: var(--surface-900);
-  border-top: 1px solid var(--border-800);
+  background: var(--surface);
+  border-top: 1px solid var(--border);
   border-radius: 14px 14px 0 0;
   box-shadow: var(--shadow-sheet);
   display: flex;
@@ -272,14 +344,14 @@ main {
 .sheet__handle {
   width: 36px;
   height: 4px;
-  background: var(--border-800);
+  background: var(--border-strong);
   border-radius: 2px;
   margin: 10px auto 4px;
 }
 
 .sheet__header {
   padding: 4px 18px 12px;
-  border-bottom: 1px solid var(--border-800);
+  border-bottom: 1px solid var(--border);
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -290,27 +362,32 @@ main {
   background: none;
   border: none;
   font-size: 1.1rem;
-  color: var(--mist-400);
+  color: var(--mist);
   padding: 4px;
 }
 
 .sheet__title {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 1.3rem;
+  font-size: 1.35rem;
   margin: 0 0 4px;
-  color: var(--paper-50);
+  color: var(--ink);
 }
 
 .sheet__meta {
   font-size: 0.85rem;
-  color: var(--mist-400);
+  color: var(--mist);
   margin: 0 0 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
-.sheet__status { font-weight: 600; }
-.sheet__status--open { color: var(--evergreen-400); }
-.sheet__status--closed { color: var(--rose-400); }
+.sheet__meta svg { flex-shrink: 0; }
+
+.sheet__status { font-family: var(--font-display); font-style: italic; font-weight: 600; }
+.sheet__status--open { color: var(--evergreen); }
+.sheet__status--closed { color: var(--gold-muted); }
 
 .sheet__body {
   overflow-y: auto;
@@ -321,12 +398,13 @@ main {
   font-size: 0.92rem;
   line-height: 1.5;
   margin: 0 0 16px;
-  color: var(--mist-400);
+  color: var(--ink-muted);
 }
 
 .vendor-group__title {
-  font-size: 0.78rem;
-  text-transform: none;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.85rem;
   color: var(--gold-muted);
   margin: 16px 0 6px;
   font-weight: 600;
@@ -336,7 +414,7 @@ main {
 
 .vendor-item {
   padding: 8px 0;
-  border-top: 1px solid var(--border-800);
+  border-top: 1px solid var(--border);
 }
 
 .vendor-item:first-of-type { border-top: none; }
@@ -345,25 +423,25 @@ main {
   font-weight: 600;
   font-size: 0.92rem;
   margin: 0 0 2px;
-  color: var(--paper-50);
+  color: var(--ink);
 }
 
 .vendor-item__desc {
   font-size: 0.85rem;
-  color: var(--mist-400);
+  color: var(--ink-muted);
   margin: 0 0 2px;
   line-height: 1.4;
 }
 
 .vendor-item__hours {
   font-size: 0.78rem;
-  color: var(--mist-600);
+  color: var(--mist);
   margin: 0;
 }
 
 .sheet__last-checked {
   font-size: 0.75rem;
-  color: var(--mist-600);
+  color: var(--mist);
   margin: 18px 0 0;
   text-align: center;
 }
@@ -371,7 +449,7 @@ main {
 .sheet__loading, .sheet__error {
   padding: 20px 0;
   text-align: center;
-  color: var(--mist-400);
+  color: var(--mist);
   font-size: 0.9rem;
 }
 
@@ -380,7 +458,7 @@ main {
    ============================================================ */
 .market-marker {
   background: var(--gold-500);
-  border: 2px solid var(--ink-950);
+  border: 2px solid var(--surface);
   border-radius: 50%;
   width: 16px;
   height: 16px;
@@ -389,13 +467,13 @@ main {
 
 .market-marker--fav {
   background: var(--gold-300);
-  box-shadow: 0 0 16px rgba(244, 204, 124, 0.7);
+  box-shadow: 0 0 16px rgba(230, 200, 119, 0.7);
 }
 
 /* ============================================================
    Accessibility
    ============================================================ */
 :focus-visible {
-  outline: 2px solid var(--gold-300);
+  outline: 2px solid var(--gold-500);
   outline-offset: 2px;
 }
