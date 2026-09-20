@@ -3,6 +3,7 @@
   "short_name": "XmasMarkt",
   "description": "Find Christmas markets in Berlin — locations, vendors, hours, and saved favourites.",
   "lang": "en",
+  "dir": "ltr",
   "id": "/",
   "start_url": "./index.html",
   "scope": "./",
