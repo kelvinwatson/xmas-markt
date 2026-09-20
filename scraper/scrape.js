@@ -74,43 +74,44 @@ function idFromHref(href) {
     .replace(/^-+|-+$/g, "");
 }
 
-// visitBerlin's listing teaser text leads with the date range in whichever
-// of the phrasings parseDateRange (below) understands — "23 November to 22
-// December 2026: ...", "28 to 30 November 2025: ...", "13 December 2025:
-// ...", ordinals ("30th"), "and" as a separator — strip it since dates
-// already have their own field, and the rest reads as a normal one-line
-// summary. Order matters: most-specific (two full dates) tried first.
-function stripDatePrefix(rawText) {
-  const text = rawText.replace(/(\d{1,2})(st|nd|rd|th)\b/gi, "$1");
-  const sep = "to|until|and|&|-|–";
-  const patterns = [
-    new RegExp(`^\\d{1,2}\\s+[A-Za-z]+(?:\\s+\\d{4})?\\s+(?:${sep})\\s+\\d{1,2}\\s+[A-Za-z]+(?:\\s+\\d{4})?:\\s*`),
-    new RegExp(`^\\d{1,2}\\s+(?:${sep})\\s+\\d{1,2}\\s+[A-Za-z]+(?:\\s+\\d{4})?:\\s*`),
-    /^[A-Za-z]+\s+\d{1,2},?\s*\d{4}?:\s*/,
-    /^\d{1,2}\s+[A-Za-z]+(?:\s+\d{4})?:\s*/,
-  ];
-  for (const re of patterns) {
-    if (re.test(text)) return text.replace(re, "").trim();
-  }
-  return text.trim();
+// visitBerlin's listing teaser text (in either language) leads with a date
+// phrase followed by a colon — "23 November to 22 December 2026: ..." in
+// English, "23. November bis 31. Dezember 2026: ..." in German. Rather than
+// maintain a parsing ladder per language (dates already have their own
+// field via parseDateRange, which only ever reads the English page), just
+// strip everything up to the first colon when the text starts with a day
+// number — works uniformly across both languages' phrasings.
+function stripLeadingDatePhrase(rawText) {
+  const m = rawText.match(/^\d{1,2}(?:st|nd|rd|th|\.)?\s.*?:\s*/i);
+  return (m ? rawText.slice(m[0].length) : rawText).trim();
 }
 
-// Crawls visitBerlin's district-filtered Christmas market listings and
-// returns every real market card found: { href, name, teaser, district }.
-// Paid placements (marked "Advertisement") and links off visitBerlin.de
-// are skipped — the app's provenance model is built around visitBerlin as
-// an official-tier source, not third-party advertiser pages.
-async function discoverMarketCards() {
+// visitBerlin publishes the same district-filtered listing in both
+// languages, with an identical card structure and the same district slugs
+// — only the base path and the "Read more" link text differ.
+const LISTING_PATHS = {
+  en: { base: "christmas-markets-berlin/district", readMore: "Read more" },
+  de: { base: "weihnachtsmaerkte-berlin/bezirk", readMore: "Weiterlesen" },
+};
+
+// Crawls visitBerlin's district-filtered Christmas market listings (in the
+// given language) and returns every real market card found: { href, name,
+// teaser, district }. Paid placements (marked "Advertisement") and links
+// off visitBerlin.de are skipped — the app's provenance model is built
+// around visitBerlin as an official-tier source, not third-party
+// advertiser pages.
+async function discoverMarketCards(lang) {
+  const { base, readMore } = LISTING_PATHS[lang];
   const cards = new Map();
   for (const district of DISTRICTS) {
     let page = 0;
     while (true) {
-      const url = `${BASE_URL}/en/christmas-markets-berlin/district/${district.slug}?page=${page}`;
+      const url = `${BASE_URL}/${lang}/${base}/${district.slug}?page=${page}`;
       let html;
       try {
         html = await fetchHtml(url);
       } catch (err) {
-        console.warn(`District listing failed: ${district.name} page ${page}: ${err.message}`);
+        console.warn(`District listing failed: ${district.name} (${lang}) page ${page}: ${err.message}`);
         break;
       }
       const $ = cheerio.load(html);
@@ -121,7 +122,7 @@ async function discoverMarketCards() {
         const $el = $(el);
         const href = $el.find(".teaser-search__mainlink").first().attr("href");
         const isAd = /advertisement/i.test($el.find(".teaser-search__paid").first().text());
-        if (!href || isAd || !href.startsWith("/en/")) return;
+        if (!href || isAd || !href.startsWith(`/${lang}/`)) return;
         if (!cards.has(href)) {
           cards.set(href, {
             href,
@@ -133,7 +134,7 @@ async function discoverMarketCards() {
               .first()
               .text()
               .replace(/\s+/g, " ")
-              .replace(/Read more\s*$/, "")
+              .replace(new RegExp(`${readMore}\\s*$`), "")
               .trim(),
             district: district.name,
           });
@@ -388,12 +389,25 @@ function extractChecklistWithDate($) {
   return found || [];
 }
 
-async function scrapeMarket(source) {
+async function scrapeMarket(source, deIndex) {
   const html = await fetchHtml(source.officialUrl);
   const $ = cheerio.load(html);
 
   const coords = extractCoords(html);
   if (!coords) throw new Error("Could not find coordinates on page");
+
+  // The English page links to its own German counterpart via hreflang —
+  // the most reliable way to pair the two, since the URL slugs otherwise
+  // differ per language (e.g. "christmas-market-x" vs "weihnachtsmarkt-x").
+  // Looked up against deIndex (built from crawling the German listings)
+  // rather than fetched directly, to avoid a second HTTP round-trip per
+  // market. No entry means no German name/summary — left null, not
+  // fabricated from a translation.
+  const hreflangDe = $('link[hreflang="de"]').attr("href");
+  const dePath = hreflangDe ? new URL(hreflangDe, BASE_URL).pathname : null;
+  const deEntry = dePath ? deIndex.get(dePath) : null;
+  const nameDe = deEntry?.name || null;
+  const summaryDe = deEntry ? stripLeadingDatePhrase(deEntry.teaser) || deEntry.teaser || null : null;
 
   // og:image is a real, per-market hero photo (filename matches the market
   // name) rather than the generic thumbnails scattered elsewhere on the
@@ -430,6 +444,7 @@ async function scrapeMarket(source) {
   return {
     id: source.id,
     name: source.name,
+    nameDe,
     district: source.district,
     address,
     lat: coords.lat,
@@ -438,6 +453,7 @@ async function scrapeMarket(source) {
     hours: hours || { monThu: null, friSat: null, sun: null },
     tags: source.tags || [],
     summary: source.summary || null,
+    summaryDe,
     images,
     source: {
       officialUrl: source.officialUrl,
@@ -528,7 +544,7 @@ function mergeSources(curated, discovered) {
       id,
       name: card.name,
       district: card.district,
-      summary: stripDatePrefix(card.teaser) || card.teaser || null,
+      summary: stripLeadingDatePhrase(card.teaser) || card.teaser || null,
       officialUrl: `${BASE_URL}${card.href}`,
     });
   }
@@ -540,14 +556,19 @@ async function main() {
   const overrides = loadOverrides();
 
   console.log("Discovering markets from visitBerlin's district listings...");
-  const discovered = await discoverMarketCards();
-  console.log(`Discovered ${discovered.length} candidate market pages.`);
+  const discovered = await discoverMarketCards("en");
+  console.log(`Discovered ${discovered.length} candidate market pages (en).`);
   const sources = mergeSources(CURATED_SOURCES, discovered);
+
+  console.log("Discovering German listings for bilingual name/summary...");
+  const discoveredDe = await discoverMarketCards("de");
+  console.log(`Discovered ${discoveredDe.length} candidate market pages (de).`);
+  const deIndex = new Map(discoveredDe.map((card) => [card.href, card]));
 
   const markets = [];
   for (const source of sources) {
     try {
-      const market = await scrapeMarket(source);
+      const market = await scrapeMarket(source, deIndex);
       markets.push(market);
       console.log(`[ok] ${market.id} — status=${market.status} confidence=${market.confidence.source}`);
     } catch (err) {

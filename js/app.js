@@ -121,6 +121,18 @@
     return typeof val === "function" ? val(...args) : val;
   }
 
+  // Market name/summary are scraped bilingually (nameDe/summaryDe), unlike
+  // UI chrome strings which come from STRINGS above — these pick the
+  // current-language variant when one was actually scraped, falling back
+  // to English rather than showing nothing when a German version wasn't
+  // found for a given market.
+  function marketName(market) {
+    return (lang === "de" && market.nameDe) || market.name;
+  }
+  function marketSummary(market) {
+    return (lang === "de" && market.summaryDe) || market.summary;
+  }
+
   function applyStaticStrings() {
     document.documentElement.lang = lang;
     document.querySelectorAll("[data-i18n]").forEach((el) => {
@@ -335,7 +347,7 @@
   function sortMarkets(list) {
     const sorted = list.slice();
     if (sortBy === "name") {
-      sorted.sort((a, b) => a.name.localeCompare(b.name));
+      sorted.sort((a, b) => marketName(a).localeCompare(marketName(b)));
     } else if (sortBy === "ending") {
       sorted.sort((a, b) => compareDates(a.dates.end, b.dates.end));
     } else if (sortBy === "nearest" && userLocation) {
@@ -496,13 +508,13 @@
             <div class="market-card__content">
               <div class="market-card__top">
                 <div>
-                  <p class="market-card__name">${market.name}</p>
+                  <p class="market-card__name">${marketName(market)}</p>
                   <p class="market-card__district">${PINE_ICON}${market.district}</p>
                 </div>
                 <span class="fav-btn" data-fav-id="${market.id}" aria-pressed="${isFav}">${isFav ? "♥" : "♡"}</span>
               </div>
               <p class="market-card__status ${status.open ? "market-card__status--open" : "market-card__status--closed"}">${status.label}</p>
-              <p class="market-card__summary">${market.summary || ""}</p>
+              <p class="market-card__summary">${marketSummary(market) || ""}</p>
             </div>
           </div>
         </button>`;
@@ -539,7 +551,7 @@
     const favs = getFavorites();
     const isFav = favs.has(market.id);
 
-    document.getElementById("sheet-title").textContent = market.name;
+    document.getElementById("sheet-title").textContent = marketName(market);
     document.getElementById("sheet-meta").innerHTML =
       `${PINE_ICON}${market.district} · <span class="sheet__status ${status.open ? "sheet__status--open" : "sheet__status--closed"}">${status.label}</span>`;
 
@@ -580,7 +592,7 @@
     if (updateHistory) history.pushState(null, "", `#${market.id}`);
 
     const body = document.getElementById("sheet-body");
-    const summaryHtml = `<p class="sheet__summary">${market.summary || ""}</p>`;
+    const summaryHtml = `<p class="sheet__summary">${marketSummary(market) || ""}</p>`;
     body.innerHTML = summaryHtml;
 
     overlay.hidden = false;
@@ -657,9 +669,9 @@
     const end = isoToYyyymmdd(isoPlusOneDay(market.dates.end));
     const params = new URLSearchParams({
       action: "TEMPLATE",
-      text: market.name,
+      text: marketName(market),
       dates: `${start}/${end}`,
-      details: market.summary || "",
+      details: marketSummary(market) || "",
       location: market.address || `${market.district}, Berlin`,
     });
     return `https://calendar.google.com/calendar/render?${params.toString()}`;
@@ -668,7 +680,7 @@
   function shareMarket(market, btn) {
     const url = `${location.origin}${location.pathname}#${market.id}`;
     if (navigator.share) {
-      navigator.share({ title: market.name, text: market.summary || "", url }).catch(() => {});
+      navigator.share({ title: marketName(market), text: marketSummary(market) || "", url }).catch(() => {});
       return;
     }
     navigator.clipboard.writeText(url).then(() => {
