@@ -745,10 +745,17 @@
     document.querySelectorAll(".view-switch__btn").forEach((btn) => {
       btn.setAttribute("aria-pressed", String(btn.dataset.view === view));
     });
-    if (view === "map") {
+    // Desktop's split layout shows both panes at once via CSS regardless
+    // of `view` (the tabs that drive `view` are hidden there), so both
+    // must be kept rendered — not just whichever one is "active", or the
+    // other pane silently goes stale (or on first load, never renders at
+    // all).
+    const isDesktop = matchMedia("(min-width: 720px)").matches;
+    if (view === "map" || isDesktop) {
       renderMarkers();
       setTimeout(() => map && map.invalidateSize(), 0);
-    } else {
+    }
+    if (view === "list" || isDesktop) {
       renderList();
     }
   }
@@ -775,7 +782,6 @@
 
     initMap();
     populateDistrictFilter();
-    document.getElementById("sort-by").classList.toggle("is-hidden", currentView !== "list");
     setView(currentView);
 
     document.querySelectorAll("#filter-entry .filter-pill").forEach((btn) => {
