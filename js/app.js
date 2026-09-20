@@ -1,6 +1,14 @@
 (() => {
   "use strict";
 
+  // Registered immediately, independent of the rest of app init — this
+  // used to sit at the tail end of init(), gated behind an await'd network
+  // fetch and map setup, which delayed it enough that automated PWA
+  // checkers (PWABuilder's crawler) timed out before ever seeing it.
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("sw.js").catch(() => {});
+  }
+
   const FAVORITES_KEY = "cmapp_favorites";
   const THEME_KEY = "cmapp_theme";
   const LANG_KEY = "cmapp_lang";
@@ -822,10 +830,6 @@
       refreshCurrentView();
       if (currentSheetMarket) openSheet(currentSheetMarket, { updateHistory: false });
     });
-
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("sw.js").catch(() => {});
-    }
 
     window.addEventListener("popstate", () => {
       const market = markets.find((m) => m.id === location.hash.slice(1));

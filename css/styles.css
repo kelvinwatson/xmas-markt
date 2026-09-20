@@ -342,7 +342,7 @@ main {
      which tab the (hidden) JS state thinks is "active". */
   main { flex-direction: row; }
   .view[hidden] { display: block; }
-  #map-view { flex: 0 0 42%; border-right: 1px solid var(--border); }
+  #map-view { flex: 0 0 50%; border-right: 1px solid var(--border); }
 
   #list-view {
     flex: 1;

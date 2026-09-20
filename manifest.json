@@ -2,9 +2,12 @@
   "name": "XmasMarkt",
   "short_name": "XmasMarkt",
   "description": "Find Christmas markets in Berlin — locations, vendors, hours, and saved favourites.",
+  "id": "/",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
+  "orientation": "any",
+  "categories": ["travel", "lifestyle"],
   "background_color": "#FBF8F1",
   "theme_color": "#C9A227",
   "icons": [
