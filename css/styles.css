@@ -302,6 +302,60 @@ button {
 }
 
 /* ============================================================
+   Share-target banner (shown when launched via the OS share sheet)
+   ============================================================ */
+.share-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 10px 16px;
+  padding: 10px 12px;
+  background: var(--surface);
+  border: 1px solid var(--gold-500);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--gold-glow);
+}
+
+.share-banner[hidden] { display: none; }
+
+.share-banner__text {
+  flex: 1;
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--ink-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.share-banner__actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.share-banner__send {
+  background: var(--gold-500);
+  color: var(--bg);
+  border: none;
+  border-radius: 9999px;
+  padding: 6px 14px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.share-banner__dismiss {
+  background: none;
+  border: none;
+  color: var(--mist);
+  font-size: 1rem;
+  line-height: 1;
+  padding: 4px;
+}
+
+/* ============================================================
    Main views
    ============================================================ */
 main {

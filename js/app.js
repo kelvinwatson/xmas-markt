@@ -30,6 +30,10 @@
       sendFeedback: "Send feedback",
       feedbackSubject: "XmasMarkt feedback",
       feedbackBody: "What's on your mind? (Missing market, wrong info, general feedback — anything goes.)",
+      shareBannerPrompt: "Report this as a missing market?",
+      shareBannerSend: "Send as feedback",
+      missingMarketSubject: "XmasMarkt — missing market",
+      missingMarketBody: (shared) => `I think this market is missing from the app:\n\n${shared}`,
       addToCalendar: "Add to calendar",
       shareMarket: "Share market",
       saveMarket: "Save market",
@@ -76,6 +80,10 @@
       sendFeedback: "Feedback senden",
       feedbackSubject: "XmasMarkt Feedback",
       feedbackBody: "Was möchtest du uns mitteilen? (Fehlender Markt, falsche Angaben, allgemeines Feedback — alles willkommen.)",
+      shareBannerPrompt: "Als fehlenden Markt melden?",
+      shareBannerSend: "Als Feedback senden",
+      missingMarketSubject: "XmasMarkt — fehlender Markt",
+      missingMarketBody: (shared) => `Ich glaube, dieser Markt fehlt in der App:\n\n${shared}`,
       addToCalendar: "Zum Kalender hinzufügen",
       shareMarket: "Markt teilen",
       saveMarket: "Markt merken",
@@ -689,6 +697,24 @@
     });
   }
 
+  function initShareBanner(sharedText) {
+    const banner = document.getElementById("share-banner");
+    document.getElementById("share-banner-text").textContent = `${t("shareBannerPrompt")} ${sharedText}`;
+    banner.hidden = false;
+
+    document.getElementById("share-banner-send").onclick = () => {
+      const params = new URLSearchParams({
+        subject: t("missingMarketSubject"),
+        body: t("missingMarketBody", sharedText),
+      });
+      window.location.href = `mailto:xmasmarktde@gmail.com?${params.toString()}`;
+      banner.hidden = true;
+    };
+    document.getElementById("share-banner-dismiss").onclick = () => {
+      banner.hidden = true;
+    };
+  }
+
   function closeSheet() {
     currentSheetMarket = null;
     document.getElementById("sheet-overlay").hidden = true;
@@ -791,6 +817,16 @@
       document.getElementById("saved-toggle").setAttribute("aria-pressed", "true");
     }
     if (launchParams.get("view") === "list") currentView = "list";
+
+    // Web Share Target: the OS share sheet can open the app with a shared
+    // link/text (e.g. a post about a market that isn't in the app yet).
+    // Show a confirm-before-send prompt rather than firing off the
+    // feedback email automatically — the user should see exactly what's
+    // about to be sent.
+    const sharedParts = [launchParams.get("title"), launchParams.get("text"), launchParams.get("url")].filter(
+      Boolean
+    );
+    if (sharedParts.length) initShareBanner(sharedParts.join(" — "));
 
     initMap();
     populateDistrictFilter();
