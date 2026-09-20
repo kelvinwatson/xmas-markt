@@ -19,6 +19,9 @@
       saved: "Saved",
       toggleTheme: "Toggle dark mode",
       switchLang: "Switch language",
+      sendFeedback: "Send feedback",
+      feedbackSubject: "XmasMarkt feedback",
+      feedbackBody: "What's on your mind? (Missing market, wrong info, general feedback — anything goes.)",
       addToCalendar: "Add to calendar",
       shareMarket: "Share market",
       saveMarket: "Save market",
@@ -62,6 +65,9 @@
       saved: "Gemerkt",
       toggleTheme: "Dunkelmodus umschalten",
       switchLang: "Sprache wechseln",
+      sendFeedback: "Feedback senden",
+      feedbackSubject: "XmasMarkt Feedback",
+      feedbackBody: "Was möchtest du uns mitteilen? (Fehlender Markt, falsche Angaben, allgemeines Feedback — alles willkommen.)",
       addToCalendar: "Zum Kalender hinzufügen",
       shareMarket: "Markt teilen",
       saveMarket: "Markt merken",
@@ -117,6 +123,12 @@
     });
     const langBtn = document.getElementById("lang-toggle");
     if (langBtn) langBtn.textContent = lang === "de" ? "EN" : "DE";
+
+    const feedbackBtn = document.getElementById("feedback-toggle");
+    if (feedbackBtn) {
+      const params = new URLSearchParams({ subject: t("feedbackSubject"), body: t("feedbackBody") });
+      feedbackBtn.href = `mailto:xmasmarktde@gmail.com?${params.toString()}`;
+    }
   }
   const PINE_ICON = `<svg width="13" height="13" viewBox="0 0 16 16"><path d="M8 15 V2 M8 4.5 L4.3 7 M8 4.5 L11.7 7 M8 8 L4.3 10.5 M8 8 L11.7 10.5 M8 2 L6.2 0.5 M8 2 L9.8 0.5" stroke="var(--pine)" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>`;
   const PIN_ICON = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--gold-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.1 7-12a7 7 0 10-14 0c0 5.9 7 12 7 12z"/><circle cx="12" cy="9" r="2.3"/></svg>`;

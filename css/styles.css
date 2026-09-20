@@ -158,7 +158,8 @@ button {
 }
 
 .theme-toggle,
-.lang-toggle {
+.lang-toggle,
+.feedback-toggle {
   background: transparent;
   border: 1px solid var(--border-strong);
   border-radius: 50%;
@@ -170,6 +171,8 @@ button {
   color: var(--gold-muted);
   flex-shrink: 0;
 }
+
+.feedback-toggle svg { width: 15px; height: 15px; }
 
 .lang-toggle {
   font-family: var(--font-ui);
