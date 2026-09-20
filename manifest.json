@@ -22,6 +22,36 @@
     { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
     { "src": "icons/icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
   ],
+  "screenshots": [
+    {
+      "src": "screenshots/mobile-map.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Map view, dark theme"
+    },
+    {
+      "src": "screenshots/mobile-map-light.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Map view, light theme"
+    },
+    {
+      "src": "screenshots/desktop-split.png",
+      "sizes": "1280x800",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Map and list side by side, dark theme"
+    },
+    {
+      "src": "screenshots/desktop-split-light.png",
+      "sizes": "1280x800",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Map and list side by side, light theme"
+    }
+  ],
   "shortcuts": [
     {
       "name": "Map",
