@@ -134,10 +134,21 @@
   const PIN_ICON = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--gold-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.1 7-12a7 7 0 10-14 0c0 5.9 7 12 7 12z"/><circle cx="12" cy="9" r="2.3"/></svg>`;
   const PLACEHOLDER_ICON = `<img src="icons/icon-192.png" alt="">`;
 
+  // Scraped market photos are hotlinked from visitBerlin's own CDN, so a
+  // link can go stale or 404 — fall back to the placeholder icon rather
+  // than showing a broken-image glyph. Exposed on window since inline
+  // onerror="" attributes run outside this IIFE's closure.
+  window.xmImgFallback = function (img, blockClass) {
+    const placeholder = document.createElement("div");
+    placeholder.className = `${blockClass}__placeholder`;
+    placeholder.innerHTML = PLACEHOLDER_ICON;
+    img.replaceWith(placeholder);
+  };
+
   function mediaHtml(market, blockClass) {
     const src = market.images && market.images[0];
     if (src) {
-      return `<img class="${blockClass}__img" src="${src}" alt="">`;
+      return `<img class="${blockClass}__img" src="${src}" alt="" onerror="xmImgFallback(this, '${blockClass}')">`;
     }
     return `<div class="${blockClass}__placeholder">${PLACEHOLDER_ICON}</div>`;
   }
@@ -148,7 +159,10 @@
       return `<div class="sheet__banner__placeholder">${PLACEHOLDER_ICON}</div>`;
     }
     const slides = images
-      .map((src) => `<div class="sheet__banner__slide"><img class="sheet__banner__img" src="${src}" alt=""></div>`)
+      .map(
+        (src) =>
+          `<div class="sheet__banner__slide"><img class="sheet__banner__img" src="${src}" alt="" onerror="xmImgFallback(this, 'sheet__banner')"></div>`
+      )
       .join("");
     const dots =
       images.length > 1
@@ -269,14 +283,17 @@
   // Data loading
   // ---------------------------------------------------------
   async function loadMarkets() {
-    const res = await fetch("data/markets-index.json");
+    // no-store: this data changes with each scrape, and the service
+    // worker's own network-first handling for /data/ shouldn't be
+    // defeated by the browser's HTTP cache serving a stale response here.
+    const res = await fetch("data/markets-index.json", { cache: "no-store" });
     const data = await res.json();
     markets = data.markets;
   }
 
   async function loadVendors(market) {
     if (vendorCache.has(market.id)) return vendorCache.get(market.id);
-    const res = await fetch(`data/${market.vendorFile}`);
+    const res = await fetch(`data/${market.vendorFile}`, { cache: "no-store" });
     const data = await res.json();
     vendorCache.set(market.id, data);
     return data;
@@ -738,10 +755,20 @@
   async function init() {
     applyStaticStrings();
     await loadMarkets();
+
+    // Supports the manifest's home-screen shortcuts (Map / List / Saved
+    // markets) — ?view=list and &saved=true launch straight into that view.
+    const launchParams = new URLSearchParams(location.search);
+    if (launchParams.get("saved") === "true") {
+      savedOnly = true;
+      document.getElementById("saved-toggle").setAttribute("aria-pressed", "true");
+    }
+    if (launchParams.get("view") === "list") currentView = "list";
+
     initMap();
-    renderList();
     populateDistrictFilter();
     document.getElementById("sort-by").classList.toggle("is-hidden", currentView !== "list");
+    setView(currentView);
 
     document.querySelectorAll("#filter-entry .filter-pill").forEach((btn) => {
       btn.addEventListener("click", () => {

@@ -395,6 +395,13 @@ async function scrapeMarket(source) {
   const coords = extractCoords(html);
   if (!coords) throw new Error("Could not find coordinates on page");
 
+  // og:image is a real, per-market hero photo (filename matches the market
+  // name) rather than the generic thumbnails scattered elsewhere on the
+  // page. Skip anything that isn't under visitBerlin's own image path —
+  // a missing og:image sometimes falls back to a generic site logo/asset.
+  const ogImage = $('meta[property="og:image"]').attr("content");
+  const images = ogImage && /\/(private|files)\/image\//.test(ogImage) ? [ogImage] : [];
+
   const street = $(".address__street").first().text().trim();
   const zip = $(".address__zip").first().text().replace(/ /g, "").trim();
   const city = $(".address__city").first().text().trim();
@@ -431,7 +438,7 @@ async function scrapeMarket(source) {
     hours: hours || { monThu: null, friSat: null, sun: null },
     tags: source.tags || [],
     summary: source.summary || null,
-    images: [],
+    images,
     source: {
       officialUrl: source.officialUrl,
       organizerUrl: source.organizerUrl || null,

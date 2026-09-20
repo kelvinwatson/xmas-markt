@@ -2,7 +2,7 @@
 // Upgrade path: swap this for Workbox (https://developer.chrome.com/docs/workbox/)
 // once the app grows — it gives you more caching strategies out of the box.
 
-const STATIC_CACHE = "cmapp-static-v18";
+const STATIC_CACHE = "cmapp-static-v20";
 const DATA_CACHE = "cmapp-data-v1";
 
 const STATIC_ASSETS = [
@@ -13,6 +13,7 @@ const STATIC_ASSETS = [
   "./manifest.json",
   "./icons/icon-192.png",
   "./icons/icon-512.png",
+  "./icons/icon-512-maskable.png",
 ];
 
 self.addEventListener("install", (event) => {
@@ -54,8 +55,11 @@ self.addEventListener("fetch", (event) => {
   if (isData) {
     // Network-first: markets/vendors change with each scrape, so prefer
     // fresh data when online, but fall back to cache when offline.
+    // { cache: "no-store" } bypasses the browser's own HTTP cache layer,
+    // which sits beneath the Cache API and can otherwise silently serve a
+    // stale response even through this "network-first" fetch.
     event.respondWith(
-      fetch(request)
+      fetch(request, { cache: "no-store" })
         .then((response) => {
           const clone = response.clone();
           caches.open(DATA_CACHE).then((cache) => cache.put(request, clone));
