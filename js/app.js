@@ -744,7 +744,8 @@
 
     document.getElementById("share-banner-send").onclick = () => {
       track("shared-into-app-sent");
-      window.location.href = mailtoUrl(t("missingMarketSubject"), t("missingMarketBody", sharedText));
+      // New tab, so a web mail handler (e.g. Gmail) doesn't replace the app.
+      window.open(mailtoUrl(t("missingMarketSubject"), t("missingMarketBody", sharedText)), "_blank", "noopener");
       banner.hidden = true;
     };
     document.getElementById("share-banner-dismiss").onclick = () => {
