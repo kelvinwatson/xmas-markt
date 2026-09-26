@@ -1037,3 +1037,36 @@ body.doc-page {
    rather than as a real schedule. */
 .market-card__status--tbd,
 .sheet__status--tbd { color: var(--mist); font-weight: 500; }
+
+/* ---- Feedback box (address + copy, for devices without a mail app) ---- */
+.feedback-pop {
+  position: fixed;
+  top: 64px;
+  right: 16px;
+  z-index: 1200;
+  width: min(300px, calc(100vw - 32px));
+  padding: 14px 16px;
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+  font-size: 0.85rem;
+}
+.feedback-pop[hidden] { display: none; }
+.feedback-pop__head { display: flex; justify-content: space-between; align-items: center; }
+.feedback-pop__close { background: none; border: 0; color: inherit; font-size: 1rem; cursor: pointer; }
+.feedback-pop__addr { margin: 8px 0 12px; user-select: all; word-break: break-all; }
+.feedback-pop__actions { display: flex; gap: 8px; }
+.feedback-pop__btn {
+  flex: 1;
+  text-align: center;
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--gold-muted);
+  background: none;
+  color: var(--gold-muted);
+  font: inherit;
+  cursor: pointer;
+  text-decoration: none;
+}

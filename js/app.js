@@ -53,6 +53,10 @@
       switchLang: "Switch language",
       sendFeedback: "Send feedback",
       shareApp: "Share XmasMarkt",
+      feedbackTitle: "Send feedback",
+      feedbackOpen: "Open email app",
+      feedbackCopy: "Copy address",
+      feedbackCopied: "Copied",
       feedbackSubject: "XmasMarkt feedback",
       feedbackBody: "What's on your mind? (Missing market, wrong info, general feedback — anything goes.)",
       dataCredit: "Data & photos:",
@@ -108,6 +112,10 @@
       switchLang: "Sprache wechseln",
       sendFeedback: "Feedback senden",
       shareApp: "XmasMarkt teilen",
+      feedbackTitle: "Feedback senden",
+      feedbackOpen: "E-Mail-App öffnen",
+      feedbackCopy: "Adresse kopieren",
+      feedbackCopied: "Kopiert",
       feedbackSubject: "XmasMarkt Feedback",
       feedbackBody: "Was möchtest du uns mitteilen? (Fehlender Markt, falsche Angaben, allgemeines Feedback — alles willkommen.)",
       dataCredit: "Daten & Fotos:",
@@ -170,8 +178,9 @@
   // found for a given market.
   // mailto: needs %20 for spaces (RFC 6068). URLSearchParams writes "+",
   // which mail apps show literally, so encode by hand.
+  const FEEDBACK_EMAIL = "xmasmarktde@gmail.com";
   function mailtoUrl(subject, body) {
-    return `mailto:xmasmarktde@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    return `mailto:${FEEDBACK_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   }
 
   function marketName(market) {
@@ -194,10 +203,10 @@
 
     renderDataChecked();
 
-    const feedbackBtn = document.getElementById("feedback-toggle");
-    if (feedbackBtn) {
-      feedbackBtn.href = mailtoUrl(t("feedbackSubject"), t("feedbackBody"));
-    }
+    const feedbackOpen = document.getElementById("feedback-open");
+    if (feedbackOpen) feedbackOpen.href = mailtoUrl(t("feedbackSubject"), t("feedbackBody"));
+    const feedbackCopy = document.getElementById("feedback-copy");
+    if (feedbackCopy) feedbackCopy.textContent = t("feedbackCopy");
   }
   const PINE_ICON = `<svg width="13" height="13" viewBox="0 0 16 16"><path d="M8 15 V2 M8 4.5 L4.3 7 M8 4.5 L11.7 7 M8 8 L4.3 10.5 M8 8 L11.7 10.5 M8 2 L6.2 0.5 M8 2 L9.8 0.5" stroke="var(--pine)" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>`;
   const PIN_ICON = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--gold-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.1 7-12a7 7 0 10-14 0c0 5.9 7 12 7 12z"/><circle cx="12" cy="9" r="2.3"/></svg>`;
@@ -951,7 +960,21 @@
       refreshCurrentView();
     });
 
-    document.getElementById("feedback-toggle").addEventListener("click", () => track("feedback-tapped"));
+    // A bare mailto: link opens an empty tab when the device has no mail
+    // app, so the button opens a small box with the address instead.
+    const feedbackPop = document.getElementById("feedback-pop");
+    document.getElementById("feedback-toggle").addEventListener("click", () => {
+      track("feedback-tapped");
+      feedbackPop.hidden = !feedbackPop.hidden;
+    });
+    document.getElementById("feedback-close").addEventListener("click", () => (feedbackPop.hidden = true));
+    document.getElementById("feedback-copy").addEventListener("click", (e) => {
+      const btn = e.currentTarget;
+      navigator.clipboard.writeText(FEEDBACK_EMAIL).then(() => {
+        btn.textContent = t("feedbackCopied");
+        setTimeout(() => (btn.textContent = t("feedbackCopy")), 1500);
+      });
+    });
 
     // Share the site itself (as opposed to one market, which the detail
     // sheet handles). Native share sheet where available, else copy the link.

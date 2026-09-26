@@ -51,9 +51,9 @@
         <button class="share-app-toggle" id="share-app-toggle" aria-label="Share XmasMarkt" data-i18n-aria="shareApp">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M12 4l-4 4M12 4l4 4"></path><path d="M5 12v7a1 1 0 001 1h12a1 1 0 001-1v-7"></path></svg>
         </button>
-        <a class="feedback-toggle" id="feedback-toggle" target="_blank" rel="noopener" aria-label="Send feedback" data-i18n-aria="sendFeedback">
+        <button class="feedback-toggle" id="feedback-toggle" aria-label="Send feedback" data-i18n-aria="sendFeedback">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-        </a>
+        </button>
         <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" data-i18n-aria="toggleTheme">
           <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"></path></svg>
           <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"></path></svg>
@@ -87,6 +87,18 @@
     </div>
   </div>
 </header>
+
+<div class="feedback-pop" id="feedback-pop" hidden>
+  <div class="feedback-pop__head">
+    <strong data-i18n="feedbackTitle">Send feedback</strong>
+    <button class="feedback-pop__close" id="feedback-close" aria-label="Close" data-i18n-aria="close">✕</button>
+  </div>
+  <p class="feedback-pop__addr">xmasmarktde@gmail.com</p>
+  <div class="feedback-pop__actions">
+    <button id="feedback-copy" class="feedback-pop__btn">Copy address</button>
+    <a id="feedback-open" class="feedback-pop__btn" target="_blank" rel="noopener" data-i18n="feedbackOpen">Open email app</a>
+  </div>
+</div>
 
 <div class="share-banner" id="share-banner" hidden>
   <p class="share-banner__text" id="share-banner-text"></p>
