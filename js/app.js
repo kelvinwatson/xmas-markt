@@ -83,6 +83,7 @@
       sortName: "Name (A–Z)",
       sortNearest: "Nearest to me",
       locateMe: "Show my location",
+      locateLabel: "Near me",
       locateDenied: "Couldn't get your location — check your browser's location permission.",
       distanceAway: (km) => `${km} km away`,
       loadingVendors: "Loading vendors…",
@@ -142,6 +143,7 @@
       sortName: "Name (A–Z)",
       sortNearest: "In meiner Nähe",
       locateMe: "Meinen Standort anzeigen",
+      locateLabel: "In meiner Nähe",
       locateDenied: "Standort konnte nicht ermittelt werden — bitte Standortberechtigung im Browser prüfen.",
       distanceAway: (km) => `${km} km entfernt`,
       loadingVendors: "Stände werden geladen…",
@@ -510,11 +512,34 @@
     renderMarkers();
     map.addControl(new LocateControl());
 
+    let autoLocating = false;
     map.on("locationfound", (e) => {
       userLocation = { lat: e.latlng.lat, lng: e.latlng.lng };
       renderUserMarker(e.latlng);
+      // Automatic locate only re-centres for someone actually in Berlin, so a
+      // visitor abroad still lands on the markets rather than an empty map.
+      if (autoLocating) {
+        autoLocating = false;
+        if (haversineKm(BERLIN_CENTER[0], BERLIN_CENTER[1], e.latlng.lat, e.latlng.lng) < 40) {
+          map.setView(e.latlng, 14);
+        }
+      }
       if (sortBy === "nearest") refreshCurrentView();
     });
+
+    // Only if location was already allowed on an earlier visit: no new
+    // permission prompt on load (a cold prompt gets blocked far too often).
+    if (navigator.permissions && navigator.permissions.query) {
+      navigator.permissions
+        .query({ name: "geolocation" })
+        .then((status) => {
+          if (status.state === "granted") {
+            autoLocating = true;
+            map.locate({ setView: false, enableHighAccuracy: true });
+          }
+        })
+        .catch(() => {});
+    }
 
     map.on("locationerror", () => {
       const btn = document.querySelector(".map-locate-btn");
@@ -540,7 +565,7 @@
     onAdd() {
       const btn = L.DomUtil.create("button", "leaflet-bar map-locate-btn");
       btn.type = "button";
-      btn.innerHTML = LOCATE_ICON;
+      btn.innerHTML = `${LOCATE_ICON}<span data-i18n="locateLabel">${t("locateLabel")}</span>`;
       btn.setAttribute("aria-label", t("locateMe"));
       btn.title = t("locateMe");
       L.DomEvent.disableClickPropagation(btn);
@@ -553,7 +578,7 @@
     return L.divIcon({
       className: "",
       html: `<div class="user-location-marker"><div class="user-location-marker__dot"></div></div>`,
-      iconSize: [18, 18],
+      iconSize: [28, 28],
     });
   }
 
