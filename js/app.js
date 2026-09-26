@@ -52,6 +52,7 @@
       toggleTheme: "Toggle dark mode",
       switchLang: "Switch language",
       sendFeedback: "Send feedback",
+      shareApp: "Share XmasMarkt",
       feedbackSubject: "XmasMarkt feedback",
       feedbackBody: "What's on your mind? (Missing market, wrong info, general feedback — anything goes.)",
       privacy: "Privacy",
@@ -87,6 +88,7 @@
       openNow: (end) => `Open now · closes ${end}`,
       closedOpens: (start) => `Closed · opens ${start}`,
       datesUnknown: "Check dates on the official site",
+      datesTbd: "New dates not yet announced",
       hoursUnknown: "Hours not listed — check ahead",
       groupFood: "Food & drink",
       groupCrafts: "Gifts & crafts",
@@ -104,6 +106,7 @@
       toggleTheme: "Dunkelmodus umschalten",
       switchLang: "Sprache wechseln",
       sendFeedback: "Feedback senden",
+      shareApp: "XmasMarkt teilen",
       feedbackSubject: "XmasMarkt Feedback",
       feedbackBody: "Was möchtest du uns mitteilen? (Fehlender Markt, falsche Angaben, allgemeines Feedback — alles willkommen.)",
       privacy: "Datenschutz",
@@ -139,6 +142,7 @@
       openNow: (end) => `Jetzt geöffnet · schließt ${end}`,
       closedOpens: (start) => `Geschlossen · öffnet ${start}`,
       datesUnknown: "Termine auf der offiziellen Seite prüfen",
+      datesTbd: "Neue Termine noch nicht bekannt",
       hoursUnknown: "Öffnungszeiten nicht gelistet — bitte vorher prüfen",
       groupFood: "Essen & Trinken",
       groupCrafts: "Geschenke & Kunsthandwerk",
@@ -309,8 +313,13 @@
   }
 
   function marketStatus(market) {
+    // "tentative" means the source page still shows last season's dates, so
+    // showing them (year-less) would mislead — say new dates aren't out yet.
+    if (market.status === "tentative") {
+      return { open: false, tbd: true, label: t("datesTbd") };
+    }
     if (!market.dates.start || !market.dates.end) {
-      return { open: false, label: t("datesUnknown") };
+      return { open: false, tbd: true, label: t("datesUnknown") };
     }
     if (!isWithinDateRange(market)) {
       return { open: false, label: t("runs", formatDateShort(market.dates.start), formatDateShort(market.dates.end)) };
@@ -406,12 +415,22 @@
     return a.localeCompare(b);
   }
 
+  // Current/upcoming dates first, then markets that already ended, then ones
+  // whose new dates aren't announced, then ones with no parseable dates —
+  // so the top of the list is what a visitor can actually go to.
+  function dateRank(market) {
+    if (market.status === "unavailable" || !market.dates.start || !market.dates.end) return 4;
+    if (market.status === "tentative") return 3;
+    const today = new Date().toISOString().slice(0, 10);
+    return market.dates.end >= today ? 1 : 2;
+  }
+
   function sortMarkets(list) {
     const sorted = list.slice();
     if (sortBy === "name") {
       sorted.sort((a, b) => marketName(a).localeCompare(marketName(b)));
     } else if (sortBy === "ending") {
-      sorted.sort((a, b) => compareDates(a.dates.end, b.dates.end));
+      sorted.sort((a, b) => dateRank(a) - dateRank(b) || compareDates(a.dates.end, b.dates.end));
     } else if (sortBy === "nearest" && userLocation) {
       sorted.sort((a, b) => distanceToMarket(a) - distanceToMarket(b));
     } else {
@@ -420,7 +439,7 @@
         const aOpen = marketStatus(a).open;
         const bOpen = marketStatus(b).open;
         if (aOpen !== bOpen) return aOpen ? -1 : 1;
-        return compareDates(a.dates.start, b.dates.start);
+        return dateRank(a) - dateRank(b) || compareDates(a.dates.start, b.dates.start);
       });
     }
     return sorted;
@@ -577,7 +596,7 @@
                 </div>
                 <span class="fav-btn" data-fav-id="${market.id}" aria-pressed="${isFav}">${isFav ? "♥" : "♡"}</span>
               </div>
-              <p class="market-card__status ${status.open ? "market-card__status--open" : "market-card__status--closed"}">${status.label}</p>
+              <p class="market-card__status ${status.open ? "market-card__status--open" : status.tbd ? "market-card__status--tbd" : "market-card__status--closed"}">${status.label}</p>
               <p class="market-card__summary">${marketSummary(market) || ""}</p>
             </div>
           </div>
@@ -620,7 +639,7 @@
 
     document.getElementById("sheet-title").textContent = marketName(market);
     document.getElementById("sheet-meta").innerHTML =
-      `${PINE_ICON}${market.district} · <span class="sheet__status ${status.open ? "sheet__status--open" : "sheet__status--closed"}">${status.label}</span>`;
+      `${PINE_ICON}${market.district} · <span class="sheet__status ${status.open ? "sheet__status--open" : status.tbd ? "sheet__status--tbd" : "sheet__status--closed"}">${status.label}</span>`;
 
     document.getElementById("sheet-banner").innerHTML = bannerCarouselHtml(market);
     initBannerCarousel();
@@ -647,7 +666,7 @@
 
     const calendarBtn = document.getElementById("sheet-calendar-btn");
     calendarBtn.onclick = () => track("calendar-added", market.id);
-    if (market.dates.start && market.dates.end) {
+    if (market.dates.start && market.dates.end && market.status !== "tentative") {
       calendarBtn.href = calendarUrl(market);
       calendarBtn.hidden = false;
     } else {
@@ -930,6 +949,22 @@
     });
 
     document.getElementById("feedback-toggle").addEventListener("click", () => track("feedback-tapped"));
+
+    // Share the site itself (as opposed to one market, which the detail
+    // sheet handles). Native share sheet where available, else copy the link.
+    const shareAppBtn = document.getElementById("share-app-toggle");
+    shareAppBtn.addEventListener("click", () => {
+      track("app-shared");
+      const data = { title: "XmasMarkt", text: t("tagline"), url: "https://xmas-markt.de/" };
+      if (navigator.share) {
+        navigator.share(data).catch(() => {});
+        return;
+      }
+      navigator.clipboard.writeText(data.url).then(() => {
+        shareAppBtn.classList.add("copied");
+        setTimeout(() => shareAppBtn.classList.remove("copied"), 1500);
+      });
+    });
 
     document.getElementById("sheet-close").addEventListener("click", closeSheet);
     document.getElementById("sheet-overlay").addEventListener("click", (e) => {

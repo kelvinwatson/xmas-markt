@@ -188,7 +188,8 @@ button {
 
 .theme-toggle,
 .lang-toggle,
-.feedback-toggle {
+.feedback-toggle,
+.share-app-toggle {
   background: transparent;
   border: 1px solid var(--border-strong);
   border-radius: 50%;
@@ -201,7 +202,8 @@ button {
   flex-shrink: 0;
 }
 
-.feedback-toggle svg { width: 15px; height: 15px; }
+.feedback-toggle svg, .share-app-toggle svg { width: 15px; height: 15px; }
+.share-app-toggle.copied { color: var(--evergreen); border-color: var(--evergreen); }
 
 .lang-toggle {
   font-family: var(--font-ui);
@@ -434,12 +436,12 @@ main {
   .app-header__controls .view-switch { display: none; }
   /* The Map/List tabs are hidden here, which left the Saved pill alone on
      its own row. Lift the row out of the flow and seat the pill in the
-     title row, just left of the icon buttons (3 x 30px + 2 x 8px gap),
+     title row, just left of the icon buttons (4 x 30px + 3 x 8px gap),
      at their height and vertical centre. */
   .app-header__controls {
     position: absolute;
     top: 21px;
-    right: calc(16px + 106px + 12px);
+    right: calc(16px + 144px + 12px);
   }
   .saved-toggle {
     height: 30px;
@@ -1028,3 +1030,8 @@ body.doc-page {
   .status-dot { animation: none !important; }
 }
 .app-header__updated[hidden] { display: none; }
+
+/* Dates not announced yet: muted, so it reads as "nothing to see yet"
+   rather than as a real schedule. */
+.market-card__status--tbd,
+.sheet__status--tbd { color: var(--mist); font-weight: 500; }
