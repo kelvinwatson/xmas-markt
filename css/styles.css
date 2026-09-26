@@ -907,3 +907,38 @@ main {
   outline: 2px solid var(--gold-500);
   outline-offset: 2px;
 }
+
+/* ---- Footer link at the end of the market list ---- */
+.list-footer {
+  grid-column: 1 / -1;
+  text-align: center;
+  margin: 8px 0 4px;
+  font-size: 0.7rem;
+}
+
+.list-footer a { color: var(--mist); }
+
+/* ---- Standalone document pages (privacy.html) ---- */
+.doc {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 24px 20px 48px;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+.doc h1, .doc h2 { font-family: var(--font-display); font-weight: 600; }
+.doc h1 { font-size: 1.8rem; margin: 0 0 4px; }
+.doc h2 { font-size: 1.15rem; margin: 24px 0 6px; }
+.doc p, .doc li { font-size: 0.9rem; color: var(--ink-muted); }
+.doc a { color: var(--gold-muted); }
+.doc__lang { display: flex; gap: 8px; margin: 12px 0 8px; }
+.doc__lang a { border: 1px solid var(--border-strong); border-radius: 9999px; padding: 4px 12px; font-size: 0.75rem; text-decoration: none; }
+
+/* Standalone pages opt out of the app shell's fixed-height, no-scroll body. */
+body.doc-page {
+  display: block;
+  overflow: visible;
+  height: auto;
+  min-height: 100%;
+}

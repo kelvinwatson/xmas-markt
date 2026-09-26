@@ -9,6 +9,30 @@
     navigator.serviceWorker.register("sw.js").catch(() => {});
   }
 
+  // Privacy-first analytics via GoatCounter: no cookies, no localStorage,
+  // no persistent ID, no IP stored — so no consent banner is needed. Leave
+  // the code empty and nothing loads at all. Events are aggregate counts
+  // only; never attach anything identifying to them.
+  const GOATCOUNTER_CODE = "syntheticsystems";
+  if (GOATCOUNTER_CODE) {
+    const gc = document.createElement("script");
+    gc.async = true;
+    gc.src = "https://gc.zgo.at/count.js";
+    gc.dataset.goatcounter = `https://${GOATCOUNTER_CODE}.goatcounter.com/count`;
+    document.head.appendChild(gc);
+  }
+
+  function track(event, detail) {
+    try {
+      const path = detail ? `${event}/${detail}` : event;
+      if (window.goatcounter && window.goatcounter.count) {
+        window.goatcounter.count({ path, title: event, event: true });
+      }
+    } catch {
+      // analytics must never break the app
+    }
+  }
+
   const FAVORITES_KEY = "cmapp_favorites";
   const THEME_KEY = "cmapp_theme";
   const LANG_KEY = "cmapp_lang";
@@ -30,6 +54,7 @@
       sendFeedback: "Send feedback",
       feedbackSubject: "XmasMarkt feedback",
       feedbackBody: "What's on your mind? (Missing market, wrong info, general feedback — anything goes.)",
+      privacy: "Privacy",
       shareBannerPrompt: "Report this as a missing market?",
       shareBannerSend: "Send as feedback",
       missingMarketSubject: "XmasMarkt — missing market",
@@ -80,6 +105,7 @@
       sendFeedback: "Feedback senden",
       feedbackSubject: "XmasMarkt Feedback",
       feedbackBody: "Was möchtest du uns mitteilen? (Fehlender Markt, falsche Angaben, allgemeines Feedback — alles willkommen.)",
+      privacy: "Datenschutz",
       shareBannerPrompt: "Als fehlenden Markt melden?",
       shareBannerSend: "Als Feedback senden",
       missingMarketSubject: "XmasMarkt — fehlender Markt",
@@ -241,6 +267,7 @@
     const favs = getFavorites();
     favs.has(id) ? favs.delete(id) : favs.add(id);
     saveFavorites(favs);
+    if (favs.has(id)) track("market-saved", id);
     return favs.has(id);
   }
 
@@ -395,6 +422,7 @@
     container.querySelectorAll(".filter-pill").forEach((btn) => {
       btn.addEventListener("click", () => {
         filterDistrict = btn.dataset.value;
+        track("filter-district", filterDistrict);
         container.querySelectorAll(".filter-pill").forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
         refreshCurrentView();
       });
@@ -403,6 +431,7 @@
 
   function locateUser() {
     if (!map) return;
+    track("locate-me");
     map.locate({ setView: true, maxZoom: 15, enableHighAccuracy: true });
   }
 
@@ -528,6 +557,7 @@
         </button>`;
       })
       .join("");
+    container.insertAdjacentHTML("beforeend", `<p class="list-footer"><a href="privacy.html">${t("privacy")}</a></p>`);
 
     container.querySelectorAll(".market-card").forEach((card) => {
       card.addEventListener("click", (e) => {
@@ -553,6 +583,8 @@
   let currentSheetMarket = null;
 
   async function openSheet(market, { updateHistory = true } = {}) {
+    // Re-renders for the same market (e.g. language toggle) aren't a new open.
+    if (currentSheetMarket !== market) track("market-opened", market.id);
     currentSheetMarket = market;
     const overlay = document.getElementById("sheet-overlay");
     const status = marketStatus(market);
@@ -587,6 +619,7 @@
     };
 
     const calendarBtn = document.getElementById("sheet-calendar-btn");
+    calendarBtn.onclick = () => track("calendar-added", market.id);
     if (market.dates.start && market.dates.end) {
       calendarBtn.href = calendarUrl(market);
       calendarBtn.hidden = false;
@@ -686,6 +719,7 @@
   }
 
   function shareMarket(market, btn) {
+    track("market-shared", market.id);
     const url = `${location.origin}${location.pathname}#${market.id}`;
     if (navigator.share) {
       navigator.share({ title: marketName(market), text: marketSummary(market) || "", url }).catch(() => {});
@@ -701,8 +735,10 @@
     const banner = document.getElementById("share-banner");
     document.getElementById("share-banner-text").textContent = `${t("shareBannerPrompt")} ${sharedText}`;
     banner.hidden = false;
+    track("shared-into-app");
 
     document.getElementById("share-banner-send").onclick = () => {
+      track("shared-into-app-sent");
       const params = new URLSearchParams({
         subject: t("missingMarketSubject"),
         body: t("missingMarketBody", sharedText),
@@ -835,6 +871,7 @@
     document.querySelectorAll("#filter-entry .filter-pill").forEach((btn) => {
       btn.addEventListener("click", () => {
         filterEntry = btn.dataset.value;
+        track("filter-entry", filterEntry);
         document
           .querySelectorAll("#filter-entry .filter-pill")
           .forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
@@ -844,20 +881,27 @@
 
     document.getElementById("sort-by").addEventListener("change", (e) => {
       sortBy = e.target.value;
+      track("sort", sortBy);
       if (sortBy === "nearest" && !userLocation) locateUser();
       refreshCurrentView();
     });
 
     document.querySelectorAll(".view-switch__btn").forEach((btn) => {
-      btn.addEventListener("click", () => setView(btn.dataset.view));
+      btn.addEventListener("click", () => {
+        track("view", btn.dataset.view);
+        setView(btn.dataset.view);
+      });
     });
 
     const savedToggle = document.getElementById("saved-toggle");
     savedToggle.addEventListener("click", () => {
       savedOnly = !savedOnly;
+      if (savedOnly) track("saved-view");
       savedToggle.setAttribute("aria-pressed", String(savedOnly));
       refreshCurrentView();
     });
+
+    document.getElementById("feedback-toggle").addEventListener("click", () => track("feedback-tapped"));
 
     document.getElementById("sheet-close").addEventListener("click", closeSheet);
     document.getElementById("sheet-overlay").addEventListener("click", (e) => {
@@ -870,6 +914,7 @@
       const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
       document.documentElement.dataset.theme = next;
       localStorage.setItem(THEME_KEY, next);
+      track("theme", next);
       document.querySelector('meta[name="theme-color"]').setAttribute(
         "content",
         next === "dark" ? "#10182D" : "#FBF8F1"
@@ -879,6 +924,7 @@
     document.getElementById("lang-toggle").addEventListener("click", () => {
       lang = lang === "de" ? "en" : "de";
       localStorage.setItem(LANG_KEY, lang);
+      track("lang", lang);
       applyStaticStrings();
       populateDistrictFilter();
       refreshCurrentView();
