@@ -740,9 +740,10 @@ main {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 2px 6px;
+  gap: 2px 12px;
 }
 
+.sheet__where { display: inline-flex; align-items: center; gap: 6px; }
 .sheet__meta svg { flex-shrink: 0; }
 
 .sheet__status { font-family: var(--font-ui); font-weight: 600; white-space: nowrap; }

@@ -642,7 +642,7 @@
 
     document.getElementById("sheet-title").textContent = marketName(market);
     document.getElementById("sheet-meta").innerHTML =
-      `${PINE_ICON}${market.district} · <span class="sheet__status ${status.open ? "sheet__status--open" : status.tbd ? "sheet__status--tbd" : "sheet__status--closed"}">${status.label}</span>`;
+      `<span class="sheet__where">${PINE_ICON}${market.district}</span><span class="sheet__status ${status.open ? "sheet__status--open" : status.tbd ? "sheet__status--tbd" : "sheet__status--closed"}">${status.label}</span>`;
 
     document.getElementById("sheet-banner").innerHTML = bannerCarouselHtml(market);
     initBannerCarousel();
