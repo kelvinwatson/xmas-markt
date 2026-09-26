@@ -160,6 +160,12 @@
   // current-language variant when one was actually scraped, falling back
   // to English rather than showing nothing when a German version wasn't
   // found for a given market.
+  // mailto: needs %20 for spaces (RFC 6068). URLSearchParams writes "+",
+  // which mail apps show literally, so encode by hand.
+  function mailtoUrl(subject, body) {
+    return `mailto:xmasmarktde@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  }
+
   function marketName(market) {
     return (lang === "de" && market.nameDe) || market.name;
   }
@@ -180,8 +186,7 @@
 
     const feedbackBtn = document.getElementById("feedback-toggle");
     if (feedbackBtn) {
-      const params = new URLSearchParams({ subject: t("feedbackSubject"), body: t("feedbackBody") });
-      feedbackBtn.href = `mailto:xmasmarktde@gmail.com?${params.toString()}`;
+      feedbackBtn.href = mailtoUrl(t("feedbackSubject"), t("feedbackBody"));
     }
   }
   const PINE_ICON = `<svg width="13" height="13" viewBox="0 0 16 16"><path d="M8 15 V2 M8 4.5 L4.3 7 M8 4.5 L11.7 7 M8 8 L4.3 10.5 M8 8 L11.7 10.5 M8 2 L6.2 0.5 M8 2 L9.8 0.5" stroke="var(--pine)" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>`;
@@ -739,11 +744,7 @@
 
     document.getElementById("share-banner-send").onclick = () => {
       track("shared-into-app-sent");
-      const params = new URLSearchParams({
-        subject: t("missingMarketSubject"),
-        body: t("missingMarketBody", sharedText),
-      });
-      window.location.href = `mailto:xmasmarktde@gmail.com?${params.toString()}`;
+      window.location.href = mailtoUrl(t("missingMarketSubject"), t("missingMarketBody", sharedText));
       banner.hidden = true;
     };
     document.getElementById("share-banner-dismiss").onclick = () => {
