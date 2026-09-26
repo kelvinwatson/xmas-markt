@@ -2,7 +2,7 @@
 // Upgrade path: swap this for Workbox (https://developer.chrome.com/docs/workbox/)
 // once the app grows — it gives you more caching strategies out of the box.
 
-const STATIC_CACHE = "cmapp-static-v31";
+const STATIC_CACHE = "cmapp-static-v32";
 const DATA_CACHE = "cmapp-data-v1";
 
 const STATIC_ASSETS = [

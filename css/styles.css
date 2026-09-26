@@ -267,7 +267,7 @@ button {
   font-weight: 600;
 }
 
-.saved-toggle .heart { font-size: 0.9rem; }
+.saved-toggle .heart { font-size: 0.9rem; line-height: 1; }
 
 .app-header__filterbar {
   display: flex;
@@ -432,7 +432,20 @@ main {
     padding: 16px 20px 24px;
   }
   .app-header__controls .view-switch { display: none; }
-  .saved-toggle { margin-left: auto; }
+  /* The Map/List tabs are hidden here, which left the Saved pill alone on
+     its own row. Lift the row out of the flow and seat the pill in the
+     title row, just left of the icon buttons (3 x 30px + 2 x 8px gap),
+     at their height and vertical centre. */
+  .app-header__controls {
+    position: absolute;
+    top: 21px;
+    right: calc(16px + 106px + 12px);
+  }
+  .saved-toggle {
+    height: 30px;
+    padding: 0 12px;
+    font-size: 0.72rem;
+  }
   /* The list pane is always visible in the split layout, so sort always
      applies — override the mobile tab-switching hide. */
   .filter-select.is-hidden { display: block; }

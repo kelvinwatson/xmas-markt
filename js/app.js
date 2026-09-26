@@ -892,6 +892,10 @@
     populateDistrictFilter();
     setView(currentView);
 
+    // Whether both panes render depends on the split-layout breakpoint, so
+    // re-render when it's crossed after load (window resize, tablet rotate).
+    matchMedia("(min-width: 720px)").addEventListener("change", refreshCurrentView);
+
     document.querySelectorAll("#filter-entry .filter-pill").forEach((btn) => {
       btn.addEventListener("click", () => {
         filterEntry = btn.dataset.value;
