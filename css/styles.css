@@ -991,7 +991,7 @@ body.doc-page {
   gap: 5px;
   /* Pull up into the tagline's 12px bottom margin so it reads as a
      footnote to the slogan, then restore the spacing below. */
-  margin: -8px 0 12px;
+  margin: -10px 0 7px;
   font-size: 0.6rem;
   color: var(--mist);
   letter-spacing: 0.02em;
