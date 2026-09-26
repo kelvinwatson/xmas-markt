@@ -7,6 +7,11 @@ on:
     - cron: "0 6,18 * * *"
   workflow_dispatch: {}
 
+# The default GITHUB_TOKEN is read-only; the final step pushes the
+# refreshed data commit, which fails with a 403 without this.
+permissions:
+  contents: write
+
 jobs:
   scrape:
     runs-on: ubuntu-latest
@@ -31,4 +36,7 @@ jobs:
           git config user.email "actions@github.com"
           git add data/
           git diff --quiet --cached || git commit -m "Update market data"
+          # Rebase onto anything pushed while the scrape ran, so a
+          # concurrent human commit doesn't make this push non-fast-forward.
+          git pull --rebase origin main
           git push
