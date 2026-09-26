@@ -971,3 +971,11 @@ body.doc-page {
   height: auto;
   min-height: 100%;
 }
+
+.app-header__updated {
+  margin: 2px 0 0;
+  font-size: 0.66rem;
+  color: var(--mist);
+  letter-spacing: 0.02em;
+}
+.app-header__updated[hidden] { display: none; }

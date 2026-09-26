@@ -82,6 +82,7 @@
       loadingVendors: "Loading vendors…",
       vendorError: "Couldn't load vendor details right now.",
       lastChecked: (t) => `Vendor list last checked ${t}`,
+      dataChecked: (t) => `Last checked ${t}`,
       runs: (start, end) => `Runs ${start} – ${end}`,
       openNow: (end) => `Open now · closes ${end}`,
       closedOpens: (start) => `Closed · opens ${start}`,
@@ -133,6 +134,7 @@
       loadingVendors: "Stände werden geladen…",
       vendorError: "Standdetails konnten nicht geladen werden.",
       lastChecked: (t) => `Standliste zuletzt geprüft ${t}`,
+      dataChecked: (t) => `Zuletzt geprüft ${t}`,
       runs: (start, end) => `${start} – ${end}`,
       openNow: (end) => `Jetzt geöffnet · schließt ${end}`,
       closedOpens: (start) => `Geschlossen · öffnet ${start}`,
@@ -183,6 +185,8 @@
     });
     const langBtn = document.getElementById("lang-toggle");
     if (langBtn) langBtn.textContent = lang === "de" ? "EN" : "DE";
+
+    renderDataChecked();
 
     const feedbackBtn = document.getElementById("feedback-toggle");
     if (feedbackBtn) {
@@ -243,6 +247,7 @@
   }
 
   let markets = [];
+  let dataGeneratedAt = null;
   let currentView = "map";
   let savedOnly = false;
   let filterDistrict = "all";
@@ -349,6 +354,19 @@
     const res = await fetch("data/markets-index.json", { cache: "no-store" });
     const data = await res.json();
     markets = data.markets;
+    dataGeneratedAt = data.generatedAt || null;
+    renderDataChecked();
+  }
+
+  // Shows when the scraper last ran (not when a market's details last
+  // changed at the source) — so if scraping breaks, users can see the
+  // data is stale instead of trusting it blindly.
+  function renderDataChecked() {
+    const el = document.getElementById("data-updated");
+    if (!el || !dataGeneratedAt) return;
+    el.textContent = t("dataChecked", relativeTime(dataGeneratedAt));
+    el.title = new Date(dataGeneratedAt).toLocaleString(t("dateLocale"), { dateStyle: "medium", timeStyle: "short" });
+    el.hidden = false;
   }
 
   async function loadVendors(market) {
