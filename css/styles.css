@@ -738,13 +738,14 @@ main {
   color: var(--mist);
   margin: 0 0 4px;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 6px;
+  gap: 2px 6px;
 }
 
 .sheet__meta svg { flex-shrink: 0; }
 
-.sheet__status { font-family: var(--font-ui); font-weight: 600; }
+.sheet__status { font-family: var(--font-ui); font-weight: 600; white-space: nowrap; }
 .sheet__status--open { color: var(--evergreen); }
 .sheet__status--closed { color: var(--gold-muted); }
 
