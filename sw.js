@@ -2,7 +2,7 @@
 // Upgrade path: swap this for Workbox (https://developer.chrome.com/docs/workbox/)
 // once the app grows — it gives you more caching strategies out of the box.
 
-const STATIC_CACHE = "cmapp-static-v25";
+const STATIC_CACHE = "cmapp-static-v27";
 const DATA_CACHE = "cmapp-data-v1";
 
 const STATIC_ASSETS = [
@@ -14,6 +14,11 @@ const STATIC_ASSETS = [
   "./icons/icon-192.png",
   "./icons/icon-512.png",
   "./icons/icon-512-maskable.png",
+  "./vendor/leaflet/leaflet.js",
+  "./vendor/leaflet/leaflet.css",
+  "./fonts/jost.woff2",
+  "./fonts/cormorant-garamond-normal.woff2",
+  "./fonts/cormorant-garamond-italic.woff2",
 ];
 
 self.addEventListener("install", (event) => {
