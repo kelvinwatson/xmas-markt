@@ -254,7 +254,7 @@ function parseDateRange(rawText) {
   // fallback below so a trailing 4-digit year never gets misread as a
   // 1-2 digit day (e.g. "13 December 2025" must not fall through to
   // matching "December" + the "20" of "2025").
-  m = text.match(/(\d{1,2})\s+([A-Za-z]+)(?:\s+(\d{4}))?/);
+  m = text.match(/(?<!\d)(\d{1,2})\s+([A-Za-z]+)(?:\s+(\d{4}))?/);
   if (m) {
     const [, d, mo, y] = m;
     const month = MONTHS[mo.toLowerCase()];
@@ -265,7 +265,9 @@ function parseDateRange(rawText) {
   }
 
   // Month-first, US-style single day: "December 6, 2025".
-  m = text.match(/([A-Za-z]+)\s+(\d{1,2}),?\s*(\d{4})?/);
+  // (?!\d) so "October 2026" (month + year, no day) is not misread as
+  // "October 20" + a stray "26" — that would publish a made-up date.
+  m = text.match(/([A-Za-z]+)\s+(\d{1,2})(?!\d),?\s*(\d{4})?/);
   if (m) {
     const [, mo, d, y] = m;
     const month = MONTHS[mo.toLowerCase()];
