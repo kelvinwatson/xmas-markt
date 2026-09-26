@@ -23,7 +23,15 @@ const VENDORS_DIR = path.join(DATA_DIR, "vendors");
 // The season this scrape run is for — used to flag a source page that
 // hasn't been updated yet (e.g. still shows last year's dates) as
 // "tentative" rather than silently treating stale data as confirmed.
-const SEASON_YEAR = 2026;
+// Derived from today's date so it rolls over by itself: a season is
+// Nov–Jan, and organizers publish the next one from about July, so from July
+// on the target is the current calendar year, and before July it's still the
+// season that just ended. (Override with SEASON_YEAR=2027 to force a value.)
+const SEASON_YEAR = process.env.SEASON_YEAR
+  ? Number(process.env.SEASON_YEAR)
+  : new Date().getMonth() >= 6
+    ? new Date().getFullYear()
+    : new Date().getFullYear() - 1;
 
 const UA =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36";

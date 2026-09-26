@@ -55,6 +55,7 @@
       shareApp: "Share XmasMarkt",
       feedbackSubject: "XmasMarkt feedback",
       feedbackBody: "What's on your mind? (Missing market, wrong info, general feedback — anything goes.)",
+      dataCredit: "Data & photos:",
       privacy: "Privacy",
       shareBannerPrompt: "Report this as a missing market?",
       shareBannerSend: "Send as feedback",
@@ -109,6 +110,7 @@
       shareApp: "XmasMarkt teilen",
       feedbackSubject: "XmasMarkt Feedback",
       feedbackBody: "Was möchtest du uns mitteilen? (Fehlender Markt, falsche Angaben, allgemeines Feedback — alles willkommen.)",
+      dataCredit: "Daten & Fotos:",
       privacy: "Datenschutz",
       shareBannerPrompt: "Als fehlenden Markt melden?",
       shareBannerSend: "Als Feedback senden",
@@ -604,7 +606,7 @@
         </button>`;
       })
       .join("");
-    container.insertAdjacentHTML("beforeend", `<p class="list-footer"><a href="privacy.html">${t("privacy")}</a></p>`);
+    container.insertAdjacentHTML("beforeend", `<p class="list-footer">${t("dataCredit")} <a href="https://www.visitberlin.de" target="_blank" rel="noopener">visitBerlin.de</a> · <a href="privacy.html">${t("privacy")}</a></p>`);
 
     container.querySelectorAll(".market-card").forEach((card) => {
       card.addEventListener("click", (e) => {
