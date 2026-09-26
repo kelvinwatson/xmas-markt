@@ -3,22 +3,15 @@
 // site/socials > aggregators, and never aggregators for anything
 // time-sensitive; see CLAUDE.md).
 //
-// Two kinds of source:
-//  - CURATED_SOURCES: hand-picked markets with editorial tags/summary/
-//    vendorFile we've written ourselves (see the vendor files' own
-//    isSampleData flag — that placeholder content is pre-existing and
-//    clearly flagged, not something this scraper invents).
-//  - Auto-discovered markets: found by crawling visitBerlin's own
-//    district-filtered listings (discoverMarketCards below). These get
-//    ONLY real scraped fields — no vendorFile (no vendor data exists for
-//    them, so none is fabricated), no invented tags, and a summary taken
-//    verbatim from visitBerlin's own listing teaser text. Never invent
-//    plausible-sounding content for a market we haven't actually scraped.
+// Every market comes from visitBerlin's own district-filtered listings
+// (discoverMarketCards below) and carries ONLY real scraped fields: name and
+// summary verbatim from visitBerlin's listing teaser, no invented tags, and
+// no vendor data (none is published in a scrapable form, and we never
+// fabricate placeholder content for a market we haven't actually scraped).
 //
-// What this does NOT do: vendor/stall scraping for anything beyond the
-// curated markets' pre-existing placeholder files. Per research before
-// writing this, none of these markets publish a scrapable public stall
-// directory on their official page.
+// The one hand-kept list, STABLE_IDS, only pins a few markets to friendlier
+// ids (so shared links and saved favourites keep working) and records their
+// organizer sites. It contains no editorial content.
 
 const fs = require("fs");
 const path = require("path");
@@ -150,55 +143,26 @@ async function discoverMarketCards(lang) {
   return [...cards.values()];
 }
 
-// Static/editorial fields we curate once per market; the scraper refreshes
-// the dynamic fields (dates, hours, coordinates, address, entry, status,
-// confidence) from the source URL below.
-const CURATED_SOURCES = [
+// Pins a market to a stable, human-friendly id and records its organizer
+// site. Everything else about these markets is scraped like the rest.
+const STABLE_IDS = [
   {
     id: "gendarmenmarkt",
-    name: "Weihnachtsmarkt am Gendarmenmarkt",
-    district: "Mitte",
-    tags: ["live music", "handicrafts", "ticketed entry"],
-    summary:
-      "A ticketed market set between the Konzerthaus and the two cathedrals, known for handicraft stalls and a nightly stage programme.",
-    vendorFile: "vendors/gendarmenmarkt.json",
     officialUrl: "https://www.visitberlin.de/en/christmas-market-weihnachtszauber-gendarmenmarkt-berlin",
     organizerUrl: "https://www.weihnachtsmarkt-berlin.de/en/",
   },
   {
     id: "alexanderplatz",
-    name: "WeihnachtsZauber Alexanderplatz",
-    district: "Mitte",
-    tags: ["free entry", "large", "rides"],
-    summary:
-      "One of the city's largest markets, with a big wheel, log-flume ride, and a long row of food stalls beside the TV tower.",
-    vendorFile: "vendors/alexanderplatz.json",
     officialUrl: "https://www.visitberlin.de/en/christmas-market-alexanderplatz-berlin",
     organizerUrl: "https://berlinerweihnachtszeit.de/",
   },
   {
     id: "spandau",
-    name: "Spandauer Weihnachtsmarkt",
-    district: "Spandau",
-    tags: ["free entry", "historic old town"],
-    summary: "A smaller, quieter market through Spandau's old town lanes, close to the citadel.",
-    vendorFile: "vendors/spandau.json",
     officialUrl: "https://www.visitberlin.de/en/spandau-christmas-market",
     organizerUrl: "https://www.altstadt-spandau.de/",
   },
   {
-    // Replaces the earlier "schoeneberg" sample entry — research before
-    // this scrape found no real market matching that description
-    // (Rudolph-Wilde-Park / ice rink) at that location. Breitscheidplatz
-    // is one of Berlin's most prominent markets and was suggested as the
-    // closer real match for that slot.
     id: "breitscheidplatz",
-    name: "Weihnachtsmarkt an der Gedächtniskirche",
-    district: "Charlottenburg-Wilmersdorf",
-    tags: ["free entry", "landmark", "light installation"],
-    summary:
-      "A large, central market around the Kaiser Wilhelm Memorial Church, known for its illuminated \"carpet of light\" installation.",
-    vendorFile: "vendors/breitscheidplatz.json",
     officialUrl: "https://www.visitberlin.de/en/christmas-market-kaiser-wilhelm-memorial-church-berlin",
     organizerUrl: null,
   },
@@ -529,16 +493,14 @@ function applyOverrides(index, overrides) {
   return index;
 }
 
-// Merges the curated list with every market discovered via the district
-// listings, preferring the curated (editorial) entry whenever both name the
-// same page — matched by URL path, not id, since a discovered card's
-// auto-generated id might not match a curated id exactly.
-function mergeSources(curated, discovered) {
-  const byId = new Map(curated.map((s) => [s.id, s]));
-  const curatedPaths = new Set(curated.map((s) => new URL(s.officialUrl).pathname));
+// Turns every discovered listing card into a source. Markets in STABLE_IDS
+// keep their pinned id and organizer URL; nothing else is added by hand.
+function mergeSources(stable, discovered) {
+  const stableByPath = new Map(stable.map((s) => [new URL(s.officialUrl).pathname, s]));
+  const byId = new Map();
   for (const card of discovered) {
-    if (curatedPaths.has(card.href)) continue;
-    const id = idFromHref(card.href);
+    const pinned = stableByPath.get(card.href);
+    const id = pinned ? pinned.id : idFromHref(card.href);
     if (byId.has(id)) continue;
     byId.set(id, {
       id,
@@ -546,7 +508,13 @@ function mergeSources(curated, discovered) {
       district: card.district,
       summary: stripLeadingDatePhrase(card.teaser) || card.teaser || null,
       officialUrl: `${BASE_URL}${card.href}`,
+      organizerUrl: pinned ? pinned.organizerUrl : null,
     });
+  }
+  for (const pinned of stable) {
+    if (![...byId.values()].some((s) => s.officialUrl === pinned.officialUrl)) {
+      console.warn(`Pinned market not found in the listings: ${pinned.id}`);
+    }
   }
   return [...byId.values()];
 }
@@ -558,7 +526,7 @@ async function main() {
   console.log("Discovering markets from visitBerlin's district listings...");
   const discovered = await discoverMarketCards("en");
   console.log(`Discovered ${discovered.length} candidate market pages (en).`);
-  const sources = mergeSources(CURATED_SOURCES, discovered);
+  const sources = mergeSources(STABLE_IDS, discovered);
 
   console.log("Discovering German listings for bilingual name/summary...");
   const discoveredDe = await discoverMarketCards("de");
