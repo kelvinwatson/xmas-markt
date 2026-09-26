@@ -2,9 +2,10 @@ name: Scrape market data
 
 on:
   schedule:
-    # 06:00 and 18:00 UTC daily. Adjust once real sources are picked —
-    # no need to poll faster than sources actually update.
-    - cron: "0 6,18 * * *"
+    # Once a day at 05:00 UTC (early morning in Berlin) — the sources
+    # change slowly, so there's no need to poll more often. If you change
+    # this, update the freshness thresholds in js/app.js (renderDataChecked).
+    - cron: "0 5 * * *"
   workflow_dispatch: {}
 
 # The default GITHUB_TOKEN is read-only; the final step pushes the

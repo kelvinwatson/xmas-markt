@@ -373,10 +373,11 @@
   function renderDataChecked() {
     const el = document.getElementById("data-updated");
     if (!el || !dataGeneratedAt) return;
-    // The scraper runs twice a day, so under ~18h is on schedule; beyond
-    // 2 days something is clearly wrong.
+    // The scraper runs once a day, so up to ~30h is on schedule (a little
+    // slack for a delayed run); a missed day is "aging", beyond 3 days
+    // something is clearly wrong.
     const hours = (Date.now() - new Date(dataGeneratedAt).getTime()) / 3600000;
-    el.dataset.state = hours <= 18 ? "fresh" : hours <= 48 ? "aging" : "stale";
+    el.dataset.state = hours <= 30 ? "fresh" : hours <= 72 ? "aging" : "stale";
     el.innerHTML = `<span class="status-dot" aria-hidden="true"></span><span>${t("dataChecked", relativeTime(dataGeneratedAt))}</span>`;
     el.title = new Date(dataGeneratedAt).toLocaleString(t("dateLocale"), { dateStyle: "medium", timeStyle: "short" });
     el.hidden = false;
