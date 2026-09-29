@@ -1,6 +1,6 @@
 {
   "isSampleData": false,
-  "generatedAt": "2026-09-28T11:28:41.047Z",
+  "generatedAt": "2026-09-29T11:09:08.406Z",
   "markets": [
     {
       "id": "advent-market-domaene-dahlem-berlin",
@@ -37,7 +37,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:27:36.797Z"
+      "lastChecked": "2026-09-29T11:08:04.490Z"
     },
     {
       "id": "christmas-market-christmas-garden-berlin",
@@ -74,7 +74,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:27:37.584Z"
+      "lastChecked": "2026-09-29T11:08:05.134Z"
     },
     {
       "id": "christmas-market-mexikoplatz-berlin",
@@ -111,7 +111,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:27:38.247Z"
+      "lastChecked": "2026-09-29T11:08:05.717Z"
     },
     {
       "id": "weinachtsmarkt-ludwig-beck-platz",
@@ -148,7 +148,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:27:38.936Z"
+      "lastChecked": "2026-09-29T11:08:06.458Z"
     },
     {
       "id": "winterleben-duppel-historic-village",
@@ -185,7 +185,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:27:39.658Z"
+      "lastChecked": "2026-09-29T11:08:07.194Z"
     },
     {
       "id": "wintermarkt-prideart-former-prison",
@@ -222,7 +222,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:27:40.371Z"
+      "lastChecked": "2026-09-29T11:08:07.906Z"
     },
     {
       "id": "christmas-market-zehlendorf-berlin",
@@ -259,7 +259,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:27:40.981Z"
+      "lastChecked": "2026-09-29T11:08:08.633Z"
     },
     {
       "id": "christmas-market-alt-rixdorf-berlin",
@@ -296,7 +296,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:27:41.642Z"
+      "lastChecked": "2026-09-29T11:08:09.458Z"
     },
     {
       "id": "nordische-maerchenweihnacht-schloss-britz-berlin",
@@ -333,7 +333,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:27:42.279Z"
+      "lastChecked": "2026-09-29T11:08:10.284Z"
     },
     {
       "id": "christmas-market-alt-buckow-berlin",
@@ -370,7 +370,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:27:43.032Z"
+      "lastChecked": "2026-09-29T11:08:11.032Z"
     },
     {
       "id": "dicke-linda-christmas-market",
@@ -407,7 +407,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:27:43.685Z"
+      "lastChecked": "2026-09-29T11:08:11.735Z"
     },
     {
       "id": "christmas-market-kreuzboerg-berlin",
@@ -444,7 +444,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:27:44.442Z"
+      "lastChecked": "2026-09-29T11:08:12.459Z"
     },
     {
       "id": "christmas-market-rudower-weihnachtsmeile-berlin",
@@ -481,7 +481,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:27:45.154Z"
+      "lastChecked": "2026-09-29T11:08:13.215Z"
     },
     {
       "id": "winter-wonderland-britzer-garten",
@@ -518,7 +518,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:27:45.873Z"
+      "lastChecked": "2026-09-29T11:08:13.950Z"
     },
     {
       "id": "christmas-market-at-charlottenburg-palace-berlin",
@@ -555,7 +555,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:27:46.501Z"
+      "lastChecked": "2026-09-29T11:08:14.616Z"
     },
     {
       "id": "christmas-market-st-michaels-heim",
@@ -592,7 +592,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:27:47.174Z"
+      "lastChecked": "2026-09-29T11:08:15.329Z"
     },
     {
       "id": "breitscheidplatz",
@@ -629,7 +629,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:27:47.931Z"
+      "lastChecked": "2026-09-29T11:08:16.145Z"
     },
     {
       "id": "very-british-christmas-weihnachtsmarkt-der-st-georges-church",
@@ -666,7 +666,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:27:48.646Z"
+      "lastChecked": "2026-09-29T11:08:16.906Z"
     },
     {
       "id": "artisan-advent-karl-august-platz",
@@ -703,7 +703,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:27:49.405Z"
+      "lastChecked": "2026-09-29T11:08:17.576Z"
     },
     {
       "id": "berlin-christmas-bike-tour",
@@ -740,7 +740,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:27:50.113Z"
+      "lastChecked": "2026-09-29T11:08:18.296Z"
     },
     {
       "id": "hundeweihnachtsmarkt-berlin",
@@ -777,7 +777,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:27:50.728Z"
+      "lastChecked": "2026-09-29T11:08:19.003Z"
     },
     {
       "id": "christmas-westend",
@@ -814,7 +814,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:27:51.468Z"
+      "lastChecked": "2026-09-29T11:08:19.864Z"
     },
     {
       "id": "christmas-market-around-grunewald-church",
@@ -851,7 +851,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:27:52.180Z"
+      "lastChecked": "2026-09-29T11:08:20.611Z"
     },
     {
       "id": "danish-christmas-market-berlin",
@@ -888,7 +888,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:27:52.870Z"
+      "lastChecked": "2026-09-29T11:08:21.335Z"
     },
     {
       "id": "forest-christmas-market-grunewald-forestry-office",
@@ -925,7 +925,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:27:53.552Z"
+      "lastChecked": "2026-09-29T11:08:22.072Z"
     },
     {
       "id": "stranger-things-hawkins-christmas-market",
@@ -962,7 +962,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:27:54.203Z"
+      "lastChecked": "2026-09-29T11:08:22.790Z"
     },
     {
       "id": "swedish-christmas-bazaar",
@@ -999,7 +999,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:27:54.951Z"
+      "lastChecked": "2026-09-29T11:08:23.541Z"
     },
     {
       "id": "christmas-market-wilmersdorfer-strasse-berlin",
@@ -1036,7 +1036,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:27:55.690Z"
+      "lastChecked": "2026-09-29T11:08:24.277Z"
     },
     {
       "id": "gendarmenmarkt",
@@ -1073,7 +1073,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:27:56.373Z"
+      "lastChecked": "2026-09-29T11:08:24.943Z"
     },
     {
       "id": "winter-market-schlossplatz-humboldt-forum",
@@ -1110,7 +1110,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:27:57.005Z"
+      "lastChecked": "2026-09-29T11:08:25.692Z"
     },
     {
       "id": "christmas-market-berliner-weihnachtszeit-berlin",
@@ -1147,7 +1147,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:27:57.652Z"
+      "lastChecked": "2026-09-29T11:08:26.505Z"
     },
     {
       "id": "alexanderplatz",
@@ -1184,7 +1184,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:27:58.189Z"
+      "lastChecked": "2026-09-29T11:08:27.200Z"
     },
     {
       "id": "christmas-market-potsdamer-platz-berlin",
@@ -1221,7 +1221,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:27:58.827Z"
+      "lastChecked": "2026-09-29T11:08:27.887Z"
     },
     {
       "id": "christmas-bazaar-atrium-federal-foreign-office",
@@ -1258,7 +1258,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:27:59.580Z"
+      "lastChecked": "2026-09-29T11:08:28.621Z"
     },
     {
       "id": "christmas-market-sophienstrasse",
@@ -1295,7 +1295,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:00.261Z"
+      "lastChecked": "2026-09-29T11:08:29.325Z"
     },
     {
       "id": "christmas-markets-manifesto-market",
@@ -1332,7 +1332,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:01.014Z"
+      "lastChecked": "2026-09-29T11:08:30.116Z"
     },
     {
       "id": "design-art-christmas-market-wedding",
@@ -1369,7 +1369,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:01.779Z"
+      "lastChecked": "2026-09-29T11:08:30.861Z"
     },
     {
       "id": "europa-city-vibes-christmas-market",
@@ -1404,7 +1404,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:02.535Z"
+      "lastChecked": "2026-09-29T11:08:31.624Z"
     },
     {
       "id": "historic-christmas-train-berlin-s-bahn",
@@ -1441,7 +1441,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:03.234Z"
+      "lastChecked": "2026-09-29T11:08:32.345Z"
     },
     {
       "id": "kogei-x-mas-market-manufactures",
@@ -1476,7 +1476,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:03.968Z"
+      "lastChecked": "2026-09-29T11:08:33.074Z"
     },
     {
       "id": "open-house-winter-festival-silent-green",
@@ -1513,7 +1513,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:04.614Z"
+      "lastChecked": "2026-09-29T11:08:33.737Z"
     },
     {
       "id": "christmas-market-nikolaiviertel-berlin",
@@ -1550,7 +1550,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:05.352Z"
+      "lastChecked": "2026-09-29T11:08:34.474Z"
     },
     {
       "id": "heissa-holzmarkt-berlin",
@@ -1587,7 +1587,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:06.011Z"
+      "lastChecked": "2026-09-29T11:08:35.278Z"
     },
     {
       "id": "historischer-weihnachtsmarkt-raw-berlin",
@@ -1624,7 +1624,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:06.644Z"
+      "lastChecked": "2026-09-29T11:08:35.945Z"
     },
     {
       "id": "berliner-gluhwald",
@@ -1661,7 +1661,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:07.333Z"
+      "lastChecked": "2026-09-29T11:08:36.644Z"
     },
     {
       "id": "christmas-spree",
@@ -1698,7 +1698,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:08.175Z"
+      "lastChecked": "2026-09-29T11:08:37.409Z"
     },
     {
       "id": "christmas-market-winterquartier-berlin",
@@ -1735,7 +1735,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:08.883Z"
+      "lastChecked": "2026-09-29T11:08:38.109Z"
     },
     {
       "id": "machmit-market-mampe",
@@ -1772,7 +1772,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:09.528Z"
+      "lastChecked": "2026-09-29T11:08:38.833Z"
     },
     {
       "id": "merry-markthalle",
@@ -1809,7 +1809,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:10.169Z"
+      "lastChecked": "2026-09-29T11:08:39.485Z"
     },
     {
       "id": "norwegian-christmas-market-berlin",
@@ -1846,7 +1846,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:10.835Z"
+      "lastChecked": "2026-09-29T11:08:40.221Z"
     },
     {
       "id": "roda-de-feijoada-christmas-market",
@@ -1883,7 +1883,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:11.556Z"
+      "lastChecked": "2026-09-29T11:08:40.940Z"
     },
     {
       "id": "japanese-christmas-market",
@@ -1920,7 +1920,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:12.215Z"
+      "lastChecked": "2026-09-29T11:08:41.615Z"
     },
     {
       "id": "smallest-christmas-market-kreuzberg",
@@ -1957,7 +1957,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:12.935Z"
+      "lastChecked": "2026-09-29T11:08:42.312Z"
     },
     {
       "id": "christmas-bazaar-finnland-center-berlin",
@@ -1994,7 +1994,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:13.671Z"
+      "lastChecked": "2026-09-29T11:08:43.060Z"
     },
     {
       "id": "advent-lichter-genuss-natur-park-schoneberger-sudgelande",
@@ -2031,7 +2031,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:14.440Z"
+      "lastChecked": "2026-09-29T11:08:43.796Z"
     },
     {
       "id": "christmas-market-schoneberg",
@@ -2068,7 +2068,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:15.071Z"
+      "lastChecked": "2026-09-29T11:08:44.583Z"
     },
     {
       "id": "lgbtqia-winterdays-und-christmas-avenue",
@@ -2105,7 +2105,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:15.716Z"
+      "lastChecked": "2026-09-29T11:08:45.376Z"
     },
     {
       "id": "christmas-market-lehmanns-farm",
@@ -2142,7 +2142,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:16.390Z"
+      "lastChecked": "2026-09-29T11:08:46.093Z"
     },
     {
       "id": "christmas-market-lichtenrade-berlin",
@@ -2179,7 +2179,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:16.968Z"
+      "lastChecked": "2026-09-29T11:08:46.806Z"
     },
     {
       "id": "weihnachtsmarkt-am-kadewe",
@@ -2216,7 +2216,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:17.604Z"
+      "lastChecked": "2026-09-29T11:08:47.463Z"
     },
     {
       "id": "winter-market-tempelhof-airport",
@@ -2253,7 +2253,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:18.250Z"
+      "lastChecked": "2026-09-29T11:08:48.183Z"
     },
     {
       "id": "winterzauber-unterm-zelt",
@@ -2290,7 +2290,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:18.952Z"
+      "lastChecked": "2026-09-29T11:08:48.893Z"
     },
     {
       "id": "spandau",
@@ -2327,7 +2327,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:19.580Z"
+      "lastChecked": "2026-09-29T11:08:49.570Z"
     },
     {
       "id": "christmas-market-evangelischer-johannesstift-berlin",
@@ -2364,7 +2364,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:20.286Z"
+      "lastChecked": "2026-09-29T11:08:50.281Z"
     },
     {
       "id": "arts-crafts-christmas-market-gatow",
@@ -2401,44 +2401,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:20.992Z"
-    },
-    {
-      "id": "kladower-christkindlmarkt",
-      "name": "Kladower Christkindlmarkt",
-      "nameDe": "Kladower Christkindlmarkt",
-      "district": "Spandau",
-      "address": "Imchenplatz, 14089 Berlin",
-      "lat": 52.4525516,
-      "lng": 13.1497658,
-      "dates": {
-        "start": "2025-12-06",
-        "end": "2025-12-07"
-      },
-      "hours": {
-        "monThu": null,
-        "friSat": null,
-        "sun": null
-      },
-      "tags": [],
-      "summary": "The Kladower Christkindlmarkt is taking place this year too. On Imchenplatz on the banks of the Havel river, volunteers from Kladow invite you to browse, feast and have fun in a festive atmosphere.",
-      "summaryDe": "Auch in diesem Jahr findet wieder der Kladower Christkindlmarkt statt. Auf dem Imchenplatz am Ufer der Havel laden Ehrenamtliche aus Kladow zum Stöbern, Schlemmen und Genießen in festlichem Ambiente ein.",
-      "images": [
-        "https://www.visitberlin.de/system/files/styles/visitberlin_hero_visitberlin_desktop_2x/private/image/Weihnachtspl%C3%A4tzchen_GettyImages-87859469_Foto_kajakiki_DL_PPT_0.jpg.webp?itok=LgN6wI8o"
-      ],
-      "source": {
-        "officialUrl": "https://www.visitberlin.de/en/kladower-christkindlmarkt",
-        "organizerUrl": null,
-        "tier": "official"
-      },
-      "status": "tentative",
-      "entry": "free",
-      "confidence": {
-        "source": "check-ahead",
-        "crowdsource": null
-      },
-      "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:21.726Z"
+      "lastChecked": "2026-09-29T11:08:51.010Z"
     },
     {
       "id": "spandauer-winterland",
@@ -2475,7 +2438,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:22.391Z"
+      "lastChecked": "2026-09-29T11:08:51.689Z"
     },
     {
       "id": "lucia-christmas-market-kulturbrauerei",
@@ -2512,7 +2475,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:23.014Z"
+      "lastChecked": "2026-09-29T11:08:52.327Z"
     },
     {
       "id": "adven-bazaar-kaspar-hauser-foundation-berlin",
@@ -2549,44 +2512,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:23.711Z"
-    },
-    {
-      "id": "advent-eco-market-kollwitzplatz-berlin",
-      "name": "Advent Market at Kollwitzplatz",
-      "nameDe": "Adventsmarkt am Kollwitzplatz",
-      "district": "Pankow",
-      "address": "Kollwitzstraße 1, 10405 Berlin",
-      "lat": 52.5364,
-      "lng": 13.41708,
-      "dates": {
-        "start": null,
-        "end": null
-      },
-      "hours": {
-        "monThu": null,
-        "friSat": null,
-        "sun": null
-      },
-      "tags": [],
-      "summary": "On all Sundays in Advent 2026 (29 November, 6, 13 and 20 December): For more than 10 years the Grüne Liga Berlin e.V. has been organising the Advent Eco Market at Kollwitzplatz. The market is a great alternative to Berlin’s conventional Christmas markets.",
-      "summaryDe": "An allen Adventssonntagen 2026 (29. November, 6., 13. und 20. Dezember 2026): Seit über 10 Jahren veranstaltet die Grüne Liga Berlin e.V. bereits den Adventsmarkt am Kollwitzplatz. Der Markt bietet eine tolle Alternative zu den konventionellen Weihnachtsmärkten in Berlin.",
-      "images": [
-        "https://www.visitberlin.de/system/files/styles/visitberlin_hero_visitberlin_desktop_2x/private/image/Weihnachtsbasar_Kollwitzplatz_c_visitBerlin_Foto_W.Scholvien%20%2813%29_DL_PPT_0.jpg.webp?itok=5Mf4Lw4f"
-      ],
-      "source": {
-        "officialUrl": "https://www.visitberlin.de/en/advent-eco-market-kollwitzplatz-berlin",
-        "organizerUrl": null,
-        "tier": "official"
-      },
-      "status": "unavailable",
-      "entry": "free",
-      "confidence": {
-        "source": "check-ahead",
-        "crowdsource": null
-      },
-      "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:24.347Z"
+      "lastChecked": "2026-09-29T11:08:53.051Z"
     },
     {
       "id": "pankow-advent-market-heynhofe",
@@ -2623,7 +2549,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:25.060Z"
+      "lastChecked": "2026-09-29T11:08:53.799Z"
     },
     {
       "id": "weihnachtsrodeo-designweihnachtsmarkt",
@@ -2660,7 +2586,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:25.706Z"
+      "lastChecked": "2026-09-29T11:08:54.505Z"
     },
     {
       "id": "christmas-market-koepenick-christmas-island-berlin",
@@ -2697,7 +2623,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:26.421Z"
+      "lastChecked": "2026-09-29T11:08:55.203Z"
     },
     {
       "id": "gluhweingarten",
@@ -2734,7 +2660,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:27.136Z"
+      "lastChecked": "2026-09-29T11:08:55.930Z"
     },
     {
       "id": "altglienicke-advent-market",
@@ -2771,7 +2697,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:27.857Z"
+      "lastChecked": "2026-09-29T11:08:56.638Z"
     },
     {
       "id": "berliner-wintertraum",
@@ -2808,44 +2734,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:28.602Z"
-    },
-    {
-      "id": "christmas-20market-spaethschen-baumschulen-berlin",
-      "name": "Christmas market in the Späth'schen Baumschulen",
-      "nameDe": "Weihnachtsmarkt in den Späth'schen Baumschulen",
-      "district": "Treptow-Köpenick",
-      "address": "Späthstraße 80/81, 12437 Berlin",
-      "lat": 52.4543363,
-      "lng": 13.4737248,
-      "dates": {
-        "start": null,
-        "end": null
-      },
-      "hours": {
-        "monThu": null,
-        "friSat": null,
-        "sun": null
-      },
-      "tags": [],
-      "summary": "On the first three Advent weekends 2025: The Späth’schen Baumschulen are transformed into a Christmas wonderland in a blaze of lights during the pre-Christmas season. A bonfire and fireplace stoves invite you to linger with Christmas music.",
-      "summaryDe": "An den ersten drei Adventswochenenden 2025: Die Späth’schen Baumschulen verwandeln sich zur Vorweihnachtszeit in eine im Lichterglanz strahlende Weihnachtswunderwelt. Lagerfeuer und Kaminöfen laden bei weihnachtlicher Musik zum Verweilen ein.",
-      "images": [
-        "https://www.visitberlin.de/system/files/styles/visitberlin_hero_visitberlin_desktop_2x/private/image/Weihnachtsmarkt_Spaethsche_Baumschulen_2_c_Daniela_Incoronato_web.jpg.webp?itok=K_G1Hyrg"
-      ],
-      "source": {
-        "officialUrl": "https://www.visitberlin.de/en/Christmas%20market-spaethschen-baumschulen-berlin",
-        "organizerUrl": null,
-        "tier": "official"
-      },
-      "status": "unavailable",
-      "entry": "ticketed",
-      "confidence": {
-        "source": "check-ahead",
-        "crowdsource": null
-      },
-      "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:29.870Z"
+      "lastChecked": "2026-09-29T11:08:57.287Z"
     },
     {
       "id": "christmas-market-holyshitshopping-berlin",
@@ -2882,7 +2771,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:30.486Z"
+      "lastChecked": "2026-09-29T11:08:58.047Z"
     },
     {
       "id": "oberschoner-weihnachtsmarkt-beautiful-christmas-market",
@@ -2919,7 +2808,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:31.155Z"
+      "lastChecked": "2026-09-29T11:08:58.737Z"
     },
     {
       "id": "christmas-market-adventiamo-berlin",
@@ -2956,7 +2845,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:31.826Z"
+      "lastChecked": "2026-09-29T11:08:59.862Z"
     },
     {
       "id": "advent-market-hanffs-ruh",
@@ -2993,7 +2882,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:32.531Z"
+      "lastChecked": "2026-09-29T11:09:00.571Z"
     },
     {
       "id": "winterwelt-grunau",
@@ -3030,7 +2919,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:33.228Z"
+      "lastChecked": "2026-09-29T11:09:01.268Z"
     },
     {
       "id": "wolfelse-fairytale-christmas-market",
@@ -3067,7 +2956,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:33.858Z"
+      "lastChecked": "2026-09-29T11:09:01.911Z"
     },
     {
       "id": "christmas-tierpark",
@@ -3104,7 +2993,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:34.526Z"
+      "lastChecked": "2026-09-29T11:09:02.588Z"
     },
     {
       "id": "christmas-party-berlin-animal-shelter",
@@ -3141,7 +3030,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:35.224Z"
+      "lastChecked": "2026-09-29T11:09:03.280Z"
     },
     {
       "id": "forest-winterlights-dark-matter",
@@ -3176,7 +3065,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:35.876Z"
+      "lastChecked": "2026-09-29T11:09:03.959Z"
     },
     {
       "id": "lichtenberger-winterzeit",
@@ -3213,7 +3102,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:36.538Z"
+      "lastChecked": "2026-09-29T11:09:04.608Z"
     },
     {
       "id": "advent-bazaar-kirchengemeinde-luebars-berlin",
@@ -3250,7 +3139,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:37.276Z"
+      "lastChecked": "2026-09-29T11:09:05.324Z"
     },
     {
       "id": "kunsthandwerklicher-weihnachtsmarkt-frohnau-berlin",
@@ -3287,7 +3176,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:37.955Z"
+      "lastChecked": "2026-09-29T11:09:06.063Z"
     },
     {
       "id": "winter-market-alte-frachtkantine-txl",
@@ -3324,7 +3213,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:38.675Z"
+      "lastChecked": "2026-09-29T11:09:06.807Z"
     },
     {
       "id": "alt-kaulsdorf-christmas-market",
@@ -3361,44 +3250,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:39.404Z"
-    },
-    {
-      "id": "advent-markt-alt-marzahn-berlin",
-      "name": "Alt-Marzahn Advent market",
-      "nameDe": "Adventsmarkt Alt-Marzahn",
-      "district": "Marzahn-Hellersdorf",
-      "address": "Alt Marzahn 63, 12685 Berlin",
-      "lat": 52.544068719489,
-      "lng": 13.562871561377,
-      "dates": {
-        "start": "2025-11-28",
-        "end": "2025-11-30"
-      },
-      "hours": {
-        "monThu": null,
-        "friSat": null,
-        "sun": null
-      },
-      "tags": [],
-      "summary": "Not far from the Bockwindmühle the small but fine Advent market is taking place on the Alt-Marzahn village green like every year. Around the church, a market has been held here for over 20 years to get people in the mood for the contemplative Christmas season.",
-      "summaryDe": "Unweit der Bockwindmühle findet wie jedes Jahr der kleine aber feine Adventsmarkt auf dem Dorfanger Alt-Marzahn statt. Rund um die Kirche wird hier seit über 20 Jahren zur Einstimmung auf die besinnliche Weihnachtszeit ein Markt veranstaltet.",
-      "images": [
-        "https://www.visitberlin.de/system/files/styles/visitberlin_hero_visitberlin_desktop_2x/private/image/Paar%20auf%20Weihnachtsmarkt_GettyImages-817551830_Foto_DGLimages_DL_PPT_0.jpg.webp?itok=3Rrp-ltP"
-      ],
-      "source": {
-        "officialUrl": "https://www.visitberlin.de/en/advent-markt-alt-marzahn-berlin",
-        "organizerUrl": null,
-        "tier": "official"
-      },
-      "status": "tentative",
-      "entry": "free",
-      "confidence": {
-        "source": "check-ahead",
-        "crowdsource": null
-      },
-      "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:40.126Z"
+      "lastChecked": "2026-09-29T11:09:07.524Z"
     },
     {
       "id": "christmas-market-alice-salomon-platz",
@@ -3435,7 +3287,7 @@
         "crowdsource": null
       },
       "vendorFile": null,
-      "lastChecked": "2026-09-28T11:28:40.846Z"
+      "lastChecked": "2026-09-29T11:09:08.206Z"
     }
   ]
 }
