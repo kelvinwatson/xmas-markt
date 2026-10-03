@@ -679,26 +679,20 @@ main {
   border-radius: 2px;
 }
 
-/* Title and action buttons share the first row; the district/date line and
-   the address get the full width below, so they only wrap when they must
-   instead of being squeezed into the narrow column beside the icons. */
+/* The action icons float at the top right and the title wraps around them,
+   so long titles use the full width once they're below the icon row instead
+   of staying squeezed into a narrow column beside it. */
 .sheet__header {
   padding: 4px 18px 12px;
   border-bottom: 1px solid var(--border);
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  column-gap: 10px;
-  align-items: start;
   touch-action: none;
 }
+.sheet__header::after { content: ""; display: block; clear: both; }
 
-.sheet__titles { display: contents; }
-.sheet__title { grid-column: 1; grid-row: 1; }
-.sheet__actions { grid-column: 2; grid-row: 1; }
-.sheet__meta { grid-column: 1 / -1; grid-row: 2; }
+.sheet__actions { float: right; margin: 2px 0 6px 10px; }
+.sheet__title { margin-top: 2px; }
+.sheet__titles { display: block; }
 .sheet__locrow {
-  grid-column: 1 / -1;
-  grid-row: 3;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
