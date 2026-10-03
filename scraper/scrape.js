@@ -250,6 +250,26 @@ function parseDateRange(rawText) {
     }
   }
 
+  // Month-first range, as on the English pages that read "November 7 to
+  // December 28, 2025" or "December 5 to 7, 2026". Must come before the
+  // single-day fallbacks, which would otherwise take just "November 7" and
+  // silently drop the end date (and the year, so it landed in SEASON_YEAR).
+  m = text.match(
+    new RegExp(
+      `([A-Za-z]+)\\s+(\\d{1,2})(?!\\d)(?:,?\\s+(\\d{4}))?\\s+(?:${SEP})\\s+(?:([A-Za-z]+)\\s+)?(\\d{1,2})(?!\\d)(?:,?\\s+(\\d{4}))?`
+    )
+  );
+  if (m) {
+    const [, mo1, d1, y1, mo2, d2, y2] = m;
+    const month1 = MONTHS[mo1.toLowerCase()];
+    const month2 = mo2 ? MONTHS[mo2.toLowerCase()] : month1;
+    if (month1 && month2) {
+      const endYear = y2 ? Number(y2) : y1 ? Number(y1) : SEASON_YEAR;
+      const startYear = y1 ? Number(y1) : endYear;
+      return buildRange(startYear, month1, d1, endYear, month2, d2);
+    }
+  }
+
   // Day-first single day: "13 December 2025". Tried before the month-first
   // fallback below so a trailing 4-digit year never gets misread as a
   // 1-2 digit day (e.g. "13 December 2025" must not fall through to
