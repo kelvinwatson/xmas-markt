@@ -71,9 +71,15 @@
       close: "Close",
       noSaved: "No saved markets yet. Tap the heart on a market to save it.",
       noMarkets: "No markets found.",
+      noneNow: "No markets are running right now. Check back once the season dates start.",
+      noneOpen: "No market is open right now.",
       allDistricts: "All districts",
       filterDistrict: "Filter by district",
       filterEntry: "Filter by entry",
+      whenAll: "Any time",
+      whenAvailable: "Available now",
+      whenOpen: "Open now",
+      filterWhen: "Filter by availability",
       entryAll: "All entry",
       entryFree: "Free",
       entryTicketed: "Ticketed",
@@ -131,9 +137,15 @@
       close: "Schließen",
       noSaved: "Noch keine gemerkten Märkte. Tippe auf das Herz, um einen Markt zu merken.",
       noMarkets: "Keine Märkte gefunden.",
+      noneNow: "Gerade läuft kein Markt. Schau wieder vorbei, sobald die Saison beginnt.",
+      noneOpen: "Gerade hat kein Markt geöffnet.",
       allDistricts: "Alle Bezirke",
       filterDistrict: "Nach Bezirk filtern",
       filterEntry: "Nach Eintritt filtern",
+      whenAll: "Jederzeit",
+      whenAvailable: "Jetzt verfügbar",
+      whenOpen: "Jetzt geöffnet",
+      filterWhen: "Nach Verfügbarkeit filtern",
       entryAll: "Jeder Eintritt",
       entryFree: "Kostenlos",
       entryTicketed: "Kostenpflichtig",
@@ -269,6 +281,7 @@
   let savedOnly = false;
   let filterDistrict = "all";
   let filterEntry = "all";
+  let filterWhen = "all"; // all | available | open
   let sortBy = "recommended";
   let userLocation = null; // { lat, lng } once geolocation succeeds
   let map, markerLayer, userMarker;
@@ -320,8 +333,9 @@
   }
 
   function isWithinDateRange(market) {
+    // Local calendar date, not UTC, so the market flips on at local midnight.
     const now = new Date();
-    const today = now.toISOString().slice(0, 10);
+    const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
     return today >= market.dates.start && today <= market.dates.end;
   }
 
@@ -346,10 +360,20 @@
     const nowMin = now.getHours() * 60 + now.getMinutes();
     const startMin = timeToMinutes(start);
     const endMin = timeToMinutes(end);
-    if (nowMin >= startMin && nowMin < endMin) {
+    // An end before the start means it runs past midnight (e.g. 18:00 - 01:00).
+    const isOpen = endMin > startMin ? nowMin >= startMin && nowMin < endMin : nowMin >= startMin || nowMin < endMin;
+    if (isOpen) {
       return { open: true, label: t("openNow", end) };
     }
     return { open: false, label: t("closedOpens", start) };
+  }
+
+  // "Available now": real, confirmed dates and today falls inside them.
+  // Tentative (last season's dates) and date-less markets never count.
+  function isAvailableNow(market) {
+    if (market.status === "tentative") return false;
+    if (!market.dates.start || !market.dates.end) return false;
+    return isWithinDateRange(market);
   }
 
   function formatDateShort(iso) {
@@ -464,6 +488,8 @@
     let list = savedOnly ? markets.filter((m) => favs.has(m.id)) : markets;
     if (filterDistrict !== "all") list = list.filter((m) => m.district === filterDistrict);
     if (filterEntry !== "all") list = list.filter((m) => m.entry === filterEntry);
+    if (filterWhen === "available") list = list.filter(isAvailableNow);
+    if (filterWhen === "open") list = list.filter((m) => marketStatus(m).open);
     return sortMarkets(list);
   }
 
@@ -613,7 +639,7 @@
     const favs = getFavorites();
 
     if (items.length === 0) {
-      container.innerHTML = `<p class="empty-state">${savedOnly ? t("noSaved") : t("noMarkets")}</p>`;
+      container.innerHTML = `<p class="empty-state">${savedOnly ? t("noSaved") : filterWhen === "available" ? t("noneNow") : filterWhen === "open" ? t("noneOpen") : t("noMarkets")}</p>`;
       return;
     }
 
@@ -720,6 +746,7 @@
     body.innerHTML = summaryHtml;
 
     overlay.hidden = false;
+    document.getElementById("sheet-scroll").scrollTop = 0;
 
     // Markets without a vendorFile (everything auto-discovered beyond the
     // hand-curated few) simply have no vendor data yet — skip the
@@ -958,6 +985,17 @@
         track("filter-entry", filterEntry);
         document
           .querySelectorAll("#filter-entry .filter-pill")
+          .forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+        refreshCurrentView();
+      });
+    });
+
+    document.querySelectorAll("#filter-when .filter-pill").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        filterWhen = btn.dataset.value;
+        track("filter-when", filterWhen);
+        document
+          .querySelectorAll("#filter-when .filter-pill")
           .forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
         refreshCurrentView();
       });

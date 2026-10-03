@@ -679,15 +679,24 @@ main {
   border-radius: 2px;
 }
 
+/* Title and action buttons share the first row; the district/date line and
+   the address get the full width below, so they only wrap when they must
+   instead of being squeezed into the narrow column beside the icons. */
 .sheet__header {
   padding: 4px 18px 12px;
   border-bottom: 1px solid var(--border);
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 10px;
+  align-items: start;
   touch-action: none;
 }
+
+.sheet__titles { display: contents; }
+.sheet__title { grid-column: 1; grid-row: 1; }
+.sheet__actions { grid-column: 2; grid-row: 1; }
+.sheet__meta { grid-column: 1 / -1; grid-row: 2; }
+.sheet__address { grid-column: 1 / -1; grid-row: 3; }
 
 .sheet__actions {
   display: flex;
@@ -818,8 +827,17 @@ main {
   opacity: 0.6;
 }
 
-.sheet__body {
+/* Banner and text scroll together, so the photo moves up and out of the way
+   as you read instead of staying pinned under the title. */
+.sheet__scroll {
+  flex: 1 1 auto;
+  min-height: 0;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+.sheet__body {
   padding: 14px 18px 22px;
 }
 

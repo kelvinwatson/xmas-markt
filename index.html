@@ -79,6 +79,11 @@
         <option value="nearest" data-i18n="sortNearest">Nearest to me</option>
       </select>
       <div class="filter-pills" id="filter-district" role="group" aria-label="Filter by district"></div>
+      <div class="filter-pills" id="filter-when" role="group" aria-label="Filter by availability" data-i18n-aria="filterWhen">
+        <button class="filter-pill" data-value="all" aria-pressed="true" data-i18n="whenAll">Any time</button>
+        <button class="filter-pill" data-value="available" aria-pressed="false" data-i18n="whenAvailable">Available now</button>
+        <button class="filter-pill" data-value="open" aria-pressed="false" data-i18n="whenOpen">Open now</button>
+      </div>
       <div class="filter-pills" id="filter-entry" role="group" aria-label="Filter by entry">
         <button class="filter-pill" data-value="all" aria-pressed="true" data-i18n="entryAll">All entry</button>
         <button class="filter-pill" data-value="free" aria-pressed="false" data-i18n="entryFree">Free</button>
@@ -120,7 +125,7 @@
   <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
     <div class="sheet__handle"></div>
     <div class="sheet__header">
-      <div>
+      <div class="sheet__titles">
         <h2 class="sheet__title" id="sheet-title"></h2>
         <p class="sheet__meta" id="sheet-meta"></p>
         <a class="sheet__address" id="sheet-address" target="_blank" rel="noopener" hidden></a>
@@ -136,8 +141,10 @@
         <button class="sheet__close" id="sheet-close" aria-label="Close" data-i18n-aria="close">✕</button>
       </div>
     </div>
-    <div class="sheet__banner" id="sheet-banner"></div>
-    <div class="sheet__body" id="sheet-body"></div>
+    <div class="sheet__scroll" id="sheet-scroll">
+      <div class="sheet__banner" id="sheet-banner"></div>
+      <div class="sheet__body" id="sheet-body"></div>
+    </div>
   </div>
 </div>
 
