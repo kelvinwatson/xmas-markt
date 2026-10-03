@@ -70,6 +70,8 @@
       saveMarket: "Save market",
       close: "Close",
       noSaved: "No saved markets yet. Tap the heart on a market to save it.",
+      showOnMap: "Show on map",
+      backToList: "← Back to list",
       noMarkets: "No markets found.",
       noneNow: "No markets are running right now. Check back once the season dates start.",
       noneOpen: "No market is open right now.",
@@ -136,6 +138,8 @@
       saveMarket: "Markt merken",
       close: "Schließen",
       noSaved: "Noch keine gemerkten Märkte. Tippe auf das Herz, um einen Markt zu merken.",
+      showOnMap: "Auf Karte zeigen",
+      backToList: "← Zurück zur Liste",
       noMarkets: "Keine Märkte gefunden.",
       noneNow: "Gerade läuft kein Markt. Schau wieder vorbei, sobald die Saison beginnt.",
       noneOpen: "Gerade hat kein Markt geöffnet.",
@@ -736,6 +740,7 @@
       calendarBtn.hidden = true;
     }
 
+    document.getElementById("sheet-map-btn").onclick = () => showOnMap(market);
     const shareBtn = document.getElementById("sheet-share-btn");
     shareBtn.onclick = () => shareMarket(market, shareBtn);
 
@@ -858,6 +863,28 @@
     };
   }
 
+  // "Show on map": close the sheet, centre the map on the market and pulse
+  // its pin. On phones the list pane is hidden while the map is up, so
+  // remember where the list was scrolled and offer a way back to it.
+  let listScrollTop = 0;
+  function showOnMap(market) {
+    const isDesktop = matchMedia("(min-width: 720px)").matches;
+    const cameFromList = currentView === "list" && !isDesktop;
+    if (cameFromList) listScrollTop = document.getElementById("list-view").scrollTop;
+    track("show-on-map");
+    closeSheet();
+    if (!isDesktop) setView("map");
+    if (cameFromList) document.getElementById("map-back-chip").hidden = false;
+    map.invalidateSize();
+    map.setView([market.lat, market.lng], 16);
+    const pin = markerById.get(market.id);
+    const el = pin && pin.getElement() && pin.getElement().querySelector(".market-marker");
+    if (el) {
+      el.classList.add("market-marker--spot");
+      setTimeout(() => el.classList.remove("market-marker--spot"), 4000);
+    }
+  }
+
   function closeSheet() {
     currentSheetMarket = null;
     document.getElementById("sheet-overlay").hidden = true;
@@ -916,6 +943,7 @@
   // ---------------------------------------------------------
   function setView(view) {
     currentView = view;
+    document.getElementById("map-back-chip").hidden = true;
     document.getElementById("map-view").hidden = view !== "map";
     document.getElementById("list-view").hidden = view !== "list";
     // Sort order has no visual meaning on the map (pins don't reorder), so
@@ -998,6 +1026,13 @@
           .querySelectorAll("#filter-when .filter-pill")
           .forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
         refreshCurrentView();
+      });
+    });
+
+    document.getElementById("map-back-chip").addEventListener("click", () => {
+      setView("list");
+      requestAnimationFrame(() => {
+        document.getElementById("list-view").scrollTop = listScrollTop;
       });
     });
 

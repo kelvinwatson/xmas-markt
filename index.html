@@ -116,6 +116,7 @@
 <main>
   <section id="map-view" class="view">
     <div id="map"></div>
+    <button class="map-back-chip" id="map-back-chip" type="button" hidden data-i18n="backToList">← Back to list</button>
   </section>
 
   <section id="list-view" class="view" hidden></section>
@@ -128,7 +129,10 @@
       <div class="sheet__titles">
         <h2 class="sheet__title" id="sheet-title"></h2>
         <p class="sheet__meta" id="sheet-meta"></p>
-        <a class="sheet__address" id="sheet-address" target="_blank" rel="noopener" hidden></a>
+        <div class="sheet__locrow">
+          <a class="sheet__address" id="sheet-address" target="_blank" rel="noopener" hidden></a>
+          <button class="sheet__map-btn" id="sheet-map-btn" type="button" data-i18n="showOnMap">Show on map</button>
+        </div>
       </div>
       <div class="sheet__actions">
         <a class="sheet__icon-btn" id="sheet-calendar-btn" target="_blank" rel="noopener" aria-label="Add to calendar" data-i18n-aria="addToCalendar">
