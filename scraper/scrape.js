@@ -116,28 +116,24 @@ async function discoverMarketCards(lang) {
         break;
       }
       const $ = cheerio.load(html);
-      const pageCards = $(".teaser-search--poi");
+      // visitBerlin's 2026 redesign renamed the card markup (teaser-search-*
+      // became teaser-tile-*). Paid placements are a separate "microsite"
+      // card type, so selecting only the "poi" cards already skips them.
+      const pageCards = $("article.teaser-tile--poi");
       if (pageCards.length === 0) break;
 
       pageCards.each((_, el) => {
         const $el = $(el);
-        const href = $el.find(".teaser-search__mainlink").first().attr("href");
-        const isAd = /advertisement/i.test($el.find(".teaser-search__paid").first().text());
+        const href = $el.find("a.teaser-tile__link").first().attr("href");
+        const isAd = $el.find(".teaser-tile__advertisement").length > 0;
         if (!href || isAd || !href.startsWith(`/${lang}/`)) return;
         if (!cards.has(href)) {
           cards.set(href, {
             href,
-            name: $el.find(".teaser-search__heading").first().text().replace(/\s+/g, " ").trim(),
-            // The teaser block's own "Read more" link text gets swept up by
-            // .text() since it's a sibling <p> inside the same container.
-            teaser: $el
-              .find(".teaser-search__text")
-              .first()
-              .text()
-              .replace(/\s+/g, " ")
-              .replace(new RegExp(`${readMore}\\s*$`), "")
-              .trim(),
+            name: $el.find(".teaser-tile__heading").first().text().replace(/\s+/g, " ").trim(),
+            teaser: $el.find(".teaser-tile__description").first().text().replace(/\s+/g, " ").trim(),
             district: district.name,
+            address: $el.find(".teaser-tile__location .address").first().text().replace(/\s+/g, " ").trim() || null,
           });
         }
       });
@@ -364,6 +360,10 @@ function parseEntry(text) {
 }
 
 function extractCoords(html) {
+  // Current markup: <div class="address_as_map" data-lat=".." data-lon="..">
+  const attr = html.match(/class="address_as_map"[^>]*data-lat="([\d.]+)"[^>]*data-lon="([\d.]+)"/);
+  if (attr) return { lat: Number(attr[1]), lng: Number(attr[2]) };
+  // Older markup embedded the point in a JSON blob.
   const m = html.match(/"features":\[\{"type":"point","lat":([\d.]+),"lon":([\d.]+)/);
   if (!m) return null;
   return { lat: Number(m[1]), lng: Number(m[2]) };
@@ -413,7 +413,10 @@ async function scrapeMarket(source, deIndex) {
   const street = $(".address__street").first().text().trim();
   const zip = $(".address__zip").first().text().replace(/ /g, "").trim();
   const city = $(".address__city").first().text().trim();
-  const address = street ? `${street}${zip ? ", " + zip : ""}${city ? " " + city : ""}`.trim() : null;
+  const detailAddress = street ? `${street}${zip ? ", " + zip : ""}${city ? " " + city : ""}`.trim() : null;
+  // The listing card carries the address since the 2026 redesign; the old
+  // address block on the detail page is kept as a fallback.
+  const address = source.address || detailAddress;
 
   const items = extractChecklistWithDate($);
   const dateLine = items.find((i) => /^dates?\s*:/i.test(i)) || "";
@@ -536,6 +539,7 @@ function mergeSources(stable, discovered) {
       id,
       name: card.name,
       district: card.district,
+      address: card.address || null,
       summary: stripLeadingDatePhrase(card.teaser) || card.teaser || null,
       officialUrl: `${BASE_URL}${card.href}`,
       organizerUrl: pinned ? pinned.organizerUrl : null,
@@ -556,6 +560,15 @@ async function main() {
   console.log("Discovering markets from visitBerlin's district listings...");
   const discovered = await discoverMarketCards("en");
   console.log(`Discovered ${discovered.length} candidate market pages (en).`);
+  // If the source site changes its markup, discovery silently finds nothing.
+  // Stop here rather than wipe a good dataset with an empty one.
+  const prevCount = previous ? previous.markets.length : 0;
+  if (discovered.length === 0 || (prevCount > 0 && discovered.length < prevCount * 0.5)) {
+    throw new Error(
+      `Discovery found only ${discovered.length} markets (previous run: ${prevCount}). ` +
+        "The source site's markup has probably changed. Leaving the existing data untouched."
+    );
+  }
   const sources = mergeSources(STABLE_IDS, discovered);
 
   console.log("Discovering German listings for bilingual name/summary...");
@@ -574,6 +587,14 @@ async function main() {
       // Keep going — one bad source shouldn't blank the whole index.
     }
     await sleep(200);
+  }
+
+  // Second guard: a run where most pages failed to parse must not replace
+  // good data either, even if discovery looked fine.
+  if (prevCount > 0 && markets.length < prevCount * 0.7) {
+    throw new Error(
+      `Only ${markets.length} of the previous ${prevCount} markets could be scraped. Leaving the existing data untouched.`
+    );
   }
 
   let index = { isSampleData: false, generatedAt: new Date().toISOString(), markets };
